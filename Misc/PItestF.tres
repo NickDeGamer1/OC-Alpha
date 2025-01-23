@@ -1,0 +1,98 @@
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://dyooo0wfl0uxl"]
+
+[ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="1_k5faf"]
+[ext_resource type="PackedScene" uid="uid://dpa16djchd7qv" path="res://Prefabs/Water.tscn" id="2_6yvtl"]
+[ext_resource type="PackedScene" uid="uid://cy844ttecdwbe" path="res://Prefabs/wall1.tscn" id="3_p53qp"]
+[ext_resource type="PackedScene" uid="uid://cosinjqktb3gf" path="res://Prefabs/wall2.tscn" id="4_irjjq"]
+[ext_resource type="PackedScene" uid="uid://ckdhes2x7ec1o" path="res://Prefabs/wallWithLight1.tscn" id="5_wnkc5"]
+[ext_resource type="PackedScene" uid="uid://c0bt7ytejg3pq" path="res://Prefabs/wallWithLight2.tscn" id="6_nttv3"]
+[ext_resource type="PackedScene" uid="uid://cdcv6ugn3bbgs" path="res://Prefabs/wall3.tscn" id="7_nufkg"]
+[ext_resource type="PackedScene" uid="uid://dmhor018egr1a" path="res://Prefabs/wall4.tscn" id="8_rg7yn"]
+[ext_resource type="PackedScene" uid="uid://blopdjwtfp6x" path="res://Prefabs/corroded_area.tscn" id="9_l4mnf"]
+[ext_resource type="PackedScene" uid="uid://cllf1ro857xi6" path="res://Prefabs/punchable_block.tscn" id="10_s3rhn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsge4"]
+resource_name = "Floor and Walls"
+texture = ExtResource("1_k5faf")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/z_index = 3
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/z_index = 3
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/z_index = 3
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/z_index = 3
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/z_index = 3
+2:2/0 = 0
+3:2/0 = 0
+3:2/0/z_index = 3
+0:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_grb6w"]
+scenes/1/scene = ExtResource("9_l4mnf")
+scenes/2/scene = ExtResource("10_s3rhn")
+scenes/3/scene = ExtResource("2_6yvtl")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_n47jd"]
+resource_name = "walls"
+scenes/1/scene = ExtResource("3_p53qp")
+scenes/2/scene = ExtResource("4_irjjq")
+scenes/3/scene = ExtResource("5_wnkc5")
+scenes/4/scene = ExtResource("6_nttv3")
+scenes/5/scene = ExtResource("7_nufkg")
+scenes/6/scene = ExtResource("8_rg7yn")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_lsge4")
+sources/3 = SubResource("TileSetScenesCollectionSource_n47jd")
+sources/1 = SubResource("TileSetScenesCollectionSource_grb6w")

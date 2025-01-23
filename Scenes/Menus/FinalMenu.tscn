@@ -1,0 +1,472 @@
+[gd_scene load_steps=24 format=3 uid="uid://cj5sp5gh7ciw6"]
+
+[ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_7kp8i"]
+[ext_resource type="Script" path="res://Scenes/Menus/FinalMenu.gd" id="1_iseti"]
+[ext_resource type="Texture2D" uid="uid://cx6hcsddjrkef" path="res://Prefabs/Characters/Alex/TextSprites/AlexImage.jpeg" id="2_cmkas"]
+[ext_resource type="Texture2D" uid="uid://bc4ga51nnvsav" path="res://Prefabs/Characters/Faelyn/TextSprites/FaelynImage.jpeg" id="3_h5cm5"]
+[ext_resource type="Texture2D" uid="uid://dnkji12q3la3k" path="res://Prefabs/Characters/Aurora/TextSprites/AuroraImage.jpeg" id="3_s8cmh"]
+[ext_resource type="Texture2D" uid="uid://dulr8f7x62g30" path="res://Prefabs/Characters/Treasure/TextSprites/TreasureImage.jpeg" id="4_kqfed"]
+[ext_resource type="Texture2D" uid="uid://doxgxksq437dc" path="res://Prefabs/Characters/Athena/TextSprites/AthenaImage.jpeg" id="4_yl7vg"]
+[ext_resource type="Texture2D" uid="uid://ep8ruv28s5da" path="res://Prefabs/Characters/Vex/TextSprites/VexImage.jpeg" id="5_ml0k6"]
+[ext_resource type="Texture2D" uid="uid://bg00uhn64p8st" path="res://Prefabs/Characters/Mike/TextSprites/MikeImage.jpeg" id="6_a1udg"]
+[ext_resource type="Texture2D" uid="uid://b80fhwwtrwlgc" path="res://Prefabs/Characters/Shibe/TextSprites/ShibeImage.jpeg" id="7_r3gie"]
+[ext_resource type="Texture2D" uid="uid://do6xds7bx77u8" path="res://Prefabs/Characters/Mittens/TextSprites/MittensImage.jpeg" id="8_dg4cl"]
+[ext_resource type="Texture2D" uid="uid://dmtj2b6oery5g" path="res://Prefabs/Characters/Glen4/TextSprites/Glen4Image.jpeg" id="8_lmhyt"]
+[ext_resource type="Texture2D" uid="uid://cytej81ynd25c" path="res://Prefabs/Characters/Damian/TextSprites/DamianImage.jpeg" id="9_33eq0"]
+[ext_resource type="Texture2D" uid="uid://c512elvvpkw3e" path="res://Prefabs/Characters/Socks/TextSprites/SocksImage.jpeg" id="9_k4alr"]
+[ext_resource type="Texture2D" uid="uid://dvkon1j00p0o5" path="res://Prefabs/Characters/Jimothy/TextSprites/JimothyImage.jpeg" id="12_n7vyp"]
+[ext_resource type="Texture2D" uid="uid://h2u36hgrr2g6" path="res://Prefabs/Characters/Blitz/TextSprites/BlitzImage.jpeg" id="15_ytr6f"]
+[ext_resource type="Texture2D" uid="uid://c81bol3qnqm7r" path="res://Prefabs/Characters/Conrad/TextSprites/ConradImage.jpeg" id="16_sdggg"]
+[ext_resource type="Texture2D" uid="uid://c62m177jb687i" path="res://Prefabs/Characters/Basket/TextSprites/BasketImage.jpeg" id="17_yyk6j"]
+[ext_resource type="Texture2D" uid="uid://c64wns21tia8k" path="res://icons/iconMac.png" id="18_bn5q4"]
+[ext_resource type="Texture2D" uid="uid://bis5o2qpuwtvd" path="res://Textures/Emmet.jpg" id="19_35na5"]
+[ext_resource type="Texture2D" uid="uid://da43bkww7bdpn" path="res://Textures/java-icon-256x256-k4ufhihr.png" id="20_eevor"]
+[ext_resource type="Texture2D" uid="uid://smi6ti2rwem1" path="res://Textures/DS.png" id="21_g2riv"]
+[ext_resource type="Texture2D" uid="uid://d0yv3s0r3bikv" path="res://Textures/Fire1.png" id="21_lk8pf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iseti")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -890.0
+offset_right = 890.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme = ExtResource("1_7kp8i")
+theme_override_font_sizes/font_size = 100
+text = "Thank you For Playing!"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(1800, 425)
+layout_mode = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="Label2" type="Label" parent="CenterContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7kp8i")
+text = "Thank you for playing the Alpha for “Original Campaign: The Game”! I've spent almost about a year of work on this project. After completing this I recommend Playing it again with other characters and trying different combinations.  I'm planning on actually making a proper “Game” game with this framework in the future, so keep on the lookout for that. I also recommend trying multiplayer with friends (it should work?). Anyways, Have a wonderful day!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.5
+offset_top = -78.0
+offset_right = 146.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CredButton" type="Button" parent="MarginContainer/HFlowContainer"]
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HFlowContainer"]
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+text = "Exit"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer2"]
+custom_minimum_size = Vector2(1800, 1000)
+layout_mode = 2
+color = Color(0.435294, 0.435294, 0.435294, 1)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CenterContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditAlex" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAlex"]
+layout_mode = 2
+texture = ExtResource("2_cmkas")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAlex"]
+layout_mode = 2
+texture = ExtResource("3_s8cmh")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAlex"]
+layout_mode = 2
+texture = ExtResource("4_kqfed")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAlex"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Alex, Aurora & Treasure - NickDeGamer1"
+
+[node name="CreditFaelyn" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditFaelyn"]
+layout_mode = 2
+texture = ExtResource("3_h5cm5")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditFaelyn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Faelyn - yunastar_"
+
+[node name="CreditAthena" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAthena"]
+layout_mode = 2
+texture = ExtResource("4_yl7vg")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditAthena"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Athena - MADragon"
+
+[node name="CreditVex" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditVex"]
+layout_mode = 2
+texture = ExtResource("5_ml0k6")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditVex"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Vex - VexTheWolf"
+
+[node name="CreditMittens" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMittens"]
+layout_mode = 2
+texture = ExtResource("8_dg4cl")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMittens"]
+layout_mode = 2
+texture = ExtResource("9_k4alr")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMittens"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Mittens & Socks - FurryWithSocks"
+
+[node name="CreditMike" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMike"]
+layout_mode = 2
+texture = ExtResource("6_a1udg")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMike"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Mike - MikeTheWolfBoyo"
+
+[node name="CreditShibe" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditShibe"]
+layout_mode = 2
+texture = ExtResource("7_r3gie")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditShibe"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Shibe - Fatshibe"
+
+[node name="CreditGlen4" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditGlen4"]
+layout_mode = 2
+texture = ExtResource("8_lmhyt")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditGlen4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Glen4 - Witheredgnome"
+
+[node name="CreditDamian" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditDamian"]
+layout_mode = 2
+texture = ExtResource("9_33eq0")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditDamian"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Damian - Tomatocat"
+
+[node name="CreditJimothy" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditJimothy"]
+layout_mode = 2
+texture = ExtResource("12_n7vyp")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditJimothy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Jimothy - nervshocc"
+
+[node name="CreditBlitz" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditBlitz"]
+layout_mode = 2
+texture = ExtResource("15_ytr6f")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditBlitz"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Blitz - 1haley123"
+
+[node name="CreditConrad" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditConrad"]
+layout_mode = 2
+texture = ExtResource("16_sdggg")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditConrad"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Conrad - TheGGamer83"
+
+[node name="CreditBasket" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditBasket"]
+layout_mode = 2
+texture = ExtResource("17_yyk6j")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditBasket"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Basket - basket-o-cereal"
+
+[node name="CreditSyndrome" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditSyndrome"]
+layout_mode = 2
+texture = ExtResource("18_bn5q4")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditSyndrome"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Syndrome - joshprime."
+
+[node name="CreditEmmit" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditEmmit"]
+layout_mode = 2
+texture = ExtResource("19_35na5")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditEmmit"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Emmit - Cookiesaurus"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 792
+theme_override_constants/margin_right = 792
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Other Stuff"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(1800, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[]"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+theme_override_font_sizes/font_size = 30
+text = "Coding By: NickDeGamer1"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+theme_override_font_sizes/font_size = 30
+text = "Pixel Art By: NickDeGamer1"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/HBoxContainer/MarginContainer3/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("21_lk8pf")
+expand_mode = 3
+
+[node name="CreditMikeJava" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeJava"]
+layout_mode = 2
+texture = ExtResource("20_eevor")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeJava"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7kp8i")
+bbcode_enabled = true
+text = "[url=http://mikeos.net/projects.html]Inspired By - OC: Java Edition (Code by by MikeTheWolfBoyo)[/url]
+"
+scroll_active = false
+
+[node name="CreditMikeDS" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeDS"]
+custom_minimum_size = Vector2(600, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7kp8i")
+bbcode_enabled = true
+text = "[url=http://mikeos.net/projects.html/]Also Try: OC for the Nintendo DS (Made by MikeTheWolfBoyo)[/url]
+"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeDS"]
+layout_mode = 2
+texture = ExtResource("21_g2riv")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="CenterContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/HFlowContainer/CredButton" to="." method="_on_cred_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HFlowContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CenterContainer2/ColorRect/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

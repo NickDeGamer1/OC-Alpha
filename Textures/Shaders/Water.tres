@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://xvys6kr48tkx"]
+
+[ext_resource type="Shader" path="res://Textures/Shaders/Water.gdshader" id="1_1khfg"]
+
+[resource]
+shader = ExtResource("1_1khfg")
+shader_parameter/width = 2.0
+shader_parameter/frequency = 1.5
+shader_parameter/speed = 1.0

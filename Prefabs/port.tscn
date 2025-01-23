@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxtqu4os5g53l"]
+
+[ext_resource type="Texture2D" uid="uid://bxiy76dwx647x" path="res://Textures/Port.png" id="1_j2s1u"]
+[ext_resource type="Script" path="res://Scripts/port.gd" id="1_pvu4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d0j6"]
+size = Vector2(96, 96)
+
+[sub_resource type="Curve" id="Curve_2btbt"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_78n30"]
+curve_x = SubResource("Curve_2btbt")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i6spe"]
+polygon = PackedVector2Array(-9, -12, 9, -12, 9, 6, -9, 6)
+
+[node name="Port" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_pvu4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_j2s1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7d0j6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4.76837e-07, -3)
+scale = Vector2(0.0703125, 18)
+texture = SubResource("CurveXYZTexture_78n30")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_i6spe")

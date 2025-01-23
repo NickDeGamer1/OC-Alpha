@@ -1,0 +1,178 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhbkfsk3xreet"]
+
+[ext_resource type="Script" path="res://Scripts/MittensBrisge.gd" id="1_bjcst"]
+[ext_resource type="Texture2D" uid="uid://c4jnky0hdy7wq" path="res://Textures/MittensBridge.png" id="1_w6tuq"]
+[ext_resource type="Texture2D" uid="uid://b1tku6kj5ij3t" path="res://Textures/Warning tile.png" id="3_ug7ln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anwxv"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rihj"]
+size = Vector2(480, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p1wt"]
+size = Vector2(462.807, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgt2h"]
+size = Vector2(464, 232)
+
+[sub_resource type="Animation" id="Animation_cyonh"]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face1:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rails:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4jkj"]
+_data = {
+"Appear": SubResource("Animation_cyonh")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_do08k"]
+properties/0/path = NodePath(".:modulate")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="MittensBridge" type="Area2D" groups=["MittensBridge"]]
+texture_filter = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_bjcst")
+
+[node name="Bridge" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 0)
+position = Vector2(0, 43)
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 79)
+
+[node name="Face1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(3, 110, 16, 14)
+
+[node name="Face2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(29, 110, 16, 14)
+
+[node name="FaceR" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(55, 110, 16, 14)
+
+[node name="FaceL" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(80, 110, 16, 14)
+
+[node name="Rails" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 6
+position = Vector2(0, 40)
+scale = Vector2(3, 3)
+texture = ExtResource("1_w6tuq")
+region_enabled = true
+region_rect = Rect2(0, 79, 160, 17)
+
+[node name="FaceArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FaceArea"]
+shape = SubResource("RectangleShape2D_anwxv")
+
+[node name="Block" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2rihj")
+disabled = true
+
+[node name="TopBlock" type="CollisionShape2D" parent="."]
+position = Vector2(-1.19265, -80)
+shape = SubResource("RectangleShape2D_8p1wt")
+
+[node name="TopBlock2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.596328, 88)
+shape = SubResource("RectangleShape2D_8p1wt")
+
+[node name="FullArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_dgt2h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y4jkj")
+}
+
+[node name="SpawnPointL" type="Node2D" parent="."]
+position = Vector2(-192, -48)
+
+[node name="SpawnPointR" type="Node2D" parent="."]
+position = Vector2(192, -48)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-261, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ug7ln")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(261, 96)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ug7ln")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(261, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ug7ln")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-261, 96)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ug7ln")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_do08k")
+
+[connection signal="area_entered" from="FaceArea" to="." method="_on_face_area_area_entered"]
+[connection signal="area_exited" from="FaceArea" to="." method="_on_face_area_area_exited"]

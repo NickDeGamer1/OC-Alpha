@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://1cxfhyrtntpc"]
+
+[ext_resource type="FontFile" uid="uid://b4epnfmtr82tw" path="res://Misc/ocFont.otf" id="1_iax1w"]
+
+[resource]
+default_font = ExtResource("1_iax1w")
+default_font_size = 30

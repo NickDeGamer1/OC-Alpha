@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce7q34vxkr0si"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterBlock.gd" id="1_s25nx"]
+[ext_resource type="Texture2D" uid="uid://qb84qiwy7haf" path="res://Textures/White_Block_on.png" id="2_r7qk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qblpa"]
+size = Vector2(96, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cvi6"]
+polygon = PackedVector2Array(-39, -48, 39, -48, 39, -45, 42, -45, 42, -42, 45, -42, 45, -39, 48, -39, 48, 39, 45, 39, 45, 42, 42, 42, 42, 45, 39, 45, 39, 48, -39, 48, -39, 45, -42, 45, -42, 42, -45, 42, -45, 39, -48, 39, -48, -39, -45, -39, -45, -42, -42, -42, -42, -45, -39, -45)
+
+[node name="CharacterBlock" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_s25nx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qblpa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_r7qk7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_3cvi6")

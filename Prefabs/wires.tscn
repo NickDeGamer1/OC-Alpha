@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://c34gwelhnh0b5"]
+
+[ext_resource type="Script" path="res://Scripts/Wires.gd" id="1_cwqbc"]
+[ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="2_wmnoj"]
+[ext_resource type="Texture2D" uid="uid://dmc61mnjdckhn" path="res://Textures/particle.png" id="3_or3gv"]
+[ext_resource type="AudioStream" uid="uid://o75t752p3wl8" path="res://Audio/Zap.mp3" id="4_lpfxl"]
+[ext_resource type="Texture2D" uid="uid://cl0cssmtjtev5" path="res://Textures/light.png" id="4_q8tyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk3gw"]
+size = Vector2(96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd34v"]
+atlas = ExtResource("2_wmnoj")
+region = Rect2(67, 100, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phjf"]
+atlas = ExtResource("2_wmnoj")
+region = Rect2(67, 133, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0kih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd34v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6phjf")
+}],
+"loop": false,
+"name": &"Cut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd34v")
+}],
+"loop": true,
+"name": &"RESET",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_soovh"]
+polygon = PackedVector2Array(-48, -27, -45, -27, -45, -21, -42, -21, -42, -15, -39, -15, -39, 9, -42, 9, -42, 15, -45, 15, -45, 21, -48, 21, -48, 48, 6, 48, 6, 24, 9, 25, 9, 27, 12, 27, 12, 48, 27, 48, 27, 39, 30, 39, 30, 48, 48, 48, 48, 47, 48, 24, 45, 24, 45, -21, 48, -21, 48, -48, 36, -48, 36, -42, 33, -42, 33, -33, 30, -33, 30, -30, 27, -30, 27, -48, 11, -48, 9, -33, 12, -33, 12, -6, 9, -5, 9, -24, 6, -24, 6, -45, 9, -45, 9, -48, -48, -48)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7x468"]
+polygon = PackedVector2Array(-48, -48, -48, -45, 48, -45, 48, -48)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rdlcs"]
+polygon = PackedVector2Array(-48, 48, 48, 48, 48, 45, -48, 45)
+
+[node name="Wires" type="Area2D"]
+script = ExtResource("1_cwqbc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dk3gw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_n0kih")
+animation = &"RESET"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(18, 36)
+emitting = false
+amount = 2
+lifetime = 0.2
+one_shot = true
+texture = ExtResource("3_or3gv")
+emission_shape = 1
+emission_sphere_radius = 9.9
+scale_amount_max = 3.0
+
+[node name="PointLight2D" type="PointLight2D" parent="CPUParticles2D"]
+energy = 0.25
+texture = ExtResource("4_q8tyj")
+texture_scale = 0.25
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(-31, -32)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("3_or3gv")
+emission_shape = 1
+emission_sphere_radius = 9.9
+scale_amount_max = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="CPUParticles2D2"]
+energy = 0.25
+texture = ExtResource("4_q8tyj")
+texture_scale = 0.25
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lpfxl")
+volume_db = -10.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_soovh")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7x468")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_rdlcs")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+z_index = 4
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

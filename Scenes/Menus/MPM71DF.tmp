@@ -1,0 +1,205 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnjovdj3mu1dt"]
+
+[ext_resource type="Script" path="res://Scripts/MPMenu.gd" id="1_1bjkc"]
+[ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_c744f"]
+[ext_resource type="PackedScene" uid="uid://pho80w3y6d6q" path="res://Prefabs/self_display.tscn" id="3_tqy1a"]
+[ext_resource type="PackedScene" uid="uid://bpllvsw1mrjag" path="res://Prefabs/Player_display.tscn" id="4_q05mv"]
+
+[node name="MpMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995155, 0.977831)
+script = ExtResource("1_1bjkc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MPType" type="ColorRect" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MPType"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MPType/MarginContainer"]
+layout_mode = 2
+
+[node name="Local" type="Button" parent="CenterContainer/MPType/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c744f")
+disabled = true
+text = "Local"
+
+[node name="Online" type="Button" parent="CenterContainer/MPType/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c744f")
+text = "Online"
+
+[node name="OnlMP" type="ColorRect" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/OnlMP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/OnlMP/MarginContainer"]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="CenterContainer/OnlMP/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c744f")
+text = "Join"
+
+[node name="HostButton" type="Button" parent="CenterContainer/OnlMP/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c744f")
+text = "Host"
+
+[node name="NameInput" type="ColorRect" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 150)
+layout_mode = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/NameInput"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/NameInput/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_c744f")
+text = "Display Name"
+horizontal_alignment = 1
+
+[node name="Nameinput" type="LineEdit" parent="CenterContainer/NameInput/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_c744f")
+placeholder_text = "CringyGamertagFrom2013"
+
+[node name="PlayersList" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PlayersList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PlayersList/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_c744f")
+text = "Players:"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PlayersList/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PlayersList/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelfDisplay" parent="CenterContainer/PlayersList/VBoxContainer/VBoxContainer" instance=ExtResource("3_tqy1a")]
+layout_mode = 2
+
+[node name="PlayerDisplay" parent="CenterContainer/PlayersList/VBoxContainer/VBoxContainer" instance=ExtResource("4_q05mv")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PlayersList"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="StartButton" type="Button" parent="CenterContainer/PlayersList/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_c744f")
+theme_override_font_sizes/font_size = 12
+text = "Start"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="BackButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_c744f")
+text = "Back
+"
+
+[connection signal="pressed" from="CenterContainer/MPType/MarginContainer/HBoxContainer/Online" to="." method="_on_online_pressed"]
+[connection signal="pressed" from="CenterContainer/OnlMP/MarginContainer/HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="CenterContainer/OnlMP/MarginContainer/HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="text_submitted" from="CenterContainer/NameInput/VBoxContainer/Nameinput" to="." method="_on_nameinput_text_submitted"]
+[connection signal="pressed" from="CenterContainer/PlayersList/MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

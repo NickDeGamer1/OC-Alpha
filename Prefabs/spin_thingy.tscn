@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdi2tompl2nia"]
+
+[ext_resource type="Script" path="res://Scripts/SpinThingy.gd" id="1_cf2dp"]
+[ext_resource type="Texture2D" uid="uid://cgr4518ivq2qv" path="res://Textures/Wind_thing.png" id="2_mp75j"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dgly532s0y1fp" path="res://Prefabs/Occluders/SpinThingy0.tres" id="3_fxpxl"]
+[ext_resource type="AudioStream" uid="uid://cl5as3ljc87o0" path="res://Audio/gears-sounds.mp3" id="3_wpjub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq6bn"]
+atlas = ExtResource("2_mp75j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_und4i"]
+atlas = ExtResource("2_mp75j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0210"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq6bn")
+}],
+"loop": true,
+"name": &"RESET",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq6bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_und4i")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u60wk"]
+size = Vector2(96, 96)
+
+[node name="SpinThingy" type="Area2D"]
+script = ExtResource("1_cf2dp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_l0210")
+animation = &"Spin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u60wk")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = ExtResource("3_fxpxl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wpjub")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

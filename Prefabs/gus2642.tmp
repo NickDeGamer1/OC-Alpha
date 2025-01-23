@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn0xub1rc4qcu"]
+
+[ext_resource type="Script" path="res://Scripts/GustOfWind.gd" id="1_p8c3q"]
+[ext_resource type="Texture2D" uid="uid://dnpn1mhyho83b" path="res://Textures/Gust.png" id="2_awovp"]
+
+[node name="GustOfWind" type="Node2D"]
+script = ExtResource("1_p8c3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_awovp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4, -4)
+scale = Vector2(4.4, 4.4)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

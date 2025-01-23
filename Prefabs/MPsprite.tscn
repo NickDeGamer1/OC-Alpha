@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://daj3ae2jhpcy6"]
+
+[ext_resource type="Script" path="res://Scripts/MPsprite.gd" id="1_63t01"]
+[ext_resource type="Texture2D" uid="uid://dnpn1mhyho83b" path="res://Textures/Gust.png" id="2_0x4jq"]
+[ext_resource type="PackedScene" uid="uid://ck84kbksaekej" path="res://Prefabs/shadow.tscn" id="4_ambe1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cixff"]
+size = Vector2(96, 96)
+
+[node name="MPsprite" type="CharacterBody2D" groups=["OtherP"]]
+texture_filter = 1
+script = ExtResource("1_63t01")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-40, 30)
+rotation = -1.0472
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0x4jq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 12
+offset_left = -57.0
+offset_top = 49.0
+offset_right = 60.0
+offset_bottom = 72.0
+pivot_offset = Vector2(57, 11)
+size_flags_horizontal = 4
+text = "NickDeGamer1"
+horizontal_alignment = 1
+
+[node name="Shadow" parent="." instance=ExtResource("4_ambe1")]
+z_index = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cixff")
+
+[node name="EncloseSPR" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true

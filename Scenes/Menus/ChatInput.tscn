@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c85ymlane2eem"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+custom_minimum_size = Vector2(0, 40)
+bbcode_enabled = true
+scroll_active = false

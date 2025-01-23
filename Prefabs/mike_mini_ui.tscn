@@ -1,0 +1,335 @@
+[gd_scene load_steps=15 format=3 uid="uid://cguc8nirq7g5g"]
+
+[ext_resource type="Script" path="res://Scripts/MikeMiniUI.gd" id="1_vft1y"]
+[ext_resource type="Texture2D" uid="uid://bv1go84p4gdao" path="res://Textures/UI_Bubble.png" id="2_re685"]
+[ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="3_uw4qb"]
+[ext_resource type="Texture2D" uid="uid://d14bdw0o47b2w" path="res://Textures/maze.jpg" id="4_ci6fe"]
+[ext_resource type="AudioStream" uid="uid://dlye3n3hk2ari" path="res://Audio/MazeJS.mp3" id="5_f2mab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4s1l"]
+size = Vector2(22, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eq34"]
+size = Vector2(1020, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07m21"]
+size = Vector2(20, 816)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pug5c"]
+size = Vector2(838.25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjngd"]
+size = Vector2(46, 59)
+
+[sub_resource type="Animation" id="Animation_u6mp6"]
+resource_name = "Start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jenkb"]
+resource_name = "end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f3f0h"]
+resource_name = "Jumpscare"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Maze:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.87,
+"start_offset": 0.0,
+"stream": ExtResource("5_f2mab")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bt0js"]
+_data = {
+"Jumpscare": SubResource("Animation_f3f0h"),
+"Start": SubResource("Animation_u6mp6"),
+"end": SubResource("Animation_jenkb")
+}
+
+[node name="MikeMiniUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vft1y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(1200, 900)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_re685")
+region_rect = Rect2(-1, 0, 73, 72)
+patch_margin_left = 35
+patch_margin_top = 37
+patch_margin_right = 37
+patch_margin_bottom = 35
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_uw4qb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Get to the Exit"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 800)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="NinePatchRect/CenterContainer"]
+position = Vector2(100, 76)
+
+[node name="AsciiDude" type="CharacterBody2D" parent="NinePatchRect/CenterContainer/Node2D"]
+position = Vector2(64, 83)
+collision_layer = 96
+collision_mask = 96
+
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 22.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = " o
+/0\\
+ ||"
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude"]
+position = Vector2(11, 37.5)
+shape = SubResource("RectangleShape2D_o4s1l")
+
+[node name="RCDown" type="RayCast2D" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude" groups=["RCs"]]
+position = Vector2(11, 37)
+target_position = Vector2(0, 42)
+collision_mask = 32
+collide_with_areas = true
+
+[node name="RCUp" type="RayCast2D" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude" groups=["RCs"]]
+position = Vector2(11, 37)
+target_position = Vector2(0, -42)
+collision_mask = 32
+collide_with_areas = true
+
+[node name="RCLeft" type="RayCast2D" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude" groups=["RCs"]]
+position = Vector2(11, 37)
+target_position = Vector2(-15, 0)
+collision_mask = 32
+collide_with_areas = true
+
+[node name="RCRight" type="RayCast2D" parent="NinePatchRect/CenterContainer/Node2D/AsciiDude" groups=["RCs"]]
+position = Vector2(11, 37)
+target_position = Vector2(15, 0)
+collision_mask = 32
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="NinePatchRect/CenterContainer/Node2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/Area2D"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_7eq34")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/Area2D"]
+position = Vector2(500, 796)
+shape = SubResource("RectangleShape2D_7eq34")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/Area2D"]
+position = Vector2(0, 398)
+shape = SubResource("RectangleShape2D_07m21")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/Area2D"]
+position = Vector2(1001, 398)
+shape = SubResource("RectangleShape2D_07m21")
+
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Node2D/Area2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DeathArea" type="Area2D" parent="NinePatchRect/CenterContainer/Node2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/DeathArea"]
+position = Vector2(429.75, 244)
+shape = SubResource("RectangleShape2D_pug5c")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/DeathArea"]
+position = Vector2(573.125, 556)
+shape = SubResource("RectangleShape2D_pug5c")
+
+[node name="Label2" type="Label" parent="NinePatchRect/CenterContainer/Node2D/DeathArea"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = 231.0
+offset_right = 849.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "==========================================================================================="
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="NinePatchRect/CenterContainer/Node2D/DeathArea"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 158.0
+offset_top = 544.0
+offset_right = 990.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "==========================================================================================="
+metadata/_edit_use_anchors_ = true
+
+[node name="FinishArea" type="Area2D" parent="NinePatchRect/CenterContainer/Node2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NinePatchRect/CenterContainer/Node2D/FinishArea"]
+position = Vector2(947, 734.5)
+shape = SubResource("RectangleShape2D_vjngd")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 895
+theme_override_constants/margin_top = 714
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "^^^^^^
+|         |
+_______"
+horizontal_alignment = 1
+
+[node name="Maze" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(961, 539)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ci6fe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(963, 540)
+stream = ExtResource("5_f2mab")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bt0js")
+}
+
+[connection signal="body_entered" from="NinePatchRect/CenterContainer/Node2D/DeathArea" to="." method="_on_death_area_body_entered"]
+[connection signal="body_entered" from="NinePatchRect/CenterContainer/Node2D/FinishArea" to="." method="_on_finish_area_body_entered"]

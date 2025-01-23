@@ -1,0 +1,366 @@
+[gd_scene load_steps=32 format=3 uid="uid://beke7sgl1v6y7"]
+
+[ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_jo3mj"]
+[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_p1psj"]
+[ext_resource type="OccluderPolygon2D" uid="uid://og21rgrtkl4k" path="res://Prefabs/Characters/Alex/Occluder/move_down0.tres" id="3_2k0jv"]
+[ext_resource type="Texture2D" uid="uid://63ijg7jryasi" path="res://Textures/AlexEyelids.png" id="5_5uw4v"]
+[ext_resource type="Texture2D" uid="uid://dd5yicoibaarg" path="res://Textures/AlexEyelidsOne.png" id="6_lgvk5"]
+[ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="7_v6jkj"]
+[ext_resource type="Texture2D" uid="uid://vf1h3ivc6ble" path="res://Textures/MouthSide.png" id="8_lvuhq"]
+[ext_resource type="PackedScene" uid="uid://btfs7qyf144ux" path="res://Prefabs/temp_sprite.tscn" id="9_8giry"]
+[ext_resource type="Texture2D" uid="uid://c651odbacvabl" path="res://Textures/largeEYE.png" id="9_8r3n3"]
+[ext_resource type="Texture2D" uid="uid://bpusdiymnam21" path="res://Textures/Red_Block_off.png" id="10_erqmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtpuv"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(397, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jxvu"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(430, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fjm8"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(496, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tqcl"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(463, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snr2m"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(1, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2lmn"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(133, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wsts"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(265, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07cvh"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(34, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cepp"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(166, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfjjr"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(298, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5uj6"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(100, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8353f"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(232, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxm0v"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(364, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjkpi"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(67, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kix0"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(199, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e43hy"]
+atlas = ExtResource("1_jo3mj")
+region = Rect2(331, 1, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1pae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtpuv")
+}],
+"loop": false,
+"name": &"Pokeball_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jxvu")
+}],
+"loop": false,
+"name": &"Pokeball_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fjm8")
+}],
+"loop": false,
+"name": &"Pokeball_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tqcl")
+}],
+"loop": false,
+"name": &"Pokeball_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snr2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2lmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snr2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wsts")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07cvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cepp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07cvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfjjr")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8353f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxm0v")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjkpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kix0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjkpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e43hy")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_f4snf"]
+resource_name = "Talking_down"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bf05m"]
+resource_name = "Talking_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthL:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fc0t7"]
+resource_name = "Talking_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthR:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
+_data = {
+"Talking_down": SubResource("Animation_f4snf"),
+"Talking_left": SubResource("Animation_bf05m"),
+"Talking_right": SubResource("Animation_fc0t7")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+light_mask = 3
+z_index = 1
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_m1pae")
+animation = &"move_down"
+script = ExtResource("2_p1psj")
+Ccolor = Color(0.0117647, 1, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = -1
+position = Vector2(0, 9.53674e-07)
+occluder = ExtResource("3_2k0jv")
+
+[node name="EyelidL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+texture = ExtResource("6_lgvk5")
+
+[node name="EyelidR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+texture = ExtResource("6_lgvk5")
+
+[node name="Eyelids" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+texture = ExtResource("5_5uw4v")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1.33333)
+texture = ExtResource("7_v6jkj")
+
+[node name="MouthL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -2.25)
+texture = ExtResource("8_lvuhq")
+
+[node name="MouthR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -2.25)
+texture = ExtResource("8_lvuhq")
+
+[node name="HalfClosedEyelid" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -3.0
+offset_top = -6.0
+offset_right = 4.0
+offset_bottom = -4.0
+color = Color(1, 0.933333, 0.701961, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -4.0
+offset_top = -5.0
+offset_right = -3.0
+offset_bottom = -4.0
+color = Color(1, 0.933333, 0.701961, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -3.0
+offset_top = -5.0
+offset_right = -1.0
+offset_bottom = -4.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = -4.0
+color = Color(0, 0, 0, 1)
+
+[node name="EyeNode" type="Node2D" parent="."]
+visible = false
+
+[node name="Eyes1" type="Sprite2D" parent="EyeNode"]
+position = Vector2(-2.5, -4.5)
+texture = ExtResource("9_8r3n3")
+
+[node name="Eyes2" type="Sprite2D" parent="EyeNode"]
+position = Vector2(2.5, -4.5)
+texture = ExtResource("9_8r3n3")
+
+[node name="EyeL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+texture = ExtResource("9_8r3n3")
+
+[node name="EyeR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+texture = ExtResource("9_8r3n3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tc54a")
+}
+
+[node name="TempSprite" parent="." instance=ExtResource("9_8giry")]
+scale = Vector2(0.333, 0.333)
+
+[node name="cantleft" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(-32, 0)
+texture = ExtResource("10_erqmd")
+
+[node name="cantright" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(32, 0)
+texture = ExtResource("10_erqmd")
+
+[node name="cantdown" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(0, 32)
+texture = ExtResource("10_erqmd")
+
+[node name="cantup" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(0, -32)
+texture = ExtResource("10_erqmd")

@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpa16djchd7qv"]
+
+[ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="1_4lb4b"]
+[ext_resource type="Script" path="res://Scripts/Water.gd" id="1_hd50b"]
+[ext_resource type="AudioStream" uid="uid://djmn3pn00ayoq" path="res://Audio/Icy Wind part 2.mp3" id="3_63uas"]
+[ext_resource type="Material" uid="uid://xvys6kr48tkx" path="res://Textures/Shaders/Water.tres" id="3_mko0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqfne"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6aan"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmb57"]
+atlas = ExtResource("1_4lb4b")
+region = Rect2(1, 100, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8yvi"]
+atlas = ExtResource("1_4lb4b")
+region = Rect2(1, 133, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krlfr"]
+atlas = ExtResource("1_4lb4b")
+region = Rect2(1, 166, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nkmjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmb57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8yvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krlfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8yvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmb57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Water" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_hd50b")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_jqfne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n6aan")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4lb4b")
+region_enabled = true
+region_rect = Rect2(34, 100, 32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+scale = Vector2(1.01, 1.01)
+sprite_frames = SubResource("SpriteFrames_nkmjv")
+frame_progress = 0.136081
+
+[node name="Reflection1" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.482353)
+material = ExtResource("3_mko0p")
+flip_v = true
+
+[node name="Reflection2" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.482353)
+material = ExtResource("3_mko0p")
+flip_v = true
+
+[node name="Reflection3" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.482353)
+material = ExtResource("3_mko0p")
+flip_v = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_63uas")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

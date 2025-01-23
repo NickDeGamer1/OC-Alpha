@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3stq0cd5lo83"]
+
+[ext_resource type="AudioStream" uid="uid://7r7mqjy11rwp" path="res://Audio/Ping.wav" id="1_5jorp"]
+[ext_resource type="Script" path="res://Scripts/ping_spr.gd" id="1_hp3sp"]
+
+[sub_resource type="Gradient" id="Gradient_18uts"]
+offsets = PackedFloat32Array(0.700535, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_buhfk"]
+gradient = SubResource("Gradient_18uts")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.85)
+
+[sub_resource type="Animation" id="Animation_7h3ad"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_5jorp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fuk11"]
+_data = {
+"appear": SubResource("Animation_7h3ad")
+}
+
+[node name="PingSpr" type="Sprite2D" groups=["PingSprG"]]
+visible = false
+z_index = 12
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_buhfk")
+script = ExtResource("1_hp3sp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fuk11")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0

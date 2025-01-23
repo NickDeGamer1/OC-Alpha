@@ -1,0 +1,254 @@
+[gd_scene load_steps=27 format=3 uid="uid://byrhgps834naq"]
+
+[ext_resource type="Texture2D" uid="uid://cits5msaxqlc8" path="res://Textures/Normals/CharSpr2.tres" id="1_3655h"]
+[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_oyu3x"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dhhkfq05xt5fh" path="res://Prefabs/Characters/Syndrome/Occluder/move_down0.tres" id="3_wea53"]
+[ext_resource type="Texture2D" uid="uid://vf1h3ivc6ble" path="res://Textures/MouthSide.png" id="7_n5xh1"]
+[ext_resource type="PackedScene" uid="uid://btfs7qyf144ux" path="res://Prefabs/temp_sprite.tscn" id="9_2w6nk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no33n"]
+atlas = ExtResource("1_3655h")
+region = Rect2(1, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx883"]
+atlas = ExtResource("1_3655h")
+region = Rect2(133, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lge5"]
+atlas = ExtResource("1_3655h")
+region = Rect2(265, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abo0p"]
+atlas = ExtResource("1_3655h")
+region = Rect2(34, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shu4o"]
+atlas = ExtResource("1_3655h")
+region = Rect2(166, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ux38"]
+atlas = ExtResource("1_3655h")
+region = Rect2(298, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lekj"]
+atlas = ExtResource("1_3655h")
+region = Rect2(100, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv1ky"]
+atlas = ExtResource("1_3655h")
+region = Rect2(232, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cd13"]
+atlas = ExtResource("1_3655h")
+region = Rect2(364, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxgvt"]
+atlas = ExtResource("1_3655h")
+region = Rect2(67, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwy1r"]
+atlas = ExtResource("1_3655h")
+region = Rect2(199, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6gs3"]
+atlas = ExtResource("1_3655h")
+region = Rect2(331, 265, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1pae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no33n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx883")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no33n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lge5")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abo0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shu4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abo0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ux38")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lekj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv1ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lekj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cd13")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxgvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwy1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxgvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6gs3")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_evm7j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oyy84"]
+gradient = SubResource("Gradient_evm7j")
+width = 4
+
+[sub_resource type="Gradient" id="Gradient_ax5df"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wglab"]
+gradient = SubResource("Gradient_ax5df")
+width = 2
+
+[sub_resource type="Animation" id="Animation_f4snf"]
+resource_name = "Talking_down"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bf05m"]
+resource_name = "Talking_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthL:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fc0t7"]
+resource_name = "Talking_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthR:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
+_data = {
+"Talking_down": SubResource("Animation_f4snf"),
+"Talking_left": SubResource("Animation_bf05m"),
+"Talking_right": SubResource("Animation_fc0t7")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+light_mask = 3
+z_index = 1
+texture_filter = 1
+position = Vector2(-3, -1)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_m1pae")
+animation = &"move_right"
+script = ExtResource("2_oyu3x")
+Ccolor = Color(0.290196, 0.294118, 0.219608, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = -1
+position = Vector2(0, 9.53674e-07)
+occluder = ExtResource("3_wea53")
+
+[node name="EyelidL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+
+[node name="EyelidR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+
+[node name="Eyelids" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5, -10.5)
+scale = Vector2(0.25, 1)
+texture = SubResource("GradientTexture1D_oyy84")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5.96046e-08, -8.5)
+scale = Vector2(2, 1)
+texture = SubResource("GradientTexture1D_wglab")
+
+[node name="MouthL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.5, -2.5)
+texture = ExtResource("7_n5xh1")
+
+[node name="MouthR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.5, -2.5)
+texture = ExtResource("7_n5xh1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tc54a")
+}
+
+[node name="TempSprite" parent="." instance=ExtResource("9_2w6nk")]
+scale = Vector2(0.333, 0.333)

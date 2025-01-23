@@ -1,0 +1,9 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://cs88v1bceoper"]
+
+[ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="1_6beux"]
+[ext_resource type="Texture2D" uid="uid://cn740tks7hh8" path="res://Textures/Normals/worldSprites_n.png" id="2_ydtil"]
+
+[resource]
+diffuse_texture = ExtResource("1_6beux")
+normal_texture = ExtResource("2_ydtil")
+texture_filter = 1

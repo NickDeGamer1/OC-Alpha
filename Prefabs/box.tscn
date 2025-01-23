@@ -1,0 +1,199 @@
+[gd_scene load_steps=18 format=3 uid="uid://68txtdc3ulfw"]
+
+[ext_resource type="Texture2D" uid="uid://xdnxijetwrml" path="res://Textures/Box.png" id="1_v4x6c"]
+[ext_resource type="Script" path="res://Scripts/box.gd" id="1_y4am4"]
+[ext_resource type="Texture2D" uid="uid://cm1n5msvck27u" path="res://Textures/BoxParticle.png" id="2_1u5ay"]
+[ext_resource type="AudioStream" uid="uid://41bh7kvrm4qu" path="res://Audio/Wood Breaking Sound Effect.mp3" id="3_waisy"]
+[ext_resource type="Texture2D" uid="uid://d0yv3s0r3bikv" path="res://Textures/Fire1.png" id="5_ey35j"]
+[ext_resource type="Material" uid="uid://bet5mtbno8wij" path="res://Textures/Shaders/Fire.tres" id="5_xqi18"]
+[ext_resource type="Texture2D" uid="uid://c30hnevvgbftf" path="res://Textures/Fire2.png" id="6_ebfkg"]
+[ext_resource type="Texture2D" uid="uid://l48ngwausr5y" path="res://Textures/Fire3.png" id="7_quk3j"]
+[ext_resource type="AudioStream" uid="uid://brgj7havghqqf" path="res://Audio/Fire.mp3" id="8_8pwdx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgxql"]
+size = Vector2(96, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kku8l"]
+polygon = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[sub_resource type="Gradient" id="Gradient_1nbts"]
+colors = PackedColorArray(1, 0.682353, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qpt17"]
+gradient = SubResource("Gradient_1nbts")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+metadata/_snap_enabled = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_geete"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ey35j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ebfkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_quk3j")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_icuh2"]
+resource_name = "dim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p8m3f"]
+resource_name = "light"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-15, 0), Vector2(0, -10), Vector2(15, 0), Vector2(0, -10), Vector2(-15, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hf01t"]
+_data = {
+"dim": SubResource("Animation_icuh2"),
+"light": SubResource("Animation_p8m3f")
+}
+
+[node name="Wood-Box" type="Area2D"]
+texture_filter = 1
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_y4am4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cgxql")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_v4x6c")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.5
+texture = ExtResource("2_1u5ay")
+emission_shape = 2
+emission_sphere_radius = 50.1
+initial_velocity_max = 1.0
+angular_velocity_max = 60.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 7.0
+scale_amount_max = 14.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_waisy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_kku8l")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(10.4141, -4.1508)
+scale = Vector2(3.25, 3.25)
+energy = 0.0
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_qpt17")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = ExtResource("5_xqi18")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_geete")
+animation = &"Fire"
+
+[node name="RayCast2D1" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, -64)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+target_position = Vector2(64, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+target_position = Vector2(-64, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8pwdx")
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hf01t")
+}
+speed_scale = 3.0
+
+[node name="Timer" type="Timer" parent="."]

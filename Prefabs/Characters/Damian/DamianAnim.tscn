@@ -1,0 +1,534 @@
+[gd_scene load_steps=36 format=3 uid="uid://d1lnnkmbbe2lf"]
+
+[ext_resource type="Texture2D" uid="uid://cits5msaxqlc8" path="res://Textures/Normals/CharSpr2.tres" id="1_5ckgt"]
+[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_v2gha"]
+[ext_resource type="OccluderPolygon2D" uid="uid://bmwqw4uo413c0" path="res://Prefabs/Characters/Damian/Occluder/spray_up0.tres" id="3_bsb5b"]
+[ext_resource type="Texture2D" uid="uid://63ijg7jryasi" path="res://Textures/AlexEyelids.png" id="4_p8ca0"]
+[ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="5_61kfa"]
+[ext_resource type="Texture2D" uid="uid://dd5yicoibaarg" path="res://Textures/AlexEyelidsOne.png" id="5_wgwqe"]
+[ext_resource type="Texture2D" uid="uid://vf1h3ivc6ble" path="res://Textures/MouthSide.png" id="6_2noi6"]
+[ext_resource type="AudioStream" uid="uid://dga46qajm5rj6" path="res://Audio/water-spray-bottle-spraying-version-1-sound-effect.mp3" id="7_ynj6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xgvb"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(1, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alavt"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(133, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srs6j"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(265, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yquv4"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(34, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvef7"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(166, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_581g6"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(298, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50xap"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(100, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcmja"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(232, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfwgt"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(364, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcqgu"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(67, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7v3d"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(199, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tciu3"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(331, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um3d4"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(397, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5w6y"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(430, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hl0u"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(496, 34, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ffji"]
+atlas = ExtResource("1_5ckgt")
+region = Rect2(463, 34, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1pae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xgvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alavt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xgvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srs6j")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yquv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvef7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yquv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_581g6")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50xap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcmja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50xap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfwgt")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcqgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7v3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcqgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tciu3")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um3d4")
+}],
+"loop": true,
+"name": &"spray_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5w6y")
+}],
+"loop": true,
+"name": &"spray_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hl0u")
+}],
+"loop": true,
+"name": &"spray_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ffji")
+}],
+"loop": true,
+"name": &"spray_up",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_f4snf"]
+resource_name = "Talking_down"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bf05m"]
+resource_name = "Talking_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthL:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fc0t7"]
+resource_name = "Talking_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthR:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
+_data = {
+"Talking_down": SubResource("Animation_f4snf"),
+"Talking_left": SubResource("Animation_bf05m"),
+"Talking_right": SubResource("Animation_fc0t7")
+}
+
+[sub_resource type="Animation" id="Animation_0c2qk"]
+resource_name = "spray_down"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_ynj6g")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray_down:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_oqu8d"]
+resource_name = "spray_left"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_ynj6g")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray_left:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7xf4u"]
+resource_name = "spray_right"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_ynj6g")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray_right:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ad84f"]
+resource_name = "spray_up"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_ynj6g")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray_up:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30sax"]
+_data = {
+"spray_down": SubResource("Animation_0c2qk"),
+"spray_left": SubResource("Animation_oqu8d"),
+"spray_right": SubResource("Animation_7xf4u"),
+"spray_up": SubResource("Animation_ad84f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6vfq"]
+size = Vector2(32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+light_mask = 3
+z_index = 1
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_m1pae")
+animation = &"move_left"
+script = ExtResource("2_v2gha")
+Ccolor = Color(1, 0.568627, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = -1
+occluder = ExtResource("3_bsb5b")
+
+[node name="Eyelids" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+texture = ExtResource("4_p8ca0")
+
+[node name="EyelidL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+texture = ExtResource("5_wgwqe")
+
+[node name="EyelidR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+texture = ExtResource("5_wgwqe")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1.5)
+texture = ExtResource("5_61kfa")
+
+[node name="MouthL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -2.5)
+texture = ExtResource("6_2noi6")
+
+[node name="MouthR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -2.5)
+texture = ExtResource("6_2noi6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tc54a")
+}
+
+[node name="SpPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_30sax")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Spray_down" type="Node2D" parent="."]
+visible = false
+position = Vector2(-5.33333, 1.66667)
+
+[node name="Line2D" type="Line2D" parent="Spray_down"]
+points = PackedVector2Array(0, 0, -5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="Spray_down"]
+points = PackedVector2Array(0, 0, 0, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="Spray_down"]
+points = PackedVector2Array(0, 0, 5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Spray_left" type="Node2D" parent="."]
+visible = false
+position = Vector2(-7.33333, -0.666667)
+rotation = 1.5708
+
+[node name="Line2D" type="Line2D" parent="Spray_left"]
+points = PackedVector2Array(0, 0, -5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="Spray_left"]
+points = PackedVector2Array(0, 0, 0, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="Spray_left"]
+points = PackedVector2Array(0, 0, 5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Spray_right" type="Node2D" parent="."]
+visible = false
+position = Vector2(7.33333, -0.666667)
+rotation = -1.5708
+
+[node name="Line2D" type="Line2D" parent="Spray_right"]
+points = PackedVector2Array(0, 0, -5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="Spray_right"]
+points = PackedVector2Array(0, 0, 0, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="Spray_right"]
+points = PackedVector2Array(0, 0, 5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Spray_up" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(4.66667, 0.666667)
+rotation = -3.14159
+
+[node name="Line2D" type="Line2D" parent="Spray_up"]
+points = PackedVector2Array(0, 0, -5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="Spray_up"]
+points = PackedVector2Array(0, 0, 0, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="Spray_up"]
+points = PackedVector2Array(0, 0, 5.667, 15)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="SP_left" type="Area2D" parent="."]
+position = Vector2(-32, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SP_left" groups=["collisionBox"]]
+shape = SubResource("RectangleShape2D_p6vfq")
+
+[node name="SP_right" type="Area2D" parent="."]
+position = Vector2(32, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SP_right" groups=["collisionBox"]]
+shape = SubResource("RectangleShape2D_p6vfq")
+
+[node name="SP_up" type="Area2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SP_up" groups=["collisionBox"]]
+shape = SubResource("RectangleShape2D_p6vfq")
+
+[node name="SP_down" type="Area2D" parent="."]
+position = Vector2(0, 32)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SP_down"]
+shape = SubResource("RectangleShape2D_p6vfq")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceb88eee0wqfi"]
+
+[ext_resource type="PackedScene" uid="uid://c5mx6g3qslm3h" path="res://Prefabs/pathway.tscn" id="1_guc4r"]
+[ext_resource type="Texture2D" uid="uid://c8eu7lekxj3ne" path="res://Textures/Path1.png" id="2_xtafq"]
+[ext_resource type="Texture2D" uid="uid://c6vulcs0e0wc6" path="res://Textures/Path3.png" id="3_fbh5y"]
+[ext_resource type="Texture2D" uid="uid://6kqfib37vj6u" path="res://Textures/Path2.png" id="4_tai63"]
+[ext_resource type="PackedScene" uid="uid://dnojljedyo27p" path="res://Prefabs/pathwayend.tscn" id="5_tjum3"]
+[ext_resource type="Texture2D" uid="uid://crrn6u6ud2o4k" path="res://Textures/PathEnd.png" id="6_wqwni"]
+
+[node name="Path" type="Node2D"]
+texture_filter = 1
+
+[node name="Pathway" parent="." instance=ExtResource("1_guc4r")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway"]
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("2_xtafq")
+
+[node name="Pathway2" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(96, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway2"]
+scale = Vector2(3, 3)
+texture = ExtResource("3_fbh5y")
+
+[node name="Pathway3" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(96, 96)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway3"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_xtafq")
+
+[node name="Pathway4" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(96, 192)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway4"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_xtafq")
+
+[node name="Pathway5" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(96, 288)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway5"]
+rotation = 4.71239
+scale = Vector2(3, 3)
+texture = ExtResource("4_tai63")
+
+[node name="Pathway6" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(192, 288)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway6"]
+rotation = 4.71239
+scale = Vector2(3, 3)
+texture = ExtResource("2_xtafq")
+
+[node name="Pathway7" parent="." instance=ExtResource("1_guc4r")]
+position = Vector2(288, 288)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pathway7"]
+rotation = 4.71239
+scale = Vector2(3, 3)
+texture = ExtResource("2_xtafq")
+
+[node name="PathwayEnd" parent="." instance=ExtResource("5_tjum3")]
+position = Vector2(384, 288)
+
+[node name="Sprite2D" type="Sprite2D" parent="PathwayEnd"]
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("6_wqwni")

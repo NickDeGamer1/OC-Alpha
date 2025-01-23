@@ -1,0 +1,238 @@
+[gd_scene load_steps=13 format=3 uid="uid://vlcwvxj3avsl"]
+
+[ext_resource type="Script" path="res://Scripts/Party.gd" id="1_0ert2"]
+[ext_resource type="PackedScene" uid="uid://cwo5746e5mupu" path="res://Prefabs/Player.tscn" id="1_5tsfn"]
+[ext_resource type="PackedScene" uid="uid://btfs7qyf144ux" path="res://Prefabs/temp_sprite.tscn" id="3_f4sce"]
+[ext_resource type="PackedScene" uid="uid://qmlolo4j6l0a" path="res://Prefabs/UI.tscn" id="4_mtlud"]
+[ext_resource type="PackedScene" uid="uid://u4xr8ki4ki8m" path="res://Prefabs/speach_bubble.tscn" id="5_l1qr1"]
+[ext_resource type="PackedScene" uid="uid://cqitqfqnshws6" path="res://Scenes/Menus/PauseMenu.tscn" id="6_dotlb"]
+[ext_resource type="Texture2D" uid="uid://btwyu6r256e1p" path="res://Textures/ControlsPS.jpg" id="7_qst2q"]
+[ext_resource type="Texture2D" uid="uid://cbag41pag5icy" path="res://Textures/ControlsKBM.jpg" id="8_2phsh"]
+
+[sub_resource type="Animation" id="Animation_511jo"]
+resource_name = "DisplayKBM"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KBMDisplay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KBMDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_c2w07"]
+resource_name = "SwitchToController"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KBMDisplay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KBMDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ControllerDisplay:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ControllerDisplay:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"changeConDIS"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0ue1y"]
+resource_name = "FinishDisplay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ControllerDisplay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ControllerDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5788"]
+_data = {
+"DisplayKBM": SubResource("Animation_511jo"),
+"FinishDisplay": SubResource("Animation_0ue1y"),
+"SwitchToController": SubResource("Animation_c2w07")
+}
+
+[node name="Party" type="Node2D"]
+script = ExtResource("1_0ert2")
+
+[node name="Player" parent="." instance=ExtResource("1_5tsfn")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Player"]
+volume_db = -20.0
+
+[node name="TempSprite" parent="." instance=ExtResource("3_f4sce")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+
+[node name="UI" parent="Control" instance=ExtResource("4_mtlud")]
+layout_mode = 1
+offset_top = 4.0
+offset_bottom = -4.0
+
+[node name="SpeachBubble" parent="Control" instance=ExtResource("5_l1qr1")]
+layout_mode = 1
+
+[node name="unregistered hypercam 2" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 398.0
+offset_bottom = 30.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control/unregistered hypercam 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Unregistered HyperCam 2"
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("6_dotlb")]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="ControllerDisplay" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0.1)
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -779.0
+offset_top = -425.0
+offset_right = 779.0
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_qst2q")
+
+[node name="KBMDisplay" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0.9)
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -779.0
+offset_top = -425.0
+offset_right = 779.0
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2phsh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_p5788")
+}

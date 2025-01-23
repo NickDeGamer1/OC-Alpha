@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu1cxxqggmu1t"]
+
+[ext_resource type="PackedScene" uid="uid://qmlolo4j6l0a" path="res://Prefabs/UI.tscn" id="1_wb825"]
+[ext_resource type="PackedScene" uid="uid://cqitqfqnshws6" path="res://Scenes/Menus/PauseMenu.tscn" id="2_lpeds"]
+[ext_resource type="PackedScene" uid="uid://u4xr8ki4ki8m" path="res://Prefabs/speach_bubble.tscn" id="3_e0ta1"]
+[ext_resource type="PackedScene" uid="uid://cguc8nirq7g5g" path="res://Prefabs/mike_mini_ui.tscn" id="10_mo3io"]
+[ext_resource type="PackedScene" uid="uid://cd5uikvp2omf1" path="res://Scenes/Menus/chat.tscn" id="11_mpgv8"]
+
+[sub_resource type="Animation" id="Animation_jq8wt"]
+resource_name = "FadeFromBlack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ppxww"]
+resource_name = "Transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eexvm"]
+_data = {
+"FadeFromBlack": SubResource("Animation_jq8wt"),
+"FadeToBlack": SubResource("Animation_ppxww")
+}
+
+[node name="CLUI" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="UI" parent="." instance=ExtResource("1_wb825")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_lpeds")]
+visible = false
+
+[node name="SpeachBubble" parent="." instance=ExtResource("3_e0ta1")]
+visible = false
+
+[node name="Hypercam" type="ColorRect" parent="."]
+visible = false
+offset_right = 234.0
+offset_bottom = 21.0
+
+[node name="Label" type="Label" parent="Hypercam"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Unregistered HyperCam 2"
+
+[node name="MikeMiniUI" parent="." instance=ExtResource("10_mo3io")]
+
+[node name="Chat" parent="." instance=ExtResource("11_mpgv8")]
+visible = false
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_eexvm")
+}

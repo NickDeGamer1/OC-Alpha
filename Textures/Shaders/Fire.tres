@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bet5mtbno8wij"]
+
+[ext_resource type="Shader" path="res://Textures/Shaders/Fire.gdshader" id="1_gyyyx"]
+
+[resource]
+shader = ExtResource("1_gyyyx")
+shader_parameter/hight = 3.0
+shader_parameter/frequency = 1.0
+shader_parameter/speed = 10.0

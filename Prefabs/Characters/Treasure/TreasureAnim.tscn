@@ -1,0 +1,289 @@
+[gd_scene load_steps=26 format=3 uid="uid://c6tvalsryddeh"]
+
+[ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_afcx3"]
+[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_23nsj"]
+[ext_resource type="Texture2D" uid="uid://dd5yicoibaarg" path="res://Textures/AlexEyelidsOne.png" id="4_xekmp"]
+[ext_resource type="Texture2D" uid="uid://63ijg7jryasi" path="res://Textures/AlexEyelids.png" id="5_8ton0"]
+[ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="6_10jmb"]
+[ext_resource type="Texture2D" uid="uid://vf1h3ivc6ble" path="res://Textures/MouthSide.png" id="7_iqa7g"]
+[ext_resource type="Texture2D" uid="uid://c651odbacvabl" path="res://Textures/largeEYE.png" id="8_d4utd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu4v2"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(1, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o72e2"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(133, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6a3i"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(265, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj8vm"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(34, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6hip"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(166, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwx0h"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(298, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgu4i"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(100, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymrxd"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(232, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_resm0"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(364, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_encgc"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(67, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj5dh"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(199, 265, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhfmg"]
+atlas = ExtResource("1_afcx3")
+region = Rect2(331, 265, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1pae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu4v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o72e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu4v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6a3i")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj8vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6hip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwx0h")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgu4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymrxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgu4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_resm0")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_encgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj5dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_encgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhfmg")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 7.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fhhd7"]
+polygon = PackedVector2Array(-4, -12, 2, -12, 2, -13, 3, -13, 3, -15, 4, -15, 4, -16, 5, -16, 5, -15, 6, -15, 6, -14, 7, -14, 7, -13, 6, -13, 6, -8, 7, -8, 7, -9.53674e-07, 9, -9.53674e-07, 9, 0.999999, 10, 0.999999, 10, 4, 9, 4, 9, 5, 6, 5, 6, 4, 3, 4, 3, 7, 4, 7, 4, 12, 5, 12, 5, 13, 6, 13, 6, 15, 5, 15, 5, 16, 1, 16, 1, 15, 0, 15, 0, 11, -2, 11, -2, 13, -3, 13, -3, 14, -6, 14, -6, 13, -7, 13, -7, 11, -6, 11, -6, 9, -9, 9, -9, 8, -10, 8, -10, 5, -9, 5, -9, 4, -8, 4, -8, 2, -9, 2, -9, -8, -8, -8, -8, -13, -9, -13, -9, -14, -8, -14, -8, -15, -7, -15, -7, -16, -6, -16, -6, -15, -5, -15, -5, -13, -4, -13)
+
+[sub_resource type="Animation" id="Animation_f4snf"]
+resource_name = "Talking_down"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bf05m"]
+resource_name = "Talking_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthL:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fc0t7"]
+resource_name = "Talking_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthR:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
+_data = {
+"Talking_down": SubResource("Animation_f4snf"),
+"Talking_left": SubResource("Animation_bf05m"),
+"Talking_right": SubResource("Animation_fc0t7")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+light_mask = 3
+z_index = 1
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_m1pae")
+animation = &"move_right"
+script = ExtResource("2_23nsj")
+Ccolor = Color(1, 1, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = -1
+position = Vector2(0, 9.53674e-07)
+occluder = SubResource("OccluderPolygon2D_fhhd7")
+
+[node name="EyelidL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+texture = ExtResource("4_xekmp")
+
+[node name="EyelidR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+texture = ExtResource("4_xekmp")
+
+[node name="Eyelids" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+texture = ExtResource("5_8ton0")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.08165e-12, -1.5)
+texture = ExtResource("6_10jmb")
+
+[node name="MouthL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -1.5)
+texture = ExtResource("7_iqa7g")
+
+[node name="MouthR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -1.5)
+texture = ExtResource("7_iqa7g")
+
+[node name="HalfClosedEyelid" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -3.0
+offset_top = -6.0
+offset_right = 4.0
+offset_bottom = -4.0
+color = Color(1, 0.933333, 0.701961, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -4.0
+offset_top = -5.0
+offset_right = -3.0
+offset_bottom = -4.0
+color = Color(1, 0.933333, 0.701961, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = -3.0
+offset_top = -5.0
+offset_right = -1.0
+offset_bottom = -4.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HalfClosedEyelid"]
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = -4.0
+color = Color(0, 0, 0, 1)
+
+[node name="EyeNode" type="Node2D" parent="."]
+visible = false
+
+[node name="Eyes1" type="Sprite2D" parent="EyeNode"]
+position = Vector2(-2.5, -4.5)
+texture = ExtResource("8_d4utd")
+
+[node name="Eyes2" type="Sprite2D" parent="EyeNode"]
+position = Vector2(2.5, -4.5)
+texture = ExtResource("8_d4utd")
+
+[node name="EyeL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3.5, -5.5)
+texture = ExtResource("8_d4utd")
+
+[node name="EyeR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.5, -5.5)
+texture = ExtResource("8_d4utd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tc54a")
+}

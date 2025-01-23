@@ -1,0 +1,242 @@
+[gd_scene load_steps=24 format=3 uid="uid://cddepgd0oi4d6"]
+
+[ext_resource type="Texture2D" uid="uid://cits5msaxqlc8" path="res://Textures/Normals/CharSpr2.tres" id="1_50coy"]
+[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_17lyb"]
+[ext_resource type="OccluderPolygon2D" uid="uid://clr87mo4qungf" path="res://Prefabs/Characters/Basket/Occluder/move_right2.tres" id="3_y0imx"]
+[ext_resource type="Texture2D" uid="uid://cdfxqo2t3843i" path="res://Textures/BasketEyelids.png" id="4_3w5t1"]
+[ext_resource type="Texture2D" uid="uid://b73o6nmfp1sch" path="res://Textures/BasketEyelidOne.png" id="5_6u86e"]
+[ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="7_0ahq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ewwq"]
+atlas = ExtResource("1_50coy")
+region = Rect2(1, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pb50"]
+atlas = ExtResource("1_50coy")
+region = Rect2(133, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyg1"]
+atlas = ExtResource("1_50coy")
+region = Rect2(265, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrvys"]
+atlas = ExtResource("1_50coy")
+region = Rect2(34, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dco5o"]
+atlas = ExtResource("1_50coy")
+region = Rect2(166, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbsyo"]
+atlas = ExtResource("1_50coy")
+region = Rect2(298, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_843e2"]
+atlas = ExtResource("1_50coy")
+region = Rect2(100, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68vba"]
+atlas = ExtResource("1_50coy")
+region = Rect2(232, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g47qs"]
+atlas = ExtResource("1_50coy")
+region = Rect2(364, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edw7y"]
+atlas = ExtResource("1_50coy")
+region = Rect2(67, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp2ty"]
+atlas = ExtResource("1_50coy")
+region = Rect2(199, 199, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ucup"]
+atlas = ExtResource("1_50coy")
+region = Rect2(331, 199, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1pae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ewwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pb50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ewwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyg1")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrvys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dco5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrvys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbsyo")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_843e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68vba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_843e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g47qs")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edw7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp2ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edw7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ucup")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_36amv"]
+resource_name = "Talking_down"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e8h47"]
+resource_name = "Talking_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MouthL:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qapd2"]
+resource_name = "Talking_right"
+length = 0.2
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u877t"]
+_data = {
+"Talking_down": SubResource("Animation_36amv"),
+"Talking_left": SubResource("Animation_e8h47"),
+"Talking_right": SubResource("Animation_qapd2")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+light_mask = 3
+z_index = 1
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_m1pae")
+animation = &"move_right"
+script = ExtResource("2_17lyb")
+Ccolor = Color(0.231373, 0.694118, 0.337255, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = -1
+occluder = ExtResource("3_y0imx")
+
+[node name="Eyelids" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5.5)
+texture = ExtResource("4_3w5t1")
+
+[node name="EyelidL" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5, -4.5)
+texture = ExtResource("5_6u86e")
+
+[node name="EyelidR" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.5, -4.5)
+texture = ExtResource("5_6u86e")
+flip_h = true
+
+[node name="Mouth" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Mouth"]
+position = Vector2(1.49012e-07, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("7_0ahq3")
+
+[node name="MouthL" type="Node2D" parent="."]
+visible = false
+
+[node name="Mout" type="Sprite2D" parent="MouthL"]
+position = Vector2(-2.5, -1)
+scale = Vector2(0.5, 2)
+texture = ExtResource("7_0ahq3")
+
+[node name="Mout2" type="Sprite2D" parent="MouthL"]
+position = Vector2(-1.5, -0.5)
+scale = Vector2(0.5, 1)
+texture = ExtResource("7_0ahq3")
+
+[node name="MouthL2" type="Node2D" parent="."]
+visible = false
+
+[node name="Mout" type="Sprite2D" parent="MouthL2"]
+position = Vector2(2.5, -1)
+scale = Vector2(0.5, 2)
+texture = ExtResource("7_0ahq3")
+
+[node name="Mout2" type="Sprite2D" parent="MouthL2"]
+position = Vector2(1.5, -0.5)
+scale = Vector2(0.5, 1)
+texture = ExtResource("7_0ahq3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u877t")
+}
