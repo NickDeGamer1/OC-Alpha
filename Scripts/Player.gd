@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Player on screen, handles movement
+
 var moving = false
 var cutscene = false
 var solo = false
@@ -23,18 +25,21 @@ var occ
 @onready var DiologeBox = get_node("../CLUI/SpeachBubble")
 @onready var UI = get_node("../CLUI/UI/")
 @onready var UIAnimL = get_node("../CLUI/UI/LeftAnimationPlayer")
-
+#Sets vector to move
 var inputs = {"move_right": Vector2.RIGHT,
 			"move_left": Vector2.LEFT,
 			"move_up": Vector2.UP,
 			"move_down": Vector2.DOWN}
 
+
 func _ready():
+	#loads sprite and sets zoom
 	loadSprite()
 	
 	set_zoom()
 
-func set_zoom():
+
+func set_zoom():#Sets zoom
 	var tween = create_tween()
 	match OptionsSingleton.zoom:
 		1:
@@ -49,18 +54,18 @@ func set_zoom():
 			tween.tween_property($Camera2D, "zoom", Vector2(0.33,0.33), 0.33)
 
 func _process(delta):
-	if Input.is_action_pressed("move_up") and !moving and !cutscene:
+	if Input.is_action_pressed("move_up") and !moving and !cutscene:#Moves direction
 		direction = "up"
-		if (check("move_up")):
+		if (check("move_up")):#Checks if can move
 			move("move_up")
 		else:
-			spr.play("move_up")
+			spr.play("move_up")#Faces direction
 			occ.occluder = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/Occluder/move_up1.tres")
 			spr.stop()
 			spr.face("move_up")
 			updateCon("move_up", "Face_Button_down")
-			rumble()
-			if !aud.playing:
+			rumble()#Rubles controller
+			if !aud.playing:#Plays audio
 				aud.play()
 	if Input.is_action_pressed("move_down") and !moving and !cutscene:
 		direction = "down"
@@ -101,7 +106,7 @@ func _process(delta):
 			rumble()
 			if !aud.playing:
 					aud.play()
-	if Input.is_action_pressed("face_up") and !moving and !cutscene:
+	if Input.is_action_pressed("face_up") and !moving and !cutscene:#Faces direction
 		face("up")
 	if Input.is_action_pressed("face_down") and !moving and !cutscene:
 		face("down")
@@ -111,23 +116,23 @@ func _process(delta):
 		face("right")
 	time += delta
 	
-	if(time > 3):
+	if(time > 3):#UI appears if still
 		if(lastpos1 == position):
 			UI.appear()
 		lastpos1 = position
 		time = 0
 
-func ResetPos():
+func ResetPos():#Reallignes to grid
 	position.x = position.x - (int(position.x) % tile_size)
 	position.y = position.y - (int(position.y) % tile_size)
 
 func _input(event):
-	if event.is_action_pressed("ControllerInput"):
+	if event.is_action_pressed("ControllerInput"):#Hides mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	elif (event is InputEventMouseMotion) or event.is_action_pressed("KeyboardInput"):
+	elif (event is InputEventMouseMotion) or event.is_action_pressed("KeyboardInput"):#Unhides mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if event.is_action_pressed("interact") and !cutscene and !moving:
+	if event.is_action_pressed("interact") and !cutscene and !moving:#Moves ray to direction and attempts to interact
 		ray.target_position = inputs["move_" + direction] * tile_size
 		ray.force_raycast_update()
 		if ray.is_colliding() and ray.get_collider().has_method("interact"):
@@ -137,15 +142,15 @@ func _input(event):
 	elif event.is_action_pressed("rev_swap") and !cutscene and !moving and !solo and swappable:
 		revSwap()
 	elif event.is_action_pressed("ability") and !cutscene and !moving:
-		Ability(GameSingleton.CharList[0])
-	elif event.is_action_released("Pause"):
+		Ability(GameSingleton.CharList[0])#Does character ability
+	elif event.is_action_released("Pause"):#Pauses
 		$"../CLUI/PauseMenu".Pause()
-	elif event.is_action_pressed("zoom_in"):
+	elif event.is_action_pressed("zoom_in"):#Zooms in
 		OptionsSingleton.zoom -= 1
 		if OptionsSingleton.zoom <= 0:
 			OptionsSingleton.zoom = 1
 		set_zoom()
-	elif event.is_action_pressed("zoom_out"):
+	elif event.is_action_pressed("zoom_out"):#Zooms out
 		OptionsSingleton.zoom += 1
 		if OptionsSingleton.zoom >= 5:
 			OptionsSingleton.zoom = 5
@@ -153,12 +158,12 @@ func _input(event):
 	elif event.is_action_pressed("Debug"):
 		Debug()
 
-func Ability(Char):
+func Ability(Char):#Does ability of skin
 	cutscene = true
 	await get_node("EncloseSPR/AnimatedSprite2D").Ability(Char, direction)
 	cutscene = false
 
-func face(dir):
+func face(dir):#Faces the direction inputted
 	direction = dir
 	spr.play("move_" + dir)
 	spr.stop()
@@ -167,39 +172,39 @@ func face(dir):
 	ray.target_position = inputs["move_" + direction] * tile_size
 	ray.force_raycast_update()
 
-func move(dir):
+func move(dir):#Calls move, sends to next pm
 	moveN(dir)
 	if(get_node_or_null("../PartyMember1") != null) and !solo:
 		get_node("../PartyMember1").move()
 
 func moveN(dir):
 	UI.disappear()
-	var tween = create_tween()
+	var tween = create_tween()#creates tween
 	spr.play(dir)
-	tween.tween_property(self, "position",position + inputs[dir] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "position",position + inputs[dir] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_LINEAR)#Moves player
 	moving = true
-	await tween.finished
+	await tween.finished#Waits till not moving
 	stopAnim()
 	updateCon(dir, "Face_Button_down")
 	moving = false
-	get_parent().emit_signal("moved")
+	get_parent().emit_signal("moved")#Sends to MP
 
-func stopAnim():
+func stopAnim():#Stops anim
 	await get_tree().create_timer(0.1).timeout
 	if(!moving):
 		spr.stop()
 		spr.face("move_" + direction)
 
-func check(dir):
+func check(dir):#Sees if can move
 	ray.target_position = inputs[dir] * tile_size
 	ray.force_raycast_update()
 	return !ray.is_colliding()
 
-func loadSprite():
+func loadSprite():#Loads the character sprite
 	if !MpManager.Multip:
 		loadSpriteC(GameSingleton.CharList[0])
 
-func loadSpriteC(Charname):
+func loadSpriteC(Charname):#Loads the sprite of the character from memory
 	if $EncloseSPR.has_node("AnimatedSprite2D"):
 		$EncloseSPR.remove_child($EncloseSPR.get_node("AnimatedSprite2D"))
 	var loc = "res://Prefabs/Characters/" + Charname + "/" + Charname + "Anim.tscn"
@@ -214,12 +219,12 @@ func loadSpriteC(Charname):
 
 func swap():
 	if GameSingleton.CharList.size() >= 2:
-		swapanim()
+		swapanim()#moves characters
 		cutscene = true
 		if(get_node("../PartyMember1") != null):
 			get_node("../PartyMember1").cut(true)
 		visible = false
-		get_node("../TempSprite").position = position
+		get_node("../TempSprite").position = position#set temp sprite to move
 		get_node("../TempSprite").loadSprite(GameSingleton.CharList[0])
 		
 		if tempV:
@@ -235,7 +240,7 @@ func swap():
 				await get_node("../TempSprite").moveN(opp(get_node("../PartyMember" + str(n+1)).CheckPosN("TempSprite")))
 		
 		
-		if(get_node("../PartyMember1") != null):
+		if(get_node("../PartyMember1") != null):#Returns to priv pos
 			get_node("../PartyMember1").returntemppos()
 		position = temppos
 		
@@ -248,13 +253,13 @@ func swap():
 		if get_node_or_null("../../DiscordManager") != null:
 			$"../../DiscordManager".Update()
 		#await get_tree().create_timer(.1).timeout
-		cutscene = false
+		cutscene = false#returns control to player
 		if(get_node("../PartyMember1") != null):
 			get_node("../PartyMember1").cut(false)
 	else:
 		aud.play()
 
-func revSwap():
+func revSwap():#Same but in reverse
 	if GameSingleton.CharList.size() >= 2:
 		revswapanim()
 		cutscene = true
@@ -302,6 +307,7 @@ func revSwap():
 	else:
 		aud.play()
 
+#Plays UI animations
 func swapanim():
 	if UI.LUIonscreen == false:
 		UIAnimL.play("Swap")
@@ -316,7 +322,7 @@ func revswapanim():
 	else:
 		UIAnimL.play_backwards("OFSCRSwap")
 
-func CheckPos(n):
+func CheckPos(n):#Checks position of next member
 	var checkNode = get_node("../PartyMember" + str(n))
 	if (global_position.x == checkNode.global_position.x):
 		if(global_position.y > checkNode.global_position.y):
@@ -333,7 +339,7 @@ func CheckPos(n):
 			direction = "right"
 			return "move_right"
 
-func opp(Inp):
+func opp(Inp):#Returns oppisate
 	match Inp:
 		"move_up":
 			return "move_down"
@@ -344,28 +350,28 @@ func opp(Inp):
 		"move_right":
 			return "move_left"
 
-func Diologue(Char,emo,inp):
+func Diologue(Char,emo,inp):#Starts diologue
 	cutscene = true
 	await DiologeBox.updateText(Char,emo,inp)
 
-func DiologueE(Char,emo,inp):
+func DiologueE(Char,emo,inp):#Starts diologue without end
 	cutscene = true
 	await DiologeBox.updateTextE(Char,emo,inp)
 
-func NPCDiologue(FileName, inp):
+func NPCDiologue(FileName, inp):#Starts diologue with other icon
 	cutscene = true
 	await DiologeBox.NPupdateText(FileName,inp)
 
-func NPCDiologueE(FileName, inp):
+func NPCDiologueE(FileName, inp):#Starts diologue with other icon that doesnt wait
 	cutscene = true
 	await DiologeBox.NPupdateTextE(FileName,inp)
 
-func EndDiologue():
+func EndDiologue():#Ends diologue
 	DiologeBox.CloseDio()
 	await DiologeBox.get_node("AnimationPlayer").animation_finished
 	cutscene = false
 
-
+#Faces direction of mouse
 func _on_left_mouse_entered():
 	if(!moving and !cutscene):
 		face("left")
@@ -402,6 +408,7 @@ func _on_up_mouse_exited():
 func _on_down_mouse_exited():
 	Input.set_custom_mouse_cursor(load("res://Textures/OC mouse.png"))
 
+#Rumbles controller based on which character is at play
 func rumble():
 	if (OptionsSingleton.Rumble and !vib):
 		vib = true
@@ -437,7 +444,7 @@ func rumble():
 				Input.start_joy_vibration(0,.6,.6,.14)
 		vib = false
 
-func updateCon(dir, inp):
+func updateCon(dir, inp):#Displays controller icon
 	check(dir)
 	ray.force_raycast_update()
 	if ray.is_colliding() and ray.get_collider().has_method("interact"):

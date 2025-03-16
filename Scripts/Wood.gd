@@ -1,19 +1,21 @@
 extends Area2D
 
+#Wood that Shibe can burn
+
 var OnFire:bool = false
 @export var Turned:bool = false
 @export var Dio:bool = true
 @onready var Pla = get_node("../Party/Player")
 
-func _ready():
+func _ready():#Changes sprite to be turned
 	if Turned:
-		$Sprite2D.rotation = 90.0
+		$Sprite2D.rotation = PI/2
 	if OptionsSingleton.Shadows != 0:
 		$PointLight2D.visible = false
 		$PointLight2D2.visible = false
 		$AnimatedSprite2D.material = null
 
-func interact():
+func interact():#if Shibe, Set fire to wood
 	if GameSingleton.CharList[0] == "Shibe" and !OnFire:
 		Pla.get_node("EncloseSPR/AnimatedSprite2D/AnimationPlayer2").play("Light_" + Pla.direction)
 		await Pla.get_node("EncloseSPR/AnimatedSprite2D/AnimationPlayer2").animation_finished
@@ -45,7 +47,7 @@ func MPinteract(Chr, ID):
 		if !get_node("../Party/Player/AudioStreamPlayer2D").playing:
 			get_node("../Party/Player/AudioStreamPlayer2D").play()
 
-func SetFire():
+func SetFire():#Set fire, burn adjacent, Burn out
 	if !OnFire:
 		OnFire = true
 		$AnimatedSprite2D.visible = true
@@ -67,7 +69,7 @@ func SetFire():
 		await $Timer.timeout
 		Burnt()
 
-func Burnt():
+func Burnt():#stop anim, dim, disable collision, 
 	$Sprite2D.visible = false
 	$AnimationPlayer.stop()
 	$AnimatedSprite2D.visible = false

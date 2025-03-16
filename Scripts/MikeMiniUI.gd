@@ -1,12 +1,14 @@
 extends Control
 
+#Mike's minigame UI
+
 signal complete
 var open:bool = false
 var x: int
 var y: int
 @export var Speed: float = 5
 
-func start():
+func start():#Starts and ends the minigame
 	visible = true
 	$AnimationPlayer.play("Start")
 	await $AnimationPlayer.animation_finished
@@ -24,7 +26,7 @@ func start():
 	await $AnimationPlayer.animation_finished
 	
 
-func _physics_process(_delta):
+func _physics_process(_delta):#Moves around character
 	if open:
 		get_tree().call_group("RCs", "force_raycast_update")
 		if Input.is_action_pressed("move_up"):
@@ -40,10 +42,10 @@ func _physics_process(_delta):
 			if !$NinePatchRect/CenterContainer/Node2D/AsciiDude/RCRight.is_colliding():
 				$NinePatchRect/CenterContainer/Node2D/AsciiDude.position.x += Speed
 
-func _on_finish_area_body_entered(body):
+func _on_finish_area_body_entered(body):#Ends minigame
 	if body.name == "AsciiDude":
 		complete.emit()
 
-func _on_death_area_body_entered(body):
+func _on_death_area_body_entered(body):#restarts minigame
 	if body.name == "AsciiDude":
 		$NinePatchRect/CenterContainer/Node2D/AsciiDude.position = Vector2(64,83)

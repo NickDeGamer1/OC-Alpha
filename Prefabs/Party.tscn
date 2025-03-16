@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://vlcwvxj3avsl"]
 
-[ext_resource type="Script" path="res://Scripts/Party.gd" id="1_0ert2"]
+[ext_resource type="Script" uid="uid://rb71r04mrs86" path="res://Scripts/Party.gd" id="1_0ert2"]
 [ext_resource type="PackedScene" uid="uid://cwo5746e5mupu" path="res://Prefabs/Player.tscn" id="1_5tsfn"]
 [ext_resource type="PackedScene" uid="uid://btfs7qyf144ux" path="res://Prefabs/temp_sprite.tscn" id="3_f4sce"]
 [ext_resource type="AudioStream" uid="uid://fk17j2en6oth" path="res://Audio/text.wav" id="3_qandd"]

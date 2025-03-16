@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cj5sp5gh7ciw6"]
+[gd_scene load_steps=26 format=3 uid="uid://cj5sp5gh7ciw6"]
 
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_7kp8i"]
-[ext_resource type="Script" path="res://Scenes/Menus/FinalMenu.gd" id="1_iseti"]
+[ext_resource type="Script" uid="uid://pyd5uyowwopm" path="res://Scenes/Menus/FinalMenu.gd" id="1_iseti"]
 [ext_resource type="Texture2D" uid="uid://cx6hcsddjrkef" path="res://Prefabs/Characters/Alex/TextSprites/AlexImage.jpeg" id="2_cmkas"]
 [ext_resource type="Texture2D" uid="uid://bc4ga51nnvsav" path="res://Prefabs/Characters/Faelyn/TextSprites/FaelynImage.jpeg" id="3_h5cm5"]
 [ext_resource type="Texture2D" uid="uid://dnkji12q3la3k" path="res://Prefabs/Characters/Aurora/TextSprites/AuroraImage.jpeg" id="3_s8cmh"]
@@ -18,11 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://h2u36hgrr2g6" path="res://Prefabs/Characters/Blitz/TextSprites/BlitzImage.jpeg" id="15_ytr6f"]
 [ext_resource type="Texture2D" uid="uid://c81bol3qnqm7r" path="res://Prefabs/Characters/Conrad/TextSprites/ConradImage.jpeg" id="16_sdggg"]
 [ext_resource type="Texture2D" uid="uid://c62m177jb687i" path="res://Prefabs/Characters/Basket/TextSprites/BasketImage.jpeg" id="17_yyk6j"]
-[ext_resource type="Texture2D" uid="uid://c64wns21tia8k" path="res://icons/iconMac.png" id="18_bn5q4"]
 [ext_resource type="Texture2D" uid="uid://bis5o2qpuwtvd" path="res://Textures/Emmet.jpg" id="19_35na5"]
+[ext_resource type="Texture2D" uid="uid://bxldnwuufivic" path="res://Prefabs/Characters/Syndrome/TextSprites/SyndromeImage.jpeg" id="19_hha06"]
 [ext_resource type="Texture2D" uid="uid://da43bkww7bdpn" path="res://Textures/java-icon-256x256-k4ufhihr.png" id="20_eevor"]
 [ext_resource type="Texture2D" uid="uid://smi6ti2rwem1" path="res://Textures/DS.png" id="21_g2riv"]
 [ext_resource type="Texture2D" uid="uid://d0yv3s0r3bikv" path="res://Textures/Fire1.png" id="21_lk8pf"]
+[ext_resource type="Texture2D" uid="uid://dmy8sm5iij02r" path="res://Textures/Logo_V2_Clyde.png" id="24_j017n"]
+[ext_resource type="Texture2D" uid="uid://px2rkdugytc2" path="res://Textures/GitHub_Invertocat_Logo.svg" id="24_ptb5e"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -68,7 +70,7 @@ custom_minimum_size = Vector2(1800, 425)
 layout_mode = 2
 color = Color(0.317647, 0.317647, 0.317647, 1)
 
-[node name="Label2" type="Label" parent="CenterContainer/ColorRect2"]
+[node name="Label2" type="RichTextLabel" parent="CenterContainer/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,9 +78,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7kp8i")
-text = "Thank you for playing the Alpha for “Original Campaign: The Game”! I've spent almost about a year of work on this project. After completing this I recommend Playing it again with other characters and trying different combinations.  I'm planning on actually making a proper “Game” game with this framework in the future, so keep on the lookout for that. I also recommend trying multiplayer with friends (it should work?). Anyways, Have a wonderful day!"
-horizontal_alignment = 1
+bbcode_enabled = true
+text = "Thank you for playing the Alpha for “Original Campaign: The Game”! I've spent almost about a year of work on this project. After completing this I recommend Playing it again with other characters and trying different combinations. I have released the source code both on the [url=https://nickdegamer1.itch.io/original-campaign]Itch.io[/url] page as well as my [url=https://github.com/NickDeGamer1/OC-Alpha]Github[/url], Feel free to do with it as you wish. I also recommend trying multiplayer with friends (it should work?). Anyways, Have a wonderful day!"
 autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -331,7 +334,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditSyndrome"]
 layout_mode = 2
-texture = ExtResource("18_bn5q4")
+texture = ExtResource("19_hha06")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="CenterContainer2/ColorRect/HFlowContainer/CreditSyndrome"]
@@ -432,11 +435,12 @@ scroll_active = false
 [node name="CreditMikeDS" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
 custom_minimum_size = Vector2(40, 100)
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeDS"]
 custom_minimum_size = Vector2(600, 150)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 theme = ExtResource("1_7kp8i")
 bbcode_enabled = true
 text = "[url=http://mikeos.net/projects.html/]Also Try: OC for the Nintendo DS (Made by MikeTheWolfBoyo)[/url]
@@ -446,6 +450,44 @@ scroll_active = false
 [node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditMikeDS"]
 layout_mode = 2
 texture = ExtResource("21_g2riv")
+expand_mode = 3
+
+[node name="CreditGithub" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditGithub"]
+layout_mode = 2
+texture = ExtResource("24_ptb5e")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/ColorRect/HFlowContainer/CreditGithub"]
+custom_minimum_size = Vector2(600, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7kp8i")
+bbcode_enabled = true
+text = "[url=https://github.com/NickDeGamer1/OC-Alpha]Source Code Github page[/url]
+"
+scroll_active = false
+
+[node name="CreditVaorVee" type="HBoxContainer" parent="CenterContainer2/ColorRect/HFlowContainer"]
+custom_minimum_size = Vector2(40, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/ColorRect/HFlowContainer/CreditVaorVee"]
+custom_minimum_size = Vector2(600, 150)
+layout_mode = 2
+theme = ExtResource("1_7kp8i")
+bbcode_enabled = true
+text = "[url=https://godotengine.org/asset-library/asset/1968/]Discord Rich Presence by vaporvee[/url]
+"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/ColorRect/HFlowContainer/CreditVaorVee"]
+layout_mode = 2
+texture = ExtResource("24_j017n")
 expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer2/ColorRect"]

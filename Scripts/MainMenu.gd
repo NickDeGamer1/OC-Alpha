@@ -1,5 +1,7 @@
 extends Control
+#Main menu
 
+#We did the minecraft ripoff thing
 var funnetext = ["100% Vegan!", "Splash text idea possibly stolen\nfrom Minecraft!", "Legal in most countries!",
 					"Squid Games!", "Sub2SansGaming!", "Only 90's kids remember!", "One of us!",
 					"Illegal in North Korea!", "Written by a Friend of a member\n of the alphabet mafia!", "Uses they/them pronouns!",
@@ -22,14 +24,13 @@ var MouseVisable
 @onready var Ver = $MarginContainer2/Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	if MpManager.Multip:
+	if MpManager.Multip:#Resets multiplayer values
 		MpManager.Multip = false
 		MpManager.peer = null
 	
 	MpManager.MPhost = false
 	
-	if MpManager.Kicked:
+	if MpManager.Kicked:#Display kicked menu
 		$CenterContainer/Err/CenterContainer/VBoxContainer/Label.text = "Disconnected:\n" + MpManager.KR
 		$CenterContainer.visible = true
 		MpManager.KR = ""
@@ -37,15 +38,15 @@ func _ready():
 	else:
 		$CenterContainer.visible = false
 	
-	OptionsSingleton.lastScene = "res://Scenes/Menus/MainMenu.tscn"
+	OptionsSingleton.lastScene = "res://Scenes/Menus/MainMenu.tscn"#Sets back to mainMenu
 	Menu1.visible = true
-	if (OptionsSingleton.TitleAnim):
+	if (OptionsSingleton.TitleAnim):#Appear only on first boot
 		Manim.play("Menu1Appear")
 		OptionsSingleton.TitleAnim = false
 	else:
 		$MarginContainer/Menu1/StartButton.grab_focus()
 	
-	var day = Time.get_date_string_from_system()
+	var day = Time.get_date_string_from_system()#Gets some Special dates
 	if day.contains("-02-19"):
 		Splash.text = "Happy Birthday Nick!!!"
 		funnetext.append("Happy Birthday Nick!!!")
@@ -66,29 +67,30 @@ func _ready():
 	Ver.text = Ver.text + OptionsSingleton.ver
 
 func _input(event):
-	if event.is_action_pressed("ControllerInput"):
+	if event.is_action_pressed("ControllerInput"):#Makes mouse hidden when controller input
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		MouseVisable = false
-	elif event.is_action_pressed("KeyboardInput"):
+	elif event.is_action_pressed("KeyboardInput"):#makes mouse visible when Keyboard input
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		MouseVisable = true
 	
-	if event.is_action_pressed("ui_back") and ($MarginContainer/Menu2.visible):
+	if event.is_action_pressed("ui_back") and ($MarginContainer/Menu2.visible):#Goes back a menu
 		Manim.play("Menu2Disappear")
 		Menu1.visible = true
 		Menu2.visible = false
 		Manim.play("Menu1JustTextAppear")
 	
-	if event.is_action_pressed("rev_swap"):
+	if event.is_action_pressed("rev_swap"):#Sets new splash screen
 		_on_splash_text_pressed()
 
-func _on_start_button_pressed():
+func _on_start_button_pressed():#Goes to menu 2
 	Manim.play("Menu1Disappear")
 	Menu1.visible = false
 	Menu2.visible = true
 	Manim.play("Menu2Appear")
 	await Manim.animation_finished
 
+#Goes to individual menus
 func _on_options_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Menus/OptionsMenu.tscn")
 
@@ -107,16 +109,18 @@ func _on_back_button_pressed():
 	Menu2.visible = false
 	Manim.play("Menu1JustTextAppear")
 
+#Grabs focus for controller players
 func GFmenu1():
 	$MarginContainer/Menu1/StartButton.grab_focus()
 
 func GFmenu2():
 	$MarginContainer/Menu2/SinglePlayerButton.grab_focus()
 
-
+#Grabs new random thing for splash
 func _on_splash_text_pressed():
 		Splash.text = funnetext.pick_random()
 
+#goes back to menu after error
 func _on_err_ok_buttton_pressed():
 	$CenterContainer.visible = false
 	$MarginContainer/Menu1/StartButton.grab_focus()

@@ -18,10 +18,10 @@ var Save_path = "user://"
 var fileName = "OCCharacterSave.tres"
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():#Sets up party
 	var loc = "res://Prefabs/PartyMember.tscn"
 	
-	if !MpManager.Multip:
+	if !MpManager.Multip:#Adds party members
 		for n in GameSingleton.CharList.size() - 1:
 			var scene = load(loc)
 			var child_node = scene.instantiate()
@@ -41,7 +41,7 @@ func _ready():
 	#DisplayCon()
 
 
-func _process(delta):
+func _process(delta):#Waits till next interaction
 	time += delta
 	if(time > OptionsSingleton.BanterFreq):
 		if pos == Pla.position and !Pla.cutscene and OptionsSingleton.Banter and !MpManager.Multip:
@@ -49,6 +49,7 @@ func _process(delta):
 		pos = Pla.position
 		time = 0
 
+#Interactions characters can have
 func Interactions():
 	calcdio()
 	var Interact = arr.pick_random()
@@ -191,15 +192,15 @@ func Interactions():
 			await Pla.Diologue("Damian", "Neutral", "Please, say something else.")
 		19:
 			await Pla.Diologue("Mittens","Neutral", "Hey watch where you spray that Bottle!")
-			await Pla.Diologue("Mittens","Neutral", "Don't worry, I only spray things that are Unholy.")
+			await Pla.Diologue("Damian","Neutral", "Don't worry, I only spray things that are Unholy.")
 			await Pla.Diologue("Mittens","Neutral", "I can do unholy things")
-			await Pla.Diologue("Mittens","Neutral", "...")
+			await Pla.Diologue("Damian","Neutral", "...")
 			await Pla.Diologue("Mittens","Neutral", "...")
 			await Pla.NPCDiologue(null, "[i]Damian Sprays the bottle[/i]")
 			await Pla.Diologue("Mittens","Neutral", "[font_size=30]AAAAAAAAAAAAAAAAAAAAAAAAAAA[/font_size]")
 		20:
-			await Pla.Diologue("Alex","Neutral", "He's a dragon!")
-			await Pla.Diologue("Alex","Annoyed", "They're a dragon!")
+			await Pla.Diologue("Alex","Neutral", "|[img=50]res://Textures/BasketIcon.png[/img]|He's a dragon!")
+			await Pla.Diologue("Alex","Annoyed", "|[img=50]res://Textures/AthenaIcon.png[/img]|They're a dragon!")
 			await Pla.Diologue("Alex","Angry", "I'm a dragon!")
 			await Pla.Diologue("Alex","Annoyed", "are there any other dragons I should know about?")
 			await Pla.Diologue("Jimothy","Neutral", "Meow")
@@ -211,6 +212,7 @@ func Interactions():
 	time = 0
 	Pla.EndDiologue()
 
+#Finds what interactions can be had
 func calcdio():
 	if GameSingleton.CharList.has("Alex") and GameSingleton.CharList.has("Vex") and GameSingleton.CharList.has("Faelyn") and GameSingleton.CharList.has("Athena"):
 		arr.push_back(1)
@@ -257,6 +259,7 @@ func calcdio():
 		arr.push_back(0)
 	
 
+#Displays controls
 func DisplayCon():
 	$Player.cutscene = true
 	$CLUI/AnimationPlayer.play("DisplayKBM")
@@ -278,12 +281,14 @@ func SetLabel(N: String):
 	$Player/Label.text = N
 	$Player/Label.visible = true
 
+#Sets all characters facing random directions
 func Scare():
 	$Player.face(RandDir())
 	var Chrs = get_tree().get_nodes_in_group("Character")
 	for i in Chrs:
 		i.face(RandDir())
 
+#returns random direction
 func RandDir():
 	var dir = rng.randi_range(0,3)
 	match dir:
@@ -295,3 +300,20 @@ func RandDir():
 			return "right"
 		_:
 			return "left"
+
+#loads controller string
+func loadCont(But:String):
+	var outp:String = "res://Textures/ControllerButtons/"
+	match OptionsSingleton.ConType:
+		0:#Xbox
+			outp = outp + "XB/"
+		1:#Playstation
+			outp = outp + "PS/"
+		2:#Switch
+			outp = outp + "SW/"
+		3:#Steam Deck
+			outp = outp + "SD/"
+		_:
+			outp = outp + "XB/"
+	
+	return outp + But + ".png"

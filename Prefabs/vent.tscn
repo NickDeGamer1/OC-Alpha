@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy1j7tyr6hdy0"]
 
-[ext_resource type="Script" path="res://Scripts/Vent1.gd" id="1_0tcsm"]
+[ext_resource type="Script" uid="uid://yfa3c4jtl6ev" path="res://Scripts/Vent1.gd" id="1_0tcsm"]
 [ext_resource type="Texture2D" uid="uid://dvhu6sfufo6fm" path="res://Textures/Vent.png" id="2_131nr"]
 [ext_resource type="AudioStream" uid="uid://c4qa7158eecs2" path="res://Audio/Vent_sound.mp3" id="3_i7emj"]
 

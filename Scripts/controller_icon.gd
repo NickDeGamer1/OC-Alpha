@@ -1,5 +1,7 @@
 extends Sprite2D
 
+#Sets controller icon
+
 var cont:String
 
 func _ready():

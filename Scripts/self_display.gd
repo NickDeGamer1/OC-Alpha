@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+#Displays self on MPmenu
+
 @onready var disptext = $HBoxContainer/MarginContainer/Label
 @onready var dispicon = $HBoxContainer/HBoxContainer/MarginContainer2/HBoxContainer/TextureRect
 var i = 0
@@ -18,6 +20,7 @@ func _ready():
 func makeLabel():
 	$HBoxContainer/MarginContainer/Label.text = MpManager.MPName
 
+#Changes Characters
 func _on_left_pressed():
 	if get_node("../../../../../").visible:
 		i-=1
@@ -38,6 +41,7 @@ func _on_right_pressed():
 		#print(CName)
 		UpdateIcon()
 
+#Changes Character
 func UpdateIcon():
 	for q in MpManager.Players:
 		if q != multiplayer.get_unique_id():
@@ -45,7 +49,7 @@ func UpdateIcon():
 		else:
 			MpManager.Players[q].CC = CName
 
-func _input(event):
+func _input(event):#Updates UI
 	if event.is_action_released("ui_left") and visible:
 		_on_left_pressed()
 	elif event.is_action_released("ui_right") and visible:

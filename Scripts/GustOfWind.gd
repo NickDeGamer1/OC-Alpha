@@ -1,5 +1,7 @@
 extends Area2D
 
+#Athena's wind gusts, will move till off screen or hits something
+
 var active: bool = false
 var speed:int = 4
 var dir: String = "down"
@@ -15,7 +17,7 @@ func _process(_delta):
 	if active and !moving:
 		Move()
 
-func Go(dirinp):
+func Go(dirinp):#Sets sprite direction
 	dir = dirinp
 	match dir:
 		"right":
@@ -27,7 +29,7 @@ func Go(dirinp):
 			$Sprite2D.flip_v = true
 	active = true
 
-func Move():
+func Move():#Goes in direction
 	moving = true
 	var tween = create_tween()
 	tween.tween_property(self, "position",position + inputs["move_" + dir] * tile_size, .125).set_trans(Tween.TRANS_LINEAR)
@@ -35,9 +37,9 @@ func Move():
 	moving = false
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	queue_free()#Deletes when off screen
 
 
 func _on_area_entered(area):
 	if (area.name.contains("Area")):
-		queue_free()
+		queue_free()#Deletes when hits wall

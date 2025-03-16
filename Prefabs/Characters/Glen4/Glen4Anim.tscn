@@ -1,7 +1,8 @@
 [gd_scene load_steps=35 format=3 uid="uid://cdt25nsfmogpg"]
 
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_ptygy"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_1gmor"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_1gmor"]
+[ext_resource type="OccluderPolygon2D" uid="uid://b0f0fwsp8woum" path="res://Prefabs/Characters/Glen4/Occluder/punch_up1.tres" id="3_iasbk"]
 [ext_resource type="Texture2D" uid="uid://uy7c6oowdaq7" path="res://Textures/Glen4Eyelids.png" id="4_8iq44"]
 [ext_resource type="Texture2D" uid="uid://dgs45ipr3fbhs" path="res://Textures/Glen4EyelidsOne.png" id="5_g03ri"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="6_hhf3v"]
@@ -203,9 +204,6 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pqt00"]
-polygon = PackedVector2Array(-4, -16, 2, -16, 2, -15, 4, -15, 4, -14, 5, -14, 5, -13, 4, -13, 4, -12, 5, -12, 5, -11, 4, -11, 4, -10, 3, -10, 3, -9, 4, -9, 4, -8, 3, -8, 3, -7, 4, -7, 4, -6, 8, -6, 8, -5, 9, -5, 9, -4, 10, -4, 10, 0.999999, 11, 0.999999, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 8, 6, 8, 7, 6, 7, 6, 6, 5, 6, 5, 8, 6, 8, 6, 10, 5, 10, 5, 11, 4, 11, 4, 12, 5, 12, 5, 13, 6, 13, 6, 15, 5, 15, 5, 16, 2, 16, 2, 15, 1, 15, 1, 14, 0, 14, 0, 12, -2, 12, -2, 14, -3, 14, -3, 15, -4, 15, -4, 16, -7, 16, -7, 15, -8, 15, -8, 13, -7, 13, -7, 12, -6, 12, -6, 11, -7, 11, -7, 10, -8, 10, -8, 8, -7.33333, 8, -7, 7, -8, 7, -8, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -5, -8, -5, -8, -6, -6, -6, -6, -7, -5, -7, -5, -8, -6, -8, -6, -9, -5, -9, -5, -10, -6, -10, -6, -11, -7, -11, -7, -12, -6, -12, -6, -13, -7, -13, -7, -14, -6, -14, -6, -15, -4, -15)
-
 [sub_resource type="Animation" id="Animation_f4snf"]
 resource_name = "Talking_down"
 length = 0.2
@@ -259,9 +257,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
 _data = {
-"Talking_down": SubResource("Animation_f4snf"),
-"Talking_left": SubResource("Animation_bf05m"),
-"Talking_right": SubResource("Animation_fc0t7")
+&"Talking_down": SubResource("Animation_f4snf"),
+&"Talking_left": SubResource("Animation_bf05m"),
+&"Talking_right": SubResource("Animation_fc0t7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ooko"]
@@ -273,14 +271,16 @@ z_index = 1
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_m1pae")
-animation = &"move_left"
+animation = &"punch_up"
+frame = 1
+frame_progress = 0.734137
 script = ExtResource("2_1gmor")
 Ccolor = Color(0.435294, 0, 0.533333, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 z_index = -1
 position = Vector2(0, 9.53674e-07)
-occluder = SubResource("OccluderPolygon2D_pqt00")
+occluder = ExtResource("3_iasbk")
 
 [node name="Eyelids" type="Sprite2D" parent="."]
 visible = false
@@ -315,7 +315,7 @@ texture = ExtResource("7_k8t1r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_tc54a")
+&"": SubResource("AnimationLibrary_tc54a")
 }
 
 [node name="Punch_left" type="Area2D" parent="."]

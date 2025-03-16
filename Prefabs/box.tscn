@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://68txtdc3ulfw"]
 
 [ext_resource type="Texture2D" uid="uid://xdnxijetwrml" path="res://Textures/Box.png" id="1_v4x6c"]
-[ext_resource type="Script" path="res://Scripts/box.gd" id="1_y4am4"]
+[ext_resource type="Script" uid="uid://bnghossxqtvbm" path="res://Scripts/box.gd" id="1_y4am4"]
 [ext_resource type="Texture2D" uid="uid://cm1n5msvck27u" path="res://Textures/BoxParticle.png" id="2_1u5ay"]
 [ext_resource type="AudioStream" uid="uid://41bh7kvrm4qu" path="res://Audio/Wood Breaking Sound Effect.mp3" id="3_waisy"]
 [ext_resource type="Texture2D" uid="uid://d0yv3s0r3bikv" path="res://Textures/Fire1.png" id="5_ey35j"]
@@ -114,8 +114,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hf01t"]
 _data = {
-"dim": SubResource("Animation_icuh2"),
-"light": SubResource("Animation_p8m3f")
+&"dim": SubResource("Animation_icuh2"),
+&"light": SubResource("Animation_p8m3f")
 }
 
 [node name="Wood-Box" type="Area2D"]

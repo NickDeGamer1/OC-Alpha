@@ -9,14 +9,14 @@ var PChar
 var selNum = 0
 @onready var Sprite = $Spr/TempSprite
 
-func _ready():
+func _ready():#Resets charlist and sets up select UI
 	GameSingleton.CharList = []
 	UpdateC()
 	var lastChar = GameSingleton.FullCharList[GameSingleton.FullCharList.size() - 1]
 	$PrivDis.texture = load("res://Prefabs/Characters/" + lastChar + "/" + lastChar + "Select.png")
 	$AnimationPlayer.play("appear")
 
-func UpdateInc(n):
+func UpdateInc(n):#resets anim2 and increments by n
 	anim2.play("RESET")
 	if n == "Left":
 		num-=1
@@ -28,19 +28,19 @@ func UpdateInc(n):
 			num = 0
 	UpdateC()
 
-func UpdateSpr():
+func UpdateSpr():#Sets player sprite in center
 	Sprite.loadSprite(CChar)
 	Sprite.get_node("EncloseSPR/AnimatedSprite2D").canBlink = false
 	Sprite.get_node("EncloseSPR/AnimatedSprite2D").play("move_down")
 	$Label.text = CChar
 	$AnimationPlayerL.play("LabelAppear")
 
-func remSpr():
+func remSpr():#Deletes character sprite
 	if $Spr.has_node("AnimatedSprite2D"):
 		$Spr.remove_child($Spr.get_node("AnimatedSprite2D"))
 		$Label.text = ""
 
-func UpdateC():
+func UpdateC():#updates character in center of sreen, sets warning label of characters are incomplete
 	CChar = GameSingleton.FullCharList[num]
 	var Pnum = num - 1
 	if Pnum > GameSingleton.FullCharList.size() - 1:
@@ -55,12 +55,12 @@ func UpdateC():
 	else:
 		$WarningLabel.visible = false
 
-func UpdateTexture():
+func UpdateTexture():#Updates select textures on the bottom of the screen
 	$CurrentDis.texture = load("res://Prefabs/Characters/" + CChar + "/" + CChar + "Select.png")
 	$NextDis.texture = load("res://Prefabs/Characters/" + NChar + "/" + NChar + "Select.png")
 	$PrivDis.texture = load("res://Prefabs/Characters/" + PChar + "/" + PChar + "Select.png")
 
-func _input(event):
+func _input(event):#plays animation and increments based on input
 	if event.is_action_pressed("ControllerInput"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	elif event.is_action_pressed("KeyboardInput"):
@@ -77,17 +77,17 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		_on_select_pressed()
 
-func _on_l_button_pressed():
+func _on_l_button_pressed():#Increments if button pressed
 	if !anim.is_playing():
 		await UpdateInc("Left")
 		anim.play("rotate left")
 
-func _on_r_button_pressed():
+func _on_r_button_pressed():#ditto
 	if !anim.is_playing():
 		await UpdateInc("Right")
 		anim.play("rotate right")
 
-func _on_select_pressed():
+func _on_select_pressed():#adds to list, if more than 4 then go to the next scene, dont add any duplicates
 	if GameSingleton.CharList.size() < 4 and !GameSingleton.CharList.has(CChar):
 		GameSingleton.CharList.push_back(CChar)
 		selNum+=1
@@ -95,7 +95,7 @@ func _on_select_pressed():
 	elif GameSingleton.CharList.size() >= 4:
 		get_tree().change_scene_to_file("res://Scenes/Levels/test1.tscn")
 
-func _on_back_pressed():
+func _on_back_pressed():#removes characters from list, if no characters in list then go back to main menu
 	if GameSingleton.CharList.size() != 0:
 		get_node("HBoxContainer/TextureRect" + str(GameSingleton.CharList.size())).texture = null
 		GameSingleton.CharList.pop_back()

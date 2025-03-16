@@ -1,13 +1,13 @@
 [gd_scene load_steps=45 format=3 uid="uid://df20mvq8eyxdx"]
 
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_dwmhr"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_dwmhr"]
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="2_vwvba"]
 [ext_resource type="OccluderPolygon2D" uid="uid://b4e83vc2ahrwv" path="res://Prefabs/Characters/Faelyn/Occluder/Sing_down1.tres" id="3_4ex7u"]
 [ext_resource type="Texture2D" uid="uid://b6tx6t6hdv6dr" path="res://Textures/FaelynEyelids.png" id="5_tb8o8"]
 [ext_resource type="Texture2D" uid="uid://bjxuaixne6r1h" path="res://Textures/FaelynEyelidsOne.png" id="6_3nhtn"]
 [ext_resource type="Texture2D" uid="uid://c651odbacvabl" path="res://Textures/largeEYE.png" id="7_kuflx"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="8_gc2jo"]
-[ext_resource type="Script" path="res://Scripts/SingRadius.gd" id="9_0x5mq"]
+[ext_resource type="Script" uid="uid://b7u7hxeqjd8pe" path="res://Scripts/SingRadius.gd" id="9_0x5mq"]
 [ext_resource type="Texture2D" uid="uid://vf1h3ivc6ble" path="res://Textures/MouthSide.png" id="9_nv5tr"]
 [ext_resource type="Texture2D" uid="uid://ciifpfjsb2a3c" path="res://Textures/BlueMN.png" id="10_m16re"]
 [ext_resource type="Texture2D" uid="uid://d10fekhexdiv2" path="res://Textures/RedMN.png" id="11_5gooy"]
@@ -275,9 +275,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjbco"]
 _data = {
-"Talking_down": SubResource("Animation_63gml"),
-"Talking_left": SubResource("Animation_tujbm"),
-"Talking_right": SubResource("Animation_mvtjh")
+&"Talking_down": SubResource("Animation_63gml"),
+&"Talking_left": SubResource("Animation_tujbm"),
+&"Talking_right": SubResource("Animation_mvtjh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hul3"]
@@ -438,8 +438,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yqjtf"]
 _data = {
-"Play": SubResource("Animation_4fy6o"),
-"RESET": SubResource("Animation_y1j5b")
+&"Play": SubResource("Animation_4fy6o"),
+&"RESET": SubResource("Animation_y1j5b")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]

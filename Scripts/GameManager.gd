@@ -1,5 +1,6 @@
 extends Node
 
+#GameManager, goes through list of players and sees what blocks needs to be removed.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func _ready():
 					arr.push_back(MarioBros.Output)
 	
 	
-	var Izzy = get_tree().get_nodes_in_group("Blocks")
+	var Izzy = get_tree().get_nodes_in_group("Blocks")#I love my wife
 	var love = [get_node("../YellowBlock")]#Blocks to keep
 	for mylove in Izzy:
 		for Schnuckems in arr:

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Sprite displayed for multiplayer
+
 var moving = false
 var cutscene = false
 var tile_size = 96
@@ -18,6 +20,7 @@ var inputs = {"move_right": Vector2.RIGHT,
 func ResetAnim():
 	$AnimationPlayer.play("RESET")
 
+#Loads character
 func loadSprite(Charname):
 	if $EncloseSPR.has_node("AnimatedSprite2D"):
 		$EncloseSPR.remove_child($EncloseSPR.get_node("AnimatedSprite2D"))
@@ -30,12 +33,14 @@ func loadSprite(Charname):
 	spr.updateshadow(Charname)
 	face(direction)
 
+#Faces direction
 func face(dir):
 	direction = dir
 	spr.play("move_" + dir)
 	spr.stop()
 	spr.face("move_" + dir)
 
+#Moves direction
 func moveN(dir):
 	var tween = create_tween()
 	spr.play(dir)
@@ -45,21 +50,25 @@ func moveN(dir):
 	stopAnim()
 	moving = false
 
+#Stops the animation playing
 func stopAnim():
 	await get_tree().create_timer(0.1).timeout
 	if(!moving):
 		spr.stop()
 		spr.face("move_" + direction)
 
+#Sets player label
 func SetLabel(N: String):
 	$Label.text = N
 	$Label.visible = true
 
+#Updates position, frame and animation
 func Updated(Upos: Vector2, Anim: String, num: int):
 	position = Upos
 	spr.animation = Anim
 	spr.frame = num
 
+#Pings
 func Ping(pos):
 	$PingSpr.global_position = pos
 	$PingSpr/AnimationPlayer.play("appear")

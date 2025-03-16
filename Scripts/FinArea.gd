@@ -1,6 +1,8 @@
 extends Area2D
 @onready var Pla = get_node("../Party/Player")
 
+#for ladder, changes scene to next area with setting music at same point
+
 func _on_area_entered(area):
 	if (area.name == "PlayerCollider") and !Pla.cutscene:
 		Pla.cutscene = true

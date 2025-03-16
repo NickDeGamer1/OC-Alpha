@@ -1,5 +1,7 @@
 extends Area2D
 
+#Wires that Athena can cut
+
 var Cut:bool = false
 
 var timer1 = 0
@@ -11,9 +13,9 @@ var rng = RandomNumberGenerator.new()
 @export var dio:bool = false
 @onready var Pla = get_node("../Party/Player")
 
-func interact():
+func interact():#If athena, then cut wires and play sparking animations
 	if GameSingleton.CharList[0] == "Athena":
-		if dio:
+		if dio:#Play dio if dio
 			await Pla.Diologue("Athena", "Neutral", "These wires are in the way.")
 			await Pla.Diologue("Athena", "Neutral", "I wonder if...")
 		Pla.cutscene = true
@@ -32,7 +34,7 @@ func interact():
 		if !get_node("../Party/Player/AudioStreamPlayer2D").playing:
 			get_node("../Party/Player/AudioStreamPlayer2D").play()
 
-func MPinteract(Chr, ID):
+func MPinteract(Chr, ID):#Cut wires if MP
 	if Chr == "Athena":
 		var OtherP = get_tree().get_nodes_in_group("OtherP")
 		for q in OtherP:
@@ -48,7 +50,7 @@ func MPinteract(Chr, ID):
 		if !get_node("../Party/Player/AudioStreamPlayer2D").playing:
 			get_node("../Party/Player/AudioStreamPlayer2D").play()
 
-func _process(delta):
+func _process(delta):#Sparks
 	if Cut and (OptionsSingleton.Shadows == 0):
 		timer1 += delta
 		timer2 += delta
@@ -65,15 +67,14 @@ func _process(delta):
 			endTim2()
 
 
-
-func endTim1():
+func endTim1():#Start timer 1
 	await get_tree().create_timer(0.2).timeout
 	$CPUParticles2D.visible = false
 	timer1 = 0
 	time1 = rng.randi_range(1,5)
 
 
-func endTim2():
+func endTim2():#Start timer 2
 	await get_tree().create_timer(0.5).timeout
 	$CPUParticles2D2.visible = false
 	timer2 = 0

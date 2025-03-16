@@ -1,5 +1,7 @@
 extends Control
 
+#ui on screen
+
 @onready var Icon = $ImageRect/MarginContainer/TextureRect
 @onready var NIcon = $ImageRectNext/MarginContainer/TextureRect
 @onready var NNIcon = $ImageRectNext2/MarginContainer/TextureRect
@@ -12,12 +14,12 @@ var RUIonscreen = false
 @onready var RAP = $RightAnimationPlayer
 var num = 1
 
-func _ready():
+func _ready():#Wait for characters to load, then set UI
 	await get_tree().create_timer(.2).timeout
 	Setup()
 	appear()
 
-func Setup():
+func Setup():#Get area name, song, players etc.
 	swapicon()
 	GetAreaName()
 	GetSongName()
@@ -29,7 +31,7 @@ func Setup():
 	else:
 		$MPList.visible = false
 
-func UISwap():
+func UISwap():#Play when characters seap
 	if (LUIonscreen):
 		LAP.play("Swap")
 		await $LeftAnimationPlayer.animation_finished
@@ -39,7 +41,7 @@ func UISwap():
 		await $LeftAnimationPlayer.animation_finished
 		disappear()
 
-func swapicon():
+func swapicon():#Sets new icons for characters in party
 	Icon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/TextSprites/" + GameSingleton.CharList[0] + "Image.jpeg")
 	if MpManager.Multip or GameSingleton.CharList.size() == 1:
 		$ImageRectNext.visible = false
@@ -50,7 +52,7 @@ func swapicon():
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[1] + "/TextSprites/" + GameSingleton.CharList[1] + "Image.jpeg")
 		NNIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[2] + "/TextSprites/" + GameSingleton.CharList[2] + "Image.jpeg")
 
-func revswapicon():
+func revswapicon():#Sets new icons for characters in party
 	Icon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[GameSingleton.CharList.size() - 1] + "/TextSprites/" + GameSingleton.CharList[GameSingleton.CharList.size() - 1] + "Image.jpeg")
 	if MpManager.Multip or GameSingleton.CharList.size() == 1:
 		$ImageRectNext.visible = false
@@ -61,7 +63,7 @@ func revswapicon():
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/TextSprites/" + GameSingleton.CharList[0] + "Image.jpeg")
 		NNIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[GameSingleton.CharList.size() - 3] + "/TextSprites/" + GameSingleton.CharList[GameSingleton.CharList.size() - 3] + "Image.jpeg")
 
-func swapiconN():
+func swapiconN():#Sets new icons for characters in party
 	Icon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[1] + "/TextSprites/" + GameSingleton.CharList[1] + "Image.jpeg")
 	if GameSingleton.CharList.size() == 2:
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/TextSprites/" + GameSingleton.CharList[0] + "Image.jpeg")
@@ -73,7 +75,7 @@ func swapiconN():
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[2] + "/TextSprites/" + GameSingleton.CharList[2] + "Image.jpeg")
 		NNIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[3] + "/TextSprites/" + GameSingleton.CharList[3] + "Image.jpeg")
 
-func RswapiconN():
+func RswapiconN():#Sets new icons for characters in party
 	Icon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[GameSingleton.CharList.size() - 1] + "/TextSprites/" + GameSingleton.CharList[GameSingleton.CharList.size() - 1] + "Image.jpeg")
 	if GameSingleton.CharList.size() == 2:
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[1] + "/TextSprites/" + GameSingleton.CharList[1] + "Image.jpeg")
@@ -82,19 +84,19 @@ func RswapiconN():
 		NIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/TextSprites/" + GameSingleton.CharList[0] + "Image.jpeg")
 		NNIcon.texture = load("res://Prefabs/Characters/" + GameSingleton.CharList[0] + "/TextSprites/" + GameSingleton.CharList[0] + "Image.jpeg")
 
-func GetAreaName():
+func GetAreaName():#Gets area name
 	if (GameSingleton.Location == null):
 		$AreaNameRect/MarginContainer/Label.text = "???"
 	else:
 		$AreaNameRect/MarginContainer/Label.text = GameSingleton.Location
 
-func GetSongName():
+func GetSongName():#gets the song
 	if (GameSingleton.music == null):
 		$AreaMusicRect/MarginContainer/HBoxContainer/Label.text = "???"
 	else:
 		$AreaMusicRect/MarginContainer/HBoxContainer/Label.text = GameSingleton.music
 
-func appear():
+func appear():#Plays appear animation
 	if (!LUIonscreen):
 		LAP.play("LeftUI_Appear")
 		LUIonscreen = true
@@ -103,7 +105,7 @@ func appear():
 		RUIonscreen = true
 	await LAP.animation_finished
 
-func disappear():
+func disappear():#Plays disappear animpation
 	if (LUIonscreen):
 		LAP.play("LeftUI_Disappear")
 		LUIonscreen = false
@@ -131,7 +133,7 @@ func changeConDIS():
 		7:
 			$"../ControllerDisplay".texture = load("res://Textures/Controls3D.jpg")
 
-func _input(event):
+func _input(event):#Mp UI buttons
 	if event.is_action_pressed("ViewMP"):# and MpManager.Multip:
 		$CenterAnimationPlayer.play("LobbyAppear")
 	elif event.is_action_released("ViewMP"):# and MpManager.Multip:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1b4w7kooublv"]
 
 [ext_resource type="Texture2D" uid="uid://dvemcsgpos3m5" path="res://Textures/Spool.png" id="1_0w1d0"]
-[ext_resource type="Script" path="res://Scripts/spool.gd" id="1_w3w4q"]
+[ext_resource type="Script" uid="uid://b3t4pvgtih4xl" path="res://Scripts/spool.gd" id="1_w3w4q"]
 [ext_resource type="AudioStream" uid="uid://bv1impex14kuc" path="res://Audio/Click.mp3" id="3_igxg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpe"]
@@ -33,6 +33,7 @@ offset_left = -20.0
 offset_top = -16.0
 offset_right = 20.0
 offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "7"
 horizontal_alignment = 1

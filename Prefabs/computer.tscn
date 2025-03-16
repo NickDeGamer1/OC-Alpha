@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bd0l1swg65vt8"]
 
 [ext_resource type="Texture2D" uid="uid://dws4fi5x11lac" path="res://Textures/Cumpooper_down.png" id="1_t65bf"]
-[ext_resource type="Script" path="res://Scripts/computer.gd" id="1_uvitj"]
+[ext_resource type="Script" uid="uid://c50bt82ghb01r" path="res://Scripts/computer.gd" id="1_uvitj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqeyh"]
 size = Vector2(96, 96)
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p02n1"]
 _data = {
-"TurnOff": SubResource("Animation_ruyw4"),
-"TurnOn": SubResource("Animation_5x0nq")
+&"TurnOff": SubResource("Animation_ruyw4"),
+&"TurnOn": SubResource("Animation_5x0nq")
 }
 
 [node name="Computer" type="Area2D"]

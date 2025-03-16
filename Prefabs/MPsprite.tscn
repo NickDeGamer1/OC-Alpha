@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://daj3ae2jhpcy6"]
 
-[ext_resource type="Script" path="res://Scripts/MPsprite.gd" id="1_63t01"]
+[ext_resource type="Script" uid="uid://lh234a6m2qim" path="res://Scripts/MPsprite.gd" id="1_63t01"]
 [ext_resource type="Texture2D" uid="uid://dnpn1mhyho83b" path="res://Textures/Gust.png" id="2_0x4jq"]
 [ext_resource type="PackedScene" uid="uid://ck84kbksaekej" path="res://Prefabs/shadow.tscn" id="4_ambe1"]
 

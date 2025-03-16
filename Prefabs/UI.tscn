@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://qmlolo4j6l0a"]
 
-[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_7c745"]
+[ext_resource type="Script" uid="uid://b6b2ygr6qdcpe" path="res://Scripts/UI.gd" id="1_7c745"]
 [ext_resource type="Texture2D" uid="uid://bv1go84p4gdao" path="res://Textures/UI_Bubble.png" id="1_n2l14"]
 [ext_resource type="Texture2D" uid="uid://cx6hcsddjrkef" path="res://Prefabs/Characters/Alex/TextSprites/AlexImage.jpeg" id="2_r1rj0"]
 [ext_resource type="Texture2D" uid="uid://bgccry11we4uv" path="res://Textures/Text_Bubble.png" id="3_jw2hj"]
@@ -437,12 +437,12 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6jfq"]
 _data = {
-"LeftUI_Appear": SubResource("Animation_gc81k"),
-"LeftUI_Disappear": SubResource("Animation_3dke7"),
-"OFSCRSwap": SubResource("Animation_fwsav"),
-"OFSCSwap": SubResource("Animation_vyamq"),
-"RSwap": SubResource("Animation_hujon"),
-"Swap": SubResource("Animation_j8t8m")
+&"LeftUI_Appear": SubResource("Animation_gc81k"),
+&"LeftUI_Disappear": SubResource("Animation_3dke7"),
+&"OFSCRSwap": SubResource("Animation_fwsav"),
+&"OFSCSwap": SubResource("Animation_vyamq"),
+&"RSwap": SubResource("Animation_hujon"),
+&"Swap": SubResource("Animation_j8t8m")
 }
 
 [sub_resource type="Animation" id="Animation_3iufq"]
@@ -501,8 +501,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dagl"]
 _data = {
-"RightUI_Appear": SubResource("Animation_3iufq"),
-"RightUI_Disappear": SubResource("Animation_nyrgg")
+&"RightUI_Appear": SubResource("Animation_3iufq"),
+&"RightUI_Disappear": SubResource("Animation_nyrgg")
 }
 
 [sub_resource type="Animation" id="Animation_kn4rj"]
@@ -539,8 +539,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jjsc0"]
 _data = {
-"LobbyAppear": SubResource("Animation_kn4rj"),
-"LobbyDisappear": SubResource("Animation_ovxxj")
+&"LobbyAppear": SubResource("Animation_kn4rj"),
+&"LobbyDisappear": SubResource("Animation_ovxxj")
 }
 
 [node name="UI" type="Control"]

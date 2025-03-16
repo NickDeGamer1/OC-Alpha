@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d2qdj3fupco1p"]
 
-[ext_resource type="Script" path="res://Scripts/CharSel.gd" id="1_0naht"]
+[ext_resource type="Script" uid="uid://drrtn7ypcmgrp" path="res://Scripts/CharSel.gd" id="1_0naht"]
 [ext_resource type="Texture2D" uid="uid://by026hscbtj88" path="res://Textures/O.png" id="2_15tlh"]
 [ext_resource type="Texture2D" uid="uid://c1udcjokqh21s" path="res://Prefabs/Characters/Alex/AlexSelect.png" id="3_6ocmm"]
 [ext_resource type="Texture2D" uid="uid://b2wlu71duoycw" path="res://Prefabs/Characters/Faelyn/FaelynSelect.png" id="4_76g5q"]
@@ -209,9 +209,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_of36r"]
 _data = {
-"appear": SubResource("Animation_aoou2"),
-"rotate left": SubResource("Animation_ejqkc"),
-"rotate right": SubResource("Animation_mi3cm")
+&"appear": SubResource("Animation_aoou2"),
+&"rotate left": SubResource("Animation_ejqkc"),
+&"rotate right": SubResource("Animation_mi3cm")
 }
 
 [sub_resource type="Animation" id="Animation_ebt6y"]
@@ -270,8 +270,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qaee3"]
 _data = {
-"LabelAppear": SubResource("Animation_ebt6y"),
-"RESET": SubResource("Animation_eoio2")
+&"LabelAppear": SubResource("Animation_ebt6y"),
+&"RESET": SubResource("Animation_eoio2")
 }
 
 [node name="Control" type="Control"]

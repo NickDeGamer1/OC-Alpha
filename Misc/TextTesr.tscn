@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr8upf2y5jmio"]
 
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_17k7i"]
-[ext_resource type="Script" path="res://Misc/TextTesr.gd" id="1_f1qv6"]
+[ext_resource type="Script" uid="uid://bcg02bngimrjc" path="res://Misc/TextTesr.gd" id="1_f1qv6"]
 [ext_resource type="AudioStream" uid="uid://fk17j2en6oth" path="res://Audio/text.wav" id="3_q6cli"]
 
 [node name="Control" type="Control"]

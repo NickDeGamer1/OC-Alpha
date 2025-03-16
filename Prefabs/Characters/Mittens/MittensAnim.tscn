@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://dcusxuxs6p1g4"]
 
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_sokxp"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_m1muh"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_m1muh"]
 [ext_resource type="Texture2D" uid="uid://buoofmc3gg1o8" path="res://Textures/MittensEyelids.png" id="4_w2gwp"]
 [ext_resource type="Texture2D" uid="uid://ddfqxp0el8ppo" path="res://Textures/MittensEyelidsOne.png" id="5_6mmur"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="6_5cqi0"]
@@ -187,9 +187,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjbco"]
 _data = {
-"Talking_down": SubResource("Animation_63gml"),
-"Talking_left": SubResource("Animation_tujbm"),
-"Talking_right": SubResource("Animation_mvtjh")
+&"Talking_down": SubResource("Animation_63gml"),
+&"Talking_left": SubResource("Animation_tujbm"),
+&"Talking_right": SubResource("Animation_mvtjh")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]

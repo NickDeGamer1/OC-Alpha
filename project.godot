@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="OC-The-Game"
-config/version="0.0.6"
+config/version="0.0.6.1"
 run/main_scene="res://Scenes/Menus/Intro.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icons/iconMac.png"
 config/windows_native_icon="res://icons/iconWin.ico"

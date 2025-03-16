@@ -2,8 +2,9 @@ extends ColorRect
 var ID:int
 var UpdtateTime:float 
 
+#Player display for mpmenu UI
 
-func Setup(id):
+func Setup(id):#sets local ID
 	ID = id
 	if id == 1:
 		$MarginContainer2/HBoxContainer/TextureRect.visible = true
@@ -23,10 +24,10 @@ func Setup(id):
 			$MarginContainer/Label.text = MpManager.Players[i].name
 			$MarginContainer2/HBoxContainer/TextureRect3.texture = load("res://Textures/" + MpManager.Players[i].CC + "Icon.png")
 
-func kickVisible():
+func kickVisible():#makes kick button visible
 	$MarginContainer2/HBoxContainer/KickButton.visible = true
 
-func UpdatePing(time:float):
+func UpdatePing(time:float):#displays ping and icon
 	$MarginContainer2/HBoxContainer/Label.text = str(time)
 	if time < 35:
 		$MarginContainer2/HBoxContainer/PingDisplayGreat.visible = true
@@ -41,5 +42,5 @@ func UpdatePing(time:float):
 		$MarginContainer2/HBoxContainer/PingDisplayOK.visible = false
 		$MarginContainer2/HBoxContainer/PingDisplayPoor.visible = true
 
-func _on_kick_button_pressed():
+func _on_kick_button_pressed():#kicks player
 	get_node("../../../../../../../MultiplayerManager").KickPlayer(ID)

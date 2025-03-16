@@ -1,5 +1,7 @@
 extends Node
 
+#Multiplayer Manager Sets and sends players position, frame and animation to others.
+
 @export var MP: PackedScene
 @export var OWP: PackedScene
 var t = 0
@@ -20,13 +22,13 @@ var inputs = {"move_right": Vector2.RIGHT,
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():#Sets up all players
 	multiplayer.peer_disconnected.connect(peer_disconnected)
 	multiplayer.peer_connected.connect(peer_connected)
 	$"../Party/Player".loadSpriteC(MpManager.Players[multiplayer.get_unique_id()].CC)
 	$"../Party".SetLabel(MpManager.MPName)
 	MpManager.id = multiplayer.get_unique_id()
-	for i in MpManager.Players:
+	for i in MpManager.Players:#Loops in player list, adds all necessary values
 		if MpManager.Players[i].id != multiplayer.get_unique_id():
 			var CurrentP = MP.instantiate()
 			CurrentP.loadSprite(MpManager.Players[i].CC)
@@ -49,11 +51,12 @@ func _process(delta):
 			Ping()
 			time = 0
 	
-	if get_node("../Party/Player").moving:
+	if get_node("../Party/Player").moving:#If player is moving, send info out
 		MpManager.Players[multiplayer.get_unique_id()].X = get_node("../Party/Player").position.x
 		MpManager.Players[multiplayer.get_unique_id()].Y = get_node("../Party/Player").position.y
 		updateOthers.rpc(multiplayer.get_unique_id(), get_node("../Party/Player").global_position.x, get_node("../Party/Player").global_position.y)
 	
+	#If frame != last frame, update frame
 	if get_node("../Party/Player/EncloseSPR/AnimatedSprite2D").frame != privframe or privanim != get_node("../Party/Player/EncloseSPR/AnimatedSprite2D").animation:
 		updateFrame.rpc(multiplayer.get_unique_id(),
 			get_node("../Party/Player/EncloseSPR/AnimatedSprite2D").animation,
@@ -65,7 +68,7 @@ func _process(delta):
 	
 	
 	var OtherP = get_tree().get_nodes_in_group("OtherP")
-	for i in MpManager.Players:
+	for i in MpManager.Players:#Update other players
 		for q in OtherP:
 			if MpManager.Players[i].id == q.ID:
 				q.global_position.x = MpManager.Players[i].X
@@ -78,30 +81,35 @@ func _process(delta):
 func OWping(id, Inp):
 	get_tree().call_group("PingSprG", "Appear", id, Inp)
 
+#Pings host
 func Ping():
 	PingIN.rpc(Time.get_ticks_msec())
 
+#Recieves ping and pings back
 @rpc("any_peer")
 func PingIN(timeIN):
 	PingOut.rpc_id(1,multiplayer.get_unique_id(), timeIN)
 
+#Recieves ping out, sets ping to time, sends out time back
 @rpc("any_peer")
 func PingOut(id, timeOut):
 	timeOut = (Time.get_ticks_msec() - timeOut)/2
 	PingSend.rpc(id, timeOut)
 
+#Gets ping, sets it to UI
 @rpc("any_peer", "call_local")
 func PingSend(id, ping):
 	for j in PingDisp.get_children():
 		if j.ID == id:
 			j.UpdatePing(ping)
 
+#Updates Position to others
 @rpc("any_peer", "call_local", "unreliable")
 func updateOthers(id, MPX, MPY):
 	MpManager.Players[id].X = MPX
 	MpManager.Players[id].Y = MPY
 
-
+#Updates frame
 @rpc("any_peer", "call_local", "unreliable")
 func updateFrame(id, An, F, Di):
 	MpManager.Players[id].Anim = An
@@ -111,11 +119,13 @@ func updateFrame(id, An, F, Di):
 func peer_connected(_id):
 	pass
 
+#Kicks player
 func KickPlayer(i):
 	Kick.rpc_id(i, "Kicked by Host")
 	await get_tree().create_timer(.5).timeout
 	MpManager.peer.disconnect_peer(i, false)
 
+#You got kicked
 @rpc("call_local")
 func Kick(Reason:String):
 	MpManager.Multip = false
@@ -125,6 +135,7 @@ func Kick(Reason:String):
 	MpManager.KR = Reason
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
+#Removes player from game
 func peer_disconnected(id):
 	if id != 1:
 		MpManager.Players.erase(id)
@@ -143,14 +154,17 @@ func peer_disconnected(id):
 		MpManager.PlayerPing = {}
 		get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
+#Adds text to chat
 func SendText(Text, MPID):
 	UpdateText.rpc(Text, MPID)
 
+#Updates chat
 @rpc("any_peer", "call_local")
 func UpdateText(Text, MPID):
 	get_node("../Party/CLUI/Chat").AddText(Text, MPID)
 
-func _input(event):
+
+func _input(event):#Does inputs and broadcasts to others
 	if event.is_action_pressed("ability") and !$"../Party/Player".cutscene and !$"../Party/Player".moving:
 		AbilityPress.rpc(multiplayer.get_unique_id(), $"../Party/Player".direction, GameSingleton.CharList[0])
 	
@@ -166,14 +180,14 @@ func _input(event):
 
 
 @rpc("any_peer")
-func AbilityPress(id, dir, Char):
+func AbilityPress(id, dir, Char):#broadcasts inputs
 	var OtherP = get_tree().get_nodes_in_group("OtherP")
 	for q in OtherP:
 		if id == q.ID:
 			q.get_node("EncloseSPR/AnimatedSprite2D").Ability(Char, dir)
 
 @rpc("any_peer")
-func InteractPress(id, dir, Char):
+func InteractPress(id, dir, Char):#More broadcasting
 	var OtherP = get_tree().get_nodes_in_group("OtherP")
 	for q in OtherP:
 		if id == q.ID:
@@ -183,25 +197,28 @@ func InteractPress(id, dir, Char):
 			if ray.is_colliding() and ray.get_collider().has_method("MPinteract"):
 				ray.get_collider().MPinteract(Char, id)
 
-func endSingL():
+func endSingL():#Ends sing for Faelyn
 	endSing.rpc(MpManager.id)
 
 @rpc("any_peer")
-func endSing(id):
+func endSing(id):#Ends sing on other components
 	if id != multiplayer.get_unique_id():
 		var OtherP = get_tree().get_nodes_in_group("OtherP")
 		for q in OtherP:
 			if id == q.ID:
 				q.get_node("EncloseSPR/AnimatedSprite2D/SingRadius").endSing()
 
+#pitches up faelyn locally
 func PitchUpL(oct):
 	if GameSingleton.CharList.has("Faelyn"):
 		pitchUp.rpc(MpManager.id, oct)
 
+#pitches down faelyn locally
 func PitchDownL(oct):
 	if GameSingleton.CharList.has("Faelyn"):
 		pitchDown.rpc(MpManager.id, oct)
 
+#pitches up faelyn remotely
 @rpc("any_peer")
 func pitchUp(id, oct):
 	if id != multiplayer.get_unique_id():
@@ -210,6 +227,7 @@ func pitchUp(id, oct):
 			if id == q.ID and q.get_node_or_null("EncloseSPR/AnimatedSprite2D/SingRadius") != null:
 				q.get_node("EncloseSPR/AnimatedSprite2D/SingRadius").updatePitch(oct)
 
+#pitches down faelyn remotely
 @rpc("any_peer")
 func pitchDown(id, oct):
 	if id != multiplayer.get_unique_id():
@@ -218,6 +236,7 @@ func pitchDown(id, oct):
 			if id == q.ID and q.get_node_or_null("EncloseSPR/AnimatedSprite2D/SingRadius") != null:
 				q.get_node("EncloseSPR/AnimatedSprite2D/SingRadius").updatePitch(oct)
 
+#Exits Mitten's bridge
 @rpc("any_peer")
 func exitBridge(id):
 	for i in ActiveBridges:
@@ -225,17 +244,18 @@ func exitBridge(id):
 			i.MPreturn(id)
 			ActiveBridges.erase(i)
 
+#Exits Mike's PC
 @rpc("any_peer")
 func ExitPC(PC):
 	get_node("../" + PC + "/AnimationPlayer").play("TurnOff")
 
+#Forces Position
 func forcePos(id, Pos):
 	updateOthers.rpc(id, Pos.x, Pos.y)
-
-
+#Moves player
 func _on_party_moved():
 	PMmoved.rpc(multiplayer.get_unique_id, get_node("../Party/Player").global_position)
-
+#recieved moved
 @rpc("any_peer")
 func PMmoved(ID, Pos):
 	emit_signal("PlayerMoved", ID, Pos)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5mx6g3qslm3h"]
 
-[ext_resource type="Script" path="res://Scripts/Pathway.gd" id="1_w4cri"]
+[ext_resource type="Script" uid="uid://divs1rmnw0cwn" path="res://Scripts/Pathway.gd" id="1_w4cri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1qsr"]
 size = Vector2(64, 64)
@@ -35,7 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n5tvc"]
 _data = {
-"dissapear": SubResource("Animation_n07go")
+&"dissapear": SubResource("Animation_n07go")
 }
 
 [node name="Pathway" type="Area2D"]

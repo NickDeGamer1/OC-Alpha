@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5oetaeytyhee"]
 
-[ext_resource type="Script" path="res://Scripts/Unused.gd" id="1_3bqxo"]
+[ext_resource type="Script" uid="uid://boj8yxsx8ancv" path="res://Scripts/Unused.gd" id="1_3bqxo"]
 [ext_resource type="PackedScene" uid="uid://df20mvq8eyxdx" path="res://Prefabs/Characters/Faelyn/FaelynAnim.tscn" id="2_s72me"]
 [ext_resource type="Texture2D" uid="uid://cl0cssmtjtev5" path="res://Textures/light.png" id="3_t0am8"]
 

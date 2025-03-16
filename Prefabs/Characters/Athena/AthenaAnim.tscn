@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://j4h1a8q124xt" path="res://Textures/characterSprites.png" id="1_i7vqu"]
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="2_sibbc"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_wjbot"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_wjbot"]
 [ext_resource type="OccluderPolygon2D" uid="uid://cvfirhsetypq1" path="res://Prefabs/Characters/Athena/Occluder/ability_right1.tres" id="3_jm6bv"]
 [ext_resource type="Texture2D" uid="uid://c3oep6bqsby78" path="res://Textures/AthenaEyelids.png" id="5_qikem"]
 [ext_resource type="Texture2D" uid="uid://deyujm5l2sf2c" path="res://Textures/AthenaEyelidsOne.png" id="6_1fo43"]
@@ -260,9 +260,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u877t"]
 _data = {
-"Talking_down": SubResource("Animation_36amv"),
-"Talking_left": SubResource("Animation_e8h47"),
-"Talking_right": SubResource("Animation_qapd2")
+&"Talking_down": SubResource("Animation_36amv"),
+&"Talking_left": SubResource("Animation_e8h47"),
+&"Talking_right": SubResource("Animation_qapd2")
 }
 
 [sub_resource type="Animation" id="Animation_c813j"]
@@ -401,8 +401,8 @@ tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqoyt"]
 _data = {
-"Swing_left": SubResource("Animation_c813j"),
-"Swing_right": SubResource("Animation_h5vid")
+&"Swing_left": SubResource("Animation_c813j"),
+&"Swing_right": SubResource("Animation_h5vid")
 }
 
 [sub_resource type="Gradient" id="Gradient_lammq"]

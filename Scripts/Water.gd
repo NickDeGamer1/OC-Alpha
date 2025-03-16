@@ -1,5 +1,7 @@
 extends Area2D
 
+#Water tiles that can be frozen by Aurora
+
 var frozen = false
 
 var ref1
@@ -11,14 +13,14 @@ func _ready():
 	$AnimatedSprite2D.play("default")
 
 
-func Freeze():
+func Freeze():#Disables collision and changes sprite
 	frozen = true
 	$CollisionShape2D.disabled = true
 	$AudioStreamPlayer2D.play()
 	$AnimatedSprite2D.visible = false
 
 
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void:#Updates reflection positions
 	if OptionsSingleton.Shadows == 0 and $AnimatedSprite2D/Reflection1.visible:
 		$AnimatedSprite2D/Reflection1.global_position = ref1.global_position + Vector2(0,85)
 		var anima
@@ -56,7 +58,7 @@ func _process(_delta: float) -> void:
 		var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
 		$AnimatedSprite2D/Reflection3.texture = currentTexture
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:#Display reflections
 	if OptionsSingleton.Shadows == 0:
 		if area.name.contains("PlayerCollider"):
 			var anima = area.get_node("../EncloseSPR/AnimatedSprite2D")
@@ -95,7 +97,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				$AnimatedSprite2D/Reflection3.texture = currentTexture
 				$AnimatedSprite2D/Reflection3.visible = true
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+func _on_area_2d_area_exited(area: Area2D) -> void:#Removes reflections
 	if area.name.contains("PlayerCollider"):
 		if ref1 == area:
 			$AnimatedSprite2D/Reflection1.visible = false

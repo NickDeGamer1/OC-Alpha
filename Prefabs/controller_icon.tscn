@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://26iukv1in8qc"]
 
-[ext_resource type="Script" path="res://Scripts/controller_icon.gd" id="2_me7uy"]
+[ext_resource type="Script" uid="uid://bqfo24w1wd1px" path="res://Scripts/controller_icon.gd" id="2_me7uy"]
 
 [sub_resource type="Animation" id="Animation_edwfm"]
 resource_name = "Idol"
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5w34n"]
 _data = {
-"Idol": SubResource("Animation_edwfm"),
-"IdolC": SubResource("Animation_4614t")
+&"Idol": SubResource("Animation_edwfm"),
+&"IdolC": SubResource("Animation_4614t")
 }
 
 [node name="ControllerIcon" type="Sprite2D"]

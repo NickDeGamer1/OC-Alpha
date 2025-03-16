@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dcrb87mvtodyf"]
 
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_w0yil"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_1e1vt"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_1e1vt"]
 [ext_resource type="Texture2D" uid="uid://c1cugorw38hnd" path="res://Textures/MikeEyelids.png" id="4_2hgtm"]
 [ext_resource type="Texture2D" uid="uid://dy21dpyydcf0w" path="res://Textures/MikeEyelidOne.png" id="5_khdy8"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="5_wpfs5"]
@@ -188,9 +188,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
 _data = {
-"Talking_down": SubResource("Animation_f4snf"),
-"Talking_left": SubResource("Animation_bf05m"),
-"Talking_right": SubResource("Animation_fc0t7")
+&"Talking_down": SubResource("Animation_f4snf"),
+&"Talking_left": SubResource("Animation_bf05m"),
+&"Talking_right": SubResource("Animation_fc0t7")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]

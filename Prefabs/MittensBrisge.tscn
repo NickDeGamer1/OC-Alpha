@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dhbkfsk3xreet"]
 
-[ext_resource type="Script" path="res://Scripts/MittensBrisge.gd" id="1_bjcst"]
+[ext_resource type="Script" uid="uid://dtle3e1oqlenm" path="res://Scripts/MittensBrisge.gd" id="1_bjcst"]
 [ext_resource type="Texture2D" uid="uid://c4jnky0hdy7wq" path="res://Textures/MittensBridge.png" id="1_w6tuq"]
 [ext_resource type="Texture2D" uid="uid://b1tku6kj5ij3t" path="res://Textures/Warning tile.png" id="3_ug7ln"]
 
@@ -58,7 +58,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4jkj"]
 _data = {
-"Appear": SubResource("Animation_cyonh")
+&"Appear": SubResource("Animation_cyonh")
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_do08k"]

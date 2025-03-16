@@ -5,7 +5,7 @@ extends Area2D
 @export var Outputs = []
 var looping:bool = false
 
-func _on_area_entered(area):
+func _on_area_entered(area):#Displays button icon above player
 	if area.name == "PlayerCollider" and CharNeeded == GameSingleton.CharList[0]:
 		looping = true
 		var i:int = 0
@@ -15,7 +15,7 @@ func _on_area_entered(area):
 			i+=1
 			if i >= Outputs.size():
 				i = 0
-	elif area.name == "PlayerCollider":
+	elif area.name == "PlayerCollider":#Says what character is needed
 		looping = true
 		var i:int = 0
 		while looping:
@@ -26,6 +26,6 @@ func _on_area_entered(area):
 				i = 0
 
 func _on_area_exited(area):
-	if (area.name == "PlayerCollider"):
+	if (area.name == "PlayerCollider"):#hides button icon
 		looping = false
 		Ico.Hide()

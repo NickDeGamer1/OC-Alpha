@@ -1,16 +1,16 @@
 [gd_scene load_steps=18 format=4 uid="uid://bndhtd7edulsl"]
 
-[ext_resource type="Script" path="res://Scripts/Mptest1.gd" id="1_2af0l"]
+[ext_resource type="Script" uid="uid://c6kshrmwny22a" path="res://Scripts/Mptest1.gd" id="1_2af0l"]
 [ext_resource type="TileSet" uid="uid://dyooo0wfl0uxl" path="res://Misc/PItestF.tres" id="1_ruh4l"]
 [ext_resource type="PackedScene" uid="uid://vlcwvxj3avsl" path="res://Prefabs/Party.tscn" id="2_cdso0"]
 [ext_resource type="Texture2D" uid="uid://bx4a7inhet1ax" path="res://Textures/Background.png" id="3_4xn7t"]
 [ext_resource type="Texture2D" uid="uid://bbdm26ldym1or" path="res://Textures/Background2.png" id="4_1cx8c"]
 [ext_resource type="PackedScene" uid="uid://42iek8r25l0q" path="res://Prefabs/discord_manager.tscn" id="6_ugtmj"]
-[ext_resource type="Script" path="res://Scripts/MultiplayerManager.gd" id="7_hjehs"]
-[ext_resource type="Script" path="res://Scripts/ping.gd" id="8_iv8b4"]
+[ext_resource type="Script" uid="uid://b380884r4shpc" path="res://Scripts/MultiplayerManager.gd" id="7_hjehs"]
+[ext_resource type="Script" uid="uid://dvslee3opjtlw" path="res://Scripts/ping.gd" id="8_iv8b4"]
 [ext_resource type="PackedScene" uid="uid://daj3ae2jhpcy6" path="res://Prefabs/MPsprite.tscn" id="8_rpyn5"]
 [ext_resource type="PackedScene" uid="uid://b3stq0cd5lo83" path="res://Prefabs/ping_spr.tscn" id="9_d71dx"]
-[ext_resource type="Script" path="res://Scripts/ContCursor.gd" id="10_40lmw"]
+[ext_resource type="Script" uid="uid://cigs7l5yhjf4i" path="res://Scripts/ContCursor.gd" id="10_40lmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uplna"]
 size = Vector2(32, 432)
@@ -130,8 +130,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ak5k"]
 _data = {
-"Transition1": SubResource("Animation_0hbyb"),
-"Transition2": SubResource("Animation_tosho")
+&"Transition1": SubResource("Animation_0hbyb"),
+&"Transition2": SubResource("Animation_tosho")
 }
 
 [node name="MPtest1" type="Node2D"]

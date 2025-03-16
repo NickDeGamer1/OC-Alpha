@@ -1,5 +1,7 @@
 extends Area2D
 
+#Spin thingey that Athena interacts with
+
 var Spinning: bool = false
 @export var ToggleBlock:Node
 
@@ -7,7 +9,7 @@ signal Start
 signal End
 
 
-func _on_area_entered(area):
+func _on_area_entered(area):#If gust of wind, start timer, call trigger, when timer end, call other trigger
 	if area.name == "GustOfWind":
 		Spinning = true
 		Start.emit()
@@ -24,5 +26,5 @@ func _on_area_entered(area):
 		End.emit()
 		$AnimatedSprite2D.play("RESET")
 
-func _on_animated_sprite_2d_frame_changed():
+func _on_animated_sprite_2d_frame_changed():#Update shadow
 	$LightOccluder2D.occluder = load("res://Prefabs/Occluders/SpinThingy" + str($AnimatedSprite2D.frame) + ".tres")

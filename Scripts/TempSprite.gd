@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#TempSprite used when swapping characters
+
 var moving = false
 var cutscene = false
 var tile_size = 96
@@ -24,7 +26,7 @@ func ResetPos():
 	position.y = position.y - (int(position.y) % tile_size)
 
 
-func loadSprite(Charname):
+func loadSprite(Charname):#Loads character
 	if $EncloseSPR.has_node("AnimatedSprite2D"):
 		$EncloseSPR.remove_child($EncloseSPR.get_node("AnimatedSprite2D"))
 	var loc = "res://Prefabs/Characters/" + Charname + "/" + Charname + "Anim.tscn"
@@ -36,13 +38,13 @@ func loadSprite(Charname):
 	spr.updateshadow(Charname)
 	face(direction)
 
-func face(dir):
+func face(dir):#Look in direction
 	direction = dir
 	spr.play("move_" + dir)
 	spr.stop()
 	spr.face("move_" + dir)
 
-func moveN(dir):
+func moveN(dir):#Move in direction
 	var tween = create_tween()
 	spr.play(dir)
 	tween.tween_property(self, "position",position + inputs[dir] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_LINEAR)
@@ -51,7 +53,7 @@ func moveN(dir):
 	stopAnim()
 	moving = false
 
-func stopAnim():
+func stopAnim():#Stop the animation
 	await get_tree().create_timer(0.1).timeout
 	if(!moving):
 		spr.stop()
@@ -61,7 +63,7 @@ func CheckPos(NumerInList):
 	var check = "../PartyMember" + str(NumerInList)
 	CheckPosN(check)
 
-func CheckPosN(inp):
+func CheckPosN(inp):#check the position of the next character
 	var check = get_node(inp)
 	if (global_position.x == check.global_position.x):
 		if(global_position.y > check.global_position.y):
@@ -78,7 +80,7 @@ func CheckPosN(inp):
 			direction = "right"
 			return "move_right"
 
-func checkFreeze():
+func checkFreeze():#Check if the tile is freezable
 	ray.target_position = inputs["move_" + direction] * tile_size
 	ray.force_raycast_update()
 	if ray.is_colliding() and ray.get_collider().has_method("Freeze"):
@@ -86,11 +88,11 @@ func checkFreeze():
 		await $EncloseSPR/AnimatedSprite2D/AnimationPlayer.animation_finished
 		ray.get_collider().Freeze()
 
-func freeze():
+func freeze():#Freeze the tile
 	await checkFreeze()
 	if !ray.is_colliding() or !ray.get_collider().has_method("Freeze"):
 		await get_tree().create_timer(.5).timeout
-		match direction:
+		match direction:#freezes adjacent tiles
 			"up":
 				face("left")
 				await checkFreeze()

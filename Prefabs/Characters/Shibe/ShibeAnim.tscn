@@ -1,7 +1,7 @@
 [gd_scene load_steps=45 format=3 uid="uid://csbl68i56pell"]
 
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="2_myhpa"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_t18kw"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_t18kw"]
 [ext_resource type="Texture2D" uid="uid://bjarwqykljbqn" path="res://Textures/ShibeEyelids.png" id="4_0i55n"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="5_54swb"]
 [ext_resource type="Texture2D" uid="uid://bqcc484ll0mpy" path="res://Textures/ShibeEyelidOne.png" id="5_jsl3t"]
@@ -266,9 +266,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
 _data = {
-"Talking_down": SubResource("Animation_f4snf"),
-"Talking_left": SubResource("Animation_bf05m"),
-"Talking_right": SubResource("Animation_fc0t7")
+&"Talking_down": SubResource("Animation_f4snf"),
+&"Talking_left": SubResource("Animation_bf05m"),
+&"Talking_right": SubResource("Animation_fc0t7")
 }
 
 [sub_resource type="Animation" id="Animation_hqnpd"]
@@ -768,11 +768,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcs46"]
 _data = {
-"Light_down": SubResource("Animation_hqnpd"),
-"Light_left": SubResource("Animation_ax7ik"),
-"Light_right": SubResource("Animation_13p6i"),
-"Light_up": SubResource("Animation_x0vj5"),
-"RESET": SubResource("Animation_gdmqi")
+&"Light_down": SubResource("Animation_hqnpd"),
+&"Light_left": SubResource("Animation_ax7ik"),
+&"Light_right": SubResource("Animation_13p6i"),
+&"Light_up": SubResource("Animation_x0vj5"),
+&"RESET": SubResource("Animation_gdmqi")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6bgf"]

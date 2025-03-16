@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://blopdjwtfp6x"]
 
-[ext_resource type="Script" path="res://Scripts/CorrodedArea.gd" id="1_5oah0"]
+[ext_resource type="Script" uid="uid://c3wdhggi42qmx" path="res://Scripts/CorrodedArea.gd" id="1_5oah0"]
 [ext_resource type="PackedScene" uid="uid://d1f5afm1uun61" path="res://Prefabs/corrode.tscn" id="2_1rf2w"]
 [ext_resource type="AudioStream" uid="uid://rfve3h0ctrn6" path="res://Audio/glitter-sound-effect-for-music-or-editing.wav" id="3_gs8yi"]
 [ext_resource type="AudioStream" uid="uid://c12vpag4bddfs" path="res://Audio/Corrosion.wav" id="3_tpqpk"]
@@ -297,8 +297,8 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y51h5"]
 _data = {
-"Idol": SubResource("Animation_np0n4"),
-"appear": SubResource("Animation_uepmo")
+&"Idol": SubResource("Animation_np0n4"),
+&"appear": SubResource("Animation_uepmo")
 }
 
 [node name="CorrodedArea" type="Area2D"]

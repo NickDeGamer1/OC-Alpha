@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://d1lnnkmbbe2lf"]
 
 [ext_resource type="Texture2D" uid="uid://cits5msaxqlc8" path="res://Textures/Normals/CharSpr2.tres" id="1_5ckgt"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_v2gha"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_v2gha"]
 [ext_resource type="OccluderPolygon2D" uid="uid://bmwqw4uo413c0" path="res://Prefabs/Characters/Damian/Occluder/spray_up0.tres" id="3_bsb5b"]
 [ext_resource type="Texture2D" uid="uid://63ijg7jryasi" path="res://Textures/AlexEyelids.png" id="4_p8ca0"]
 [ext_resource type="Texture2D" uid="uid://cu3xecavadxh1" path="res://Textures/Mouth.png" id="5_61kfa"]
@@ -229,9 +229,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tc54a"]
 _data = {
-"Talking_down": SubResource("Animation_f4snf"),
-"Talking_left": SubResource("Animation_bf05m"),
-"Talking_right": SubResource("Animation_fc0t7")
+&"Talking_down": SubResource("Animation_f4snf"),
+&"Talking_left": SubResource("Animation_bf05m"),
+&"Talking_right": SubResource("Animation_fc0t7")
 }
 
 [sub_resource type="Animation" id="Animation_0c2qk"]
@@ -356,10 +356,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_30sax"]
 _data = {
-"spray_down": SubResource("Animation_0c2qk"),
-"spray_left": SubResource("Animation_oqu8d"),
-"spray_right": SubResource("Animation_7xf4u"),
-"spray_up": SubResource("Animation_ad84f")
+&"spray_down": SubResource("Animation_0c2qk"),
+&"spray_left": SubResource("Animation_oqu8d"),
+&"spray_right": SubResource("Animation_7xf4u"),
+&"spray_up": SubResource("Animation_ad84f")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6vfq"]

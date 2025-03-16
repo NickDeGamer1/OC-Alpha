@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+#Shadow: Dispite name, contains abilitys
+
 @onready var sha = $LightOccluder2D
 @export var canBlink: bool = true
 @export var Ccolor:Color
@@ -20,19 +22,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var num = frame
+	var num = frame#Sets frame of anim
 	if num == 2:
 		num = 0
 	elif num == 3:
 		num = 2
-	if is_playing() and OptionsSingleton.Shadows == 0:
+	if is_playing() and OptionsSingleton.Shadows == 0:#Sets shadow of player
 		sha.occluder = load("res://Prefabs/Characters/"+ 
 			charname + "/Occluder/" + animation + str(num) + ".tres")
 	elif get_node("../").name == "MPsprite":
 		sha.occluder = load("res://Prefabs/Characters/"+ 
 			charname + "/Occluder/" + animation + str(num) + ".tres")
 	
-	if animation.contains("move_"):
+	if animation.contains("move_"):#Updates position of sprite based on frame
 		match frame:
 			1:
 				position.y = -3
@@ -41,11 +43,11 @@ func _process(delta):
 			_:
 				position.y = 0
 	
-	blinktime += delta
+	blinktime += delta#Blinks
 	if blinktime > blinknum:
 		blink()
 
-func blink():
+func blink():#Blinks based on direction
 	if canBlink:
 		if get_parent().name != "EncloseSPR":
 			if !get_parent().moving and !get_parent().cutscene:
@@ -84,7 +86,7 @@ func blink():
 		blinknum = rng.randi_range(3,5)
 		blinktime = 0
 
-func face(dir):
+func face(dir):#Sprite faces direction
 	if dir.contains("move_"):
 		animation = dir
 	else:
@@ -97,7 +99,7 @@ func face(dir):
 		else:
 			sha.occluder = load("res://Prefabs/Characters/" + charname + "/Occluder/move_" + dir + "0.tres")
 
-func updateshadow(CharName):
+func updateshadow(CharName):#Updates shadow of scharacter
 	if (OptionsSingleton.Shadows == 0):
 		charname = CharName
 		sha = $LightOccluder2D
@@ -106,14 +108,14 @@ func updateshadow(CharName):
 		else:
 			sha.occluder = load("res://Prefabs/Characters/"+ charname + "/Occluder/move_" + get_node("../").direction + "0" + ".tres")
 
-func Ability(Char, Dir):
+func Ability(Char, Dir):#Does character abilities
 	var ts
 	if "tile_size" in get_node("../../"):
 		ts = get_node("../../").tile_size
 	else:
 		ts = 96
 	match Char:
-		"Alex":
+		"Alex":#Spawns Aurora, Aurora looks for Freezable squares
 			if(get_node_or_null("TempSprite") != null):
 				play("Pokeball_" + Dir)
 				get_node("../../RayCast2D").target_position = inputs["move_" + Dir] * ts
@@ -133,7 +135,7 @@ func Ability(Char, Dir):
 				animation = "move_" + Dir
 				frame = 0
 				face(Dir)
-		"Faelyn":
+		"Faelyn":#Plays anim, Sees all glass walls in area, broadcasts if in
 			face("down")
 			Sing()
 			await $SingRadius.Activate()
@@ -141,7 +143,7 @@ func Ability(Char, Dir):
 			frame = 0
 			face("down")
 			stop()
-		"Athena":
+		"Athena":#Creates gust of wind, plays anim
 			play("ability_" + Dir)
 			await get_tree().create_timer(.3).timeout
 			var scene = load("res://Prefabs/gust_of_wind.tscn")
@@ -151,7 +153,7 @@ func Ability(Char, Dir):
 			child_node.Go(Dir)
 			$WindSound.play()
 			face(Dir)
-		"Vex":
+		"Vex":#PLays anim, sees if surrounded by speakers, plays speakers
 			var col1:bool = false
 			var col2:bool = false
 			var ray = get_node("../../RayCast2D")
@@ -175,15 +177,15 @@ func Ability(Char, Dir):
 				await get_tree().create_timer(.15).timeout
 				await ray.get_collider().get_node("../").Play()
 			face("down")
-		"Shibe":
+		"Shibe":#Sniffs area
 			await sniff(Dir)
-		"Damian":
+		"Damian":#Sprays area
 			await spray(Dir)
-		"Glen4":
+		"Glen4":#Punches area
 			await Punch(Dir)
-		"Aurora":
+		"Aurora":#Freezes area
 			await freeze(Dir)
-		_:
+		_:#Plays audio if no ability exists
 			if !get_node("../../AudioStreamPlayer2D").playing:
 				get_node("../../AudioStreamPlayer2D").play()
 

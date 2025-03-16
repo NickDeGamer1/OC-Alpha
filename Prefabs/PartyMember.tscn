@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://lxwmev3s7jas"]
 
-[ext_resource type="Script" path="res://Scripts/PartyMember.gd" id="1_gxwij"]
+[ext_resource type="Script" uid="uid://qg5s5afjho34" path="res://Scripts/PartyMember.gd" id="1_gxwij"]
 [ext_resource type="PackedScene" uid="uid://ck84kbksaekej" path="res://Prefabs/shadow.tscn" id="2_ln8ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axdpb"]

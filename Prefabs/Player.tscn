@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cwo5746e5mupu"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_q8bae"]
+[ext_resource type="Script" uid="uid://unbmq00lkakj" path="res://Scripts/Player.gd" id="1_q8bae"]
 [ext_resource type="PackedScene" uid="uid://ck84kbksaekej" path="res://Prefabs/shadow.tscn" id="3_sjc8j"]
 [ext_resource type="AudioStream" uid="uid://bcik4rc01fcci" path="res://Audio/toy-button-105724.mp3" id="5_e45bu"]
 [ext_resource type="Texture2D" uid="uid://bpusdiymnam21" path="res://Textures/Red_Block_off.png" id="6_w27wk"]
@@ -167,12 +167,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db3sm"]
 _data = {
-"Camera_RESET": SubResource("Animation_ud57m"),
-"Camera_shake": SubResource("Animation_7fqny"),
-"Jump": SubResource("Animation_qfvbw"),
-"RESET": SubResource("Animation_11hxf"),
-"appear": SubResource("Animation_up8j3"),
-"disappear": SubResource("Animation_55nu1")
+&"Camera_RESET": SubResource("Animation_ud57m"),
+&"Camera_shake": SubResource("Animation_7fqny"),
+&"Jump": SubResource("Animation_qfvbw"),
+&"RESET": SubResource("Animation_11hxf"),
+&"appear": SubResource("Animation_up8j3"),
+&"disappear": SubResource("Animation_55nu1")
 }
 
 [node name="Player" type="CharacterBody2D"]

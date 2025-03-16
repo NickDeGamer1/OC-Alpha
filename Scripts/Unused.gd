@@ -1,5 +1,6 @@
 extends Node2D
 
+#-Removed HeroFaelyn
 
 @onready var anim = $AnimatedSprite2D
 var direction= "down"
@@ -23,4 +24,3 @@ func _on_area_2d_area_entered(area):
 			queue_free()
 		"Right":
 			queue_free()
-

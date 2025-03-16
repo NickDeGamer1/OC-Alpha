@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dpa16djchd7qv"]
 
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="1_4lb4b"]
-[ext_resource type="Script" path="res://Scripts/Water.gd" id="1_hd50b"]
+[ext_resource type="Script" uid="uid://c7cd2x52p4h0d" path="res://Scripts/Water.gd" id="1_hd50b"]
 [ext_resource type="AudioStream" uid="uid://djmn3pn00ayoq" path="res://Audio/Icy Wind part 2.mp3" id="3_63uas"]
 [ext_resource type="Material" uid="uid://xvys6kr48tkx" path="res://Textures/Shaders/Water.tres" id="3_mko0p"]
 

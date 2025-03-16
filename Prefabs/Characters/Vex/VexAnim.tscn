@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cfcwbbeghseex"]
 
 [ext_resource type="Texture2D" uid="uid://bhusol77ff7to" path="res://Textures/Normals/CharSpr.tres" id="1_y8lmr"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_5x4r1"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_5x4r1"]
 [ext_resource type="OccluderPolygon2D" uid="uid://ru4jleskqokw" path="res://Prefabs/Characters/Vex/Occluder/move_down0.tres" id="3_5smh4"]
 [ext_resource type="Texture2D" uid="uid://d4j45cimodbtq" path="res://Textures/VexEyelids.png" id="5_su6pt"]
 [ext_resource type="Texture2D" uid="uid://d2b104qyg248s" path="res://Textures/VexEyelidsOne.png" id="6_iuiqi"]
@@ -199,9 +199,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjbco"]
 _data = {
-"Talking_down": SubResource("Animation_63gml"),
-"Talking_left": SubResource("Animation_tujbm"),
-"Talking_right": SubResource("Animation_mvtjh")
+&"Talking_down": SubResource("Animation_63gml"),
+&"Talking_left": SubResource("Animation_tujbm"),
+&"Talking_right": SubResource("Animation_mvtjh")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]

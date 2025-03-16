@@ -1,5 +1,7 @@
 extends Node
 
+#MPmanager, multiplayer party information
+
 var Multip:bool = false
 var MPhost: bool = false
 var MPName:String

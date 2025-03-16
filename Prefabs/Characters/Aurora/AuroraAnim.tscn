@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bt3tepvjd8dxg"]
 
 [ext_resource type="Texture2D" uid="uid://cits5msaxqlc8" path="res://Textures/Normals/CharSpr2.tres" id="1_6w7lm"]
-[ext_resource type="Script" path="res://Scripts/Shadow.gd" id="2_7b1av"]
+[ext_resource type="Script" uid="uid://chfhla1herh4h" path="res://Scripts/Shadow.gd" id="2_7b1av"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dpo3oxbq0841b" path="res://Prefabs/Characters/Aurora/Occluder/move_up0.tres" id="3_h5mm3"]
 [ext_resource type="Texture2D" uid="uid://de47tykhiekpt" path="res://Textures/AuroraEyelids.png" id="4_8g1nj"]
 [ext_resource type="Texture2D" uid="uid://dnpn1mhyho83b" path="res://Textures/Gust.png" id="5_fh4uh"]
@@ -573,13 +573,13 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8s56"]
 _data = {
-"Talking_down": SubResource("Animation_4o5oe"),
-"Talking_left": SubResource("Animation_oq4dn"),
-"Talking_right": SubResource("Animation_j7s7g"),
-"wind_down": SubResource("Animation_gbulk"),
-"wind_left": SubResource("Animation_1th1d"),
-"wind_right": SubResource("Animation_k70bf"),
-"wind_up": SubResource("Animation_r07eu")
+&"Talking_down": SubResource("Animation_4o5oe"),
+&"Talking_left": SubResource("Animation_oq4dn"),
+&"Talking_right": SubResource("Animation_j7s7g"),
+&"wind_down": SubResource("Animation_gbulk"),
+&"wind_left": SubResource("Animation_1th1d"),
+&"wind_right": SubResource("Animation_k70bf"),
+&"wind_up": SubResource("Animation_r07eu")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]

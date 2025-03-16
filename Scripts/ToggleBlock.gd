@@ -1,5 +1,7 @@
 extends Area2D
 
+#Toggle block found in overworld
+
 @export var BlockColor: String
 
 func _ready():

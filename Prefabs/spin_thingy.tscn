@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdi2tompl2nia"]
 
-[ext_resource type="Script" path="res://Scripts/SpinThingy.gd" id="1_cf2dp"]
+[ext_resource type="Script" uid="uid://cpb8op6lh5sui" path="res://Scripts/SpinThingy.gd" id="1_cf2dp"]
 [ext_resource type="Texture2D" uid="uid://cgr4518ivq2qv" path="res://Textures/Wind_thing.png" id="2_mp75j"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dgly532s0y1fp" path="res://Prefabs/Occluders/SpinThingy0.tres" id="3_fxpxl"]
 [ext_resource type="AudioStream" uid="uid://cl5as3ljc87o0" path="res://Audio/gears-sounds.mp3" id="3_wpjub"]

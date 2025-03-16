@@ -1,5 +1,7 @@
 extends Area2D
 
+#One of many signs, Ill just comment this one, they all fallow the same rules
+
 @onready var Pla = get_node("../Party/Player")
 
 func interact():

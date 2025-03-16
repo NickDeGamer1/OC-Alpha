@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://btfs7qyf144ux"]
 
-[ext_resource type="Script" path="res://Scripts/TempSprite.gd" id="1_d4wbk"]
+[ext_resource type="Script" uid="uid://bpyn5eu82hkms" path="res://Scripts/TempSprite.gd" id="1_d4wbk"]
 [ext_resource type="PackedScene" uid="uid://ck84kbksaekej" path="res://Prefabs/shadow.tscn" id="4_puqmm"]
 
 [sub_resource type="Animation" id="Animation_11hxf"]
@@ -52,9 +52,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db3sm"]
 _data = {
-"RESET": SubResource("Animation_11hxf"),
-"appear": SubResource("Animation_up8j3"),
-"disappear": SubResource("Animation_55nu1")
+&"RESET": SubResource("Animation_11hxf"),
+&"appear": SubResource("Animation_up8j3"),
+&"disappear": SubResource("Animation_55nu1")
 }
 
 [node name="TempSprite" type="CharacterBody2D"]

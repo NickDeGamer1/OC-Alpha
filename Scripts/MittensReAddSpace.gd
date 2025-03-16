@@ -1,8 +1,10 @@
 extends Area2D
 
+#Re-adds Mittens to party if players step on space
+
 @onready var Spr = get_node("../../Party/TempSprite")
 
-func _on_area_entered(area):
+func _on_area_entered(area):#Stops party, sets mittens to walk to end of party and re add to party
 	if (area.name == "PlayerCollider") and get_parent().active:
 		await get_tree().create_timer(.5).timeout
 		get_node("../../Party/Player").cutscene = true

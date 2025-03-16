@@ -1,5 +1,7 @@
 extends Area2D
 
+#Faelyn's sing radius
+
 var active: bool = false
 var octive = 3
 
@@ -11,10 +13,10 @@ var GlassObj = []
 
 signal end
 
-func RemoveObj():
+func RemoveObj():#Clears list of GlassObj
 	GlassObj = []
 
-func Activate():
+func Activate():#Start looking for walls
 	active = true
 	visible = true
 	if OptionsSingleton.Touch:
@@ -29,7 +31,7 @@ func Activate():
 			GlassObj.push_back(entity)
 	await Signal(self, 'end')
 
-func _input(event):
+func _input(event):#if singing, listen for pitch changes
 	if !get_node("../../../").name.contains("MP") and GameSingleton.CharList.has("Faelyn") and active:
 		if event.is_action_pressed("Pitch_up") and active:
 			Pitch("up")
@@ -39,7 +41,7 @@ func _input(event):
 			endSing()
 
 
-func Pitch(dir):
+func Pitch(dir):#Sets new pitch
 	if dir == "up":
 		octive+=1
 		if (octive > 5):
@@ -57,7 +59,7 @@ func Pitch(dir):
 			if get_node_or_null("../../../../../MultiplayerManager") != null:
 				get_node("../../../../../MultiplayerManager").PitchDownL(octive)
 
-func endSing():
+func endSing():#Stops singing
 	visible = false
 	active = false
 	sendExit()
@@ -72,7 +74,7 @@ func endSing():
 	if get_node_or_null("../../../../../MultiplayerManager") != null:
 		get_node("../../../../../MultiplayerManager").endSingL()
 
-func updatePitch(Scale):
+func updatePitch(Scale):#Sets pitch of audio and anim
 	var tween = create_tween()
 	match Scale:
 		1:
@@ -97,10 +99,10 @@ func updatePitch(Scale):
 			plaAnim.play("Sing_up_End")
 	sendOct()
 
-func sendOct():
+func sendOct():#Broadcasts pitch
 	for Glass in GlassObj:
 		Glass.Break(octive)
 
-func sendExit():
+func sendExit():#Broadcasts end
 	for Glass in GlassObj:
 		Glass.exit()

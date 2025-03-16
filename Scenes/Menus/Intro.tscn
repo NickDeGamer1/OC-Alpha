@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5awhjnqsqkih"]
 
-[ext_resource type="Script" path="res://Intro/Intro.gd" id="1_0hxju"]
-[ext_resource type="VideoStream" path="res://Intro/Mimi-Intro-2.ogv" id="3_72af4"]
+[ext_resource type="Script" uid="uid://dc8elp364gtuj" path="res://Intro/Intro.gd" id="1_0hxju"]
+[ext_resource type="VideoStream" uid="uid://klxm0cf4gt86" path="res://Intro/Mimi-Intro-2.ogv" id="3_72af4"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="3_m205i"]
 
 [sub_resource type="Animation" id="Animation_0ela4"]
@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ugeb0"]
 _data = {
-"LabelAppear": SubResource("Animation_0ela4")
+&"LabelAppear": SubResource("Animation_0ela4")
 }
 
 [node name="Control" type="Control"]
@@ -36,7 +36,7 @@ script = ExtResource("1_0hxju")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ugeb0")
+&"": SubResource("AnimationLibrary_ugeb0")
 }
 
 [node name="Control" type="Control" parent="."]

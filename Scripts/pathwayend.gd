@@ -1,5 +1,6 @@
 extends "res://Scripts/Pathway.gd"
 
+#Why did i keep doing this?!?
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

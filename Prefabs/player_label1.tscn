@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw7f1ysrphh38"]
 
-[ext_resource type="Script" path="res://Scripts/player_label1.gd" id="1_5xvbe"]
+[ext_resource type="Script" uid="uid://u78nwf4b08lw" path="res://Scripts/player_label1.gd" id="1_5xvbe"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_pogxo"]
 
 [node name="PlayerLabel1" type="HBoxContainer"]

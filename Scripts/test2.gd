@@ -9,7 +9,7 @@ func _ready():
 	GameSingleton.Location = "Test2"
 	var music: String
 	
-	if OptionsSingleton.Hypercam2:
+	if OptionsSingleton.Hypercam2:#If hypercam, play music
 		get_node("Party/Player/MusicPlayer").stream = load("res://Audio/Trinity (Remastered).wav")
 		$Party/CLUI/Hypercam.visible = true
 		music = "Trinity (Remastered)"
@@ -20,6 +20,8 @@ func _ready():
 	get_node("Party/Player/MusicPlayer").play(GameSingleton.musicTime)
 	Pla.cutscene = true
 	get_node("Party/CLUI/ColorRect/AnimationPlayer").play("FadeFromBlack")
+	
+	#Play cutscene
 	await get_node("Party/CLUI/ColorRect/AnimationPlayer").animation_finished
 	var i = 0
 	while i <= 8:

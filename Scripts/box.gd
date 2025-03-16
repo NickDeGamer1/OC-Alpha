@@ -7,7 +7,7 @@ var OnFire:bool = false
 var broken: bool = false
 
 func Break():
-	if !broken:
+	if !broken:#Plays animation and destroys block
 		$CollisionShape2D.disabled = true
 		$Sprite2D.visible = false
 		$CPUParticles2D.emitting = true
@@ -17,7 +17,7 @@ func Break():
 		broken = true
 
 
-func interact():
+func interact():#Easter egg for Shibe's fire
 	if GameSingleton.CharList[0] == "Shibe" and !OnFire:
 		Pla.get_node("EncloseSPR/AnimatedSprite2D/AnimationPlayer2").play("Light_" + Pla.direction)
 		await Pla.get_node("EncloseSPR/AnimatedSprite2D/AnimationPlayer2").animation_finished
@@ -29,7 +29,7 @@ func interact():
 				$AnimationPlayer.play("light")
 			$FireSound.play()
 			await Pla.Diologue("Vex", "neutral", "Aww... I was gonna break those...")
-			await Pla.Diologue("Shibe", "Neutral", "Arson :)")
+			await Pla.Diologue("Shibe", "Neutral", "Arson :)")#Arson :)
 			Pla.EndDiologue()
 		SetFire()
 	else:
@@ -38,18 +38,18 @@ func interact():
 
 func SetFire():
 	if !OnFire:
-		OnFire = true
+		OnFire = true#sets on fire
 		$AnimatedSprite2D.visible = true
 		$AnimatedSprite2D.play("Fire")
 		if (OptionsSingleton.Shadows == 0):
 			$PointLight2D.visible = true
 			$AnimationPlayer.play("light")
 		$FireSound.play()
-		$Timer.start()
+		$Timer.start()#Waits a certan time
 		await $Timer.timeout
 		var i = 1
 		while i < 5:
-			get_node("RayCast2D" + str(i)).force_raycast_update()
+			get_node("RayCast2D" + str(i)).force_raycast_update()#Sets other flamable objects on fire
 			if get_node("RayCast2D" + str(i)).is_colliding():
 				if get_node("RayCast2D" + str(i)).get_collider().name.contains("Wood"):
 					get_node("RayCast2D" + str(i)).get_collider().SetFire()
@@ -58,7 +58,7 @@ func SetFire():
 		await $Timer.timeout
 		Burnt()
 
-func Burnt():
+func Burnt():#turns collision off and deletes
 	$Sprite2D.visible = false
 	$AnimationPlayer.stop()
 	$AnimatedSprite2D.visible = false

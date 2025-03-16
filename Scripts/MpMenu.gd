@@ -1,9 +1,11 @@
 extends Control
 
+#MpMenu code for the multiplayer menu
+
 @warning_ignore("unused_signal")
 signal ErrOkSig
 
-func _ready():
+func _ready():#Sets up multiplayer instance
 	GameSingleton.CharList.clear()
 	MpManager.Multip = true
 	$CenterContainer/MPType.visible = true
@@ -17,15 +19,15 @@ func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
 
-func _on_online_pressed():
+func _on_online_pressed():#Goes to online
 	$CenterContainer/MPType.visible = false
 	$CenterContainer/NameInput.visible = true
 	$CenterContainer/NameInput/VBoxContainer/Nameinput.grab_focus()
 
-func _on_back_button_pressed():
+func _on_back_button_pressed():#Goes back to main menu
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
-func _on_host_button_pressed():
+func _on_host_button_pressed():#Sets up player as host, creates peer host
 	MpManager.MPhost = true
 	$CenterContainer/OnlMP.visible = false
 	$CenterContainer/PlayersList.visible = true
@@ -43,14 +45,15 @@ func _on_host_button_pressed():
 	multiplayer.set_multiplayer_peer(MpManager.peer)
 	SendPlayerInfo(MpManager.MPName, multiplayer.get_unique_id(), "Alex")
 
-func _on_join_button_pressed():
+func _on_join_button_pressed():#Goes to join menu
 	$CenterContainer/OnlMP.visible = false
 	$CenterContainer/PlayersList/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/SelfDisplay.IsServer(false)
 	$CenterContainer/IPInput.visible = true
 	$CenterContainer/IPInput/VBoxContainer/GetIP.grab_focus()
 	
 
-func _on_nameinput_text_submitted(new_text):
+
+func _on_nameinput_text_submitted(new_text):#gets name and goes to Online screen
 	MpManager.MPName = new_text
 	$CenterContainer/NameInput.visible = false
 	$CenterContainer/OnlMP.visible = true
@@ -60,7 +63,7 @@ func _on_nameinput_text_submitted(new_text):
 #server and clients
 func peer_connected(_id):
 	pass
-
+#Resets disconnected players
 func peer_disconnected(id):
 	MpManager.Players.erase(id)
 	for h in get_tree().get_nodes_in_group("PDisplay"):
@@ -73,11 +76,13 @@ func connected_to_server():
 	SendPlayerInfo.rpc_id(1, MpManager.MPName, multiplayer.get_unique_id(), "Alex")
 	$CenterContainer/PlayersList/VBoxContainer/MarginContainer/CenterContainer.visible = false
 
+#Failed to connect
 func connection_failed():
 	MpManager.Kicked = true
 	MpManager.KR = "Connection Failed"
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
+#Sends all player info
 @rpc("any_peer")
 func SendPlayerInfo(nameI, id, CC):
 	if !MpManager.Players.has(id):
@@ -102,6 +107,7 @@ func SendPlayerInfo(nameI, id, CC):
 			SendPlayerInfo.rpc(MpManager.Players[i].name, i, MpManager.Players[i].CC)
 	FillName.rpc(id)
 
+#Fills name on player list
 @rpc("any_peer", "call_local")
 func FillName(i):
 	for q in $CenterContainer/PlayersList/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer.get_children():
@@ -119,6 +125,7 @@ func FillName(i):
 				q.visible = true
 				break
 
+#Sends info to others
 @rpc("any_peer",  "call_local")
 func UpdateOthers(Pname, inpN):
 	for i in $CenterContainer/PlayersList/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer.get_children():
@@ -128,15 +135,17 @@ func UpdateOthers(Pname, inpN):
 					MpManager.Players[q].CC = inpN
 			i.setChar(inpN)
 	
-
+#Goes to MPTest
 @rpc("any_peer", "call_local")
 func start_game():
 	GameSingleton.CharList.push_back($CenterContainer/PlayersList/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/SelfDisplay.CName)
 	get_tree().change_scene_to_file("res://Scenes/Levels/Mptest1.tscn")
 
+#calls start game
 func _on_start_button_pressed():
 	start_game.rpc()
 
+#Gets IP and connects, goes to player list
 func _on_get_ip_text_submitted(new_text):
 	MpManager.ip = new_text
 	$CenterContainer/IPInput.visible = false
@@ -148,11 +157,13 @@ func _on_get_ip_text_submitted(new_text):
 	MpManager.peer.get_host().compress(ENetConnection.COMPRESS_NONE)
 	multiplayer.set_multiplayer_peer(MpManager.peer)
 
+#Kicks player
 func KickPlayer(i):
 	Kick.rpc_id(i, "Kicked by Host")
 	await get_tree().create_timer(.5).timeout
 	MpManager.peer.disconnect_peer(i, false)
 
+#Removes player from local list
 @rpc("call_local")
 func Kick(Reason:String):
 	MpManager.Multip = false
@@ -162,6 +173,7 @@ func Kick(Reason:String):
 	MpManager.KR = Reason
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
+#Input for controllers
 func _input(event):
 	if event.is_action_pressed("interact") and event.is_action_pressed("ControllerInput") and$CenterContainer/PlayersList.visible == true and !$CenterContainer/PlayersList/MarginContainer/StartButton.disabled:
 		start_game.rpc()

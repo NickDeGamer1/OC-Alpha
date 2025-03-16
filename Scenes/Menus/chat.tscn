@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cd5uikvp2omf1"]
 
-[ext_resource type="Script" path="res://Scripts/Chat.gd" id="1_3pofs"]
+[ext_resource type="Script" uid="uid://djdkwm2fdogap" path="res://Scripts/Chat.gd" id="1_3pofs"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="2_7hqpf"]
 [ext_resource type="PackedScene" uid="uid://c85ymlane2eem" path="res://Scenes/Menus/ChatInput.tscn" id="2_njjp8"]
 
@@ -181,11 +181,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r46oi"]
 _data = {
-"MakeInvisible": SubResource("Animation_v57a4"),
-"MakeInvisibleWithoutDio": SubResource("Animation_kq6qv"),
-"MakeVisible": SubResource("Animation_p3kdw"),
-"MakeVisibleWithoutDio": SubResource("Animation_akxea"),
-"RESET": SubResource("Animation_uybok")
+&"MakeInvisible": SubResource("Animation_v57a4"),
+&"MakeInvisibleWithoutDio": SubResource("Animation_kq6qv"),
+&"MakeVisible": SubResource("Animation_p3kdw"),
+&"MakeVisibleWithoutDio": SubResource("Animation_akxea"),
+&"RESET": SubResource("Animation_uybok")
 }
 
 [node name="Chat" type="Control"]

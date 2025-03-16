@@ -1,5 +1,7 @@
 extends Area2D
 
+#Mittens bridge
+
 var rng = RandomNumberGenerator.new()
 var blinknum: int = rng.randi_range(3,5)
 var blinktime= 0
@@ -9,12 +11,12 @@ var direction:String = "none"
 @export var active:bool = false
 @export var canBlink: bool = true
 
-func _process(delta):
+func _process(delta):#Blinks
 	blinktime += delta
 	if blinktime > blinknum and canBlink and active:
 		blink()
 
-func blink():
+func blink():#Mittens blinks
 	if !Solo:
 		$Face1.visible = false
 		$Face2.visible = true
@@ -24,7 +26,7 @@ func blink():
 		blinknum = rng.randi_range(3,5)
 		blinktime = 0
 
-func interact():
+func interact():#If mittens, have mittens walk to bridge and play animation, if solo make them be able to cross
 	if GameSingleton.CharList[0] == "Mittens":
 		if !active:
 			active = true
@@ -124,7 +126,7 @@ func MPreturn(ID):
 				q.get_node("CollisionShape2D").disabled = false
 		active = false
 
-func _on_face_area_area_entered(area):
+func _on_face_area_area_entered(area):#Mittens blinks when players are on face
 	if (area.name == "PlayerCollider") or (area.name == "PMCollider"):
 		canBlink = false
 		$Face1.visible = false
@@ -137,7 +139,7 @@ func _on_face_area_area_exited(area):
 		$Face2.visible = false
 
 func _input(event):
-	if Solo:
+	if Solo:#if solo, have player able to move to other side
 		if event.is_action_pressed("move_left"):
 			$Face1.visible = false
 			$FaceL.visible = true

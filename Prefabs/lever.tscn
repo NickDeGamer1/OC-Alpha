@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvav3go83v4cn"]
 
-[ext_resource type="Script" path="res://Scripts/Lever.gd" id="1_4eppj"]
+[ext_resource type="Script" uid="uid://cxy08k0glbqp6" path="res://Scripts/Lever.gd" id="1_4eppj"]
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="2_d50mk"]
 [ext_resource type="Texture2D" uid="uid://cl0cssmtjtev5" path="res://Textures/light.png" id="3_1mta4"]
 [ext_resource type="PackedScene" uid="uid://d1f5afm1uun61" path="res://Prefabs/corrode.tscn" id="4_ohqes"]

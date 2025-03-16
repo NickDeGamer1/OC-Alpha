@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bpax7tiyjugm5"]
 
 [ext_resource type="FontFile" uid="uid://b4epnfmtr82tw" path="res://Misc/ocFont.otf" id="1_oldup"]
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_uu6fv"]
+[ext_resource type="Script" uid="uid://0387nm6peicb" path="res://Scripts/MainMenu.gd" id="1_uu6fv"]
 [ext_resource type="Texture2D" uid="uid://c7oao5oi1k4o5" path="res://Textures/Original_Campaign_Logo.png" id="3_ixqqn"]
 [ext_resource type="PackedScene" uid="uid://b3j6gas5xlx1w" path="res://Prefabs/discord_menu_manager.tscn" id="4_aethh"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="5_s5lhj"]
@@ -258,11 +258,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jq0ex"]
 _data = {
-"Menu1Appear": SubResource("Animation_crfjn"),
-"Menu1Disappear": SubResource("Animation_1yxsm"),
-"Menu1JustTextAppear": SubResource("Animation_w3g3d"),
-"Menu2Appear": SubResource("Animation_pb71g"),
-"Menu2Disappear": SubResource("Animation_5kvpy")
+&"Menu1Appear": SubResource("Animation_crfjn"),
+&"Menu1Disappear": SubResource("Animation_1yxsm"),
+&"Menu1JustTextAppear": SubResource("Animation_w3g3d"),
+&"Menu2Appear": SubResource("Animation_pb71g"),
+&"Menu2Disappear": SubResource("Animation_5kvpy")
 }
 
 [sub_resource type="Animation" id="Animation_hcawj"]
@@ -284,7 +284,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0iytt"]
 _data = {
-"Splash": SubResource("Animation_hcawj")
+&"Splash": SubResource("Animation_hcawj")
 }
 
 [node name="MainMenu" type="Control"]
@@ -307,12 +307,12 @@ color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="MenuAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jq0ex")
+&"": SubResource("AnimationLibrary_jq0ex")
 }
 
 [node name="SplashAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0iytt")
+&"": SubResource("AnimationLibrary_0iytt")
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -419,8 +419,8 @@ pivot_offset = Vector2(210.294, 52.887)
 focus_mode = 0
 theme = ExtResource("5_s5lhj")
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "MissingNo"
 flat = true

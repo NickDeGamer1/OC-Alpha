@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5j6nj3eiqcav"]
 
-[ext_resource type="Script" path="res://Prefabs/exit.gd" id="1_3vvtn"]
+[ext_resource type="Script" uid="uid://bxyle6f4okm8j" path="res://Prefabs/exit.gd" id="1_3vvtn"]
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="1_ltbag"]
 [ext_resource type="AudioStream" uid="uid://bv1impex14kuc" path="res://Audio/Click.mp3" id="2_mrotg"]
 
@@ -56,7 +56,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_odhoc"]
 _data = {
-"Dis": SubResource("Animation_s5j8o")
+&"Dis": SubResource("Animation_s5j8o")
 }
 
 [node name="Exit" type="Area2D"]

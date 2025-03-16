@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b61ukip0pgogu"]
 
-[ext_resource type="Script" path="res://Scripts/GlassWall.gd" id="1_si125"]
+[ext_resource type="Script" uid="uid://h8h1lsjt0fxp" path="res://Scripts/GlassWall.gd" id="1_si125"]
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="2_armti"]
 [ext_resource type="AudioStream" uid="uid://dj4pf754q1ech" path="res://Audio/GlassBreak.mp3" id="3_x35hw"]
 [ext_resource type="Texture2D" uid="uid://dmc61mnjdckhn" path="res://Textures/particle.png" id="4_g2v1v"]
@@ -98,9 +98,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7efks"]
 _data = {
-"RESET": SubResource("Animation_au7np"),
-"Shatter": SubResource("Animation_vkcfw"),
-"shake": SubResource("Animation_i02v4")
+&"RESET": SubResource("Animation_au7np"),
+&"Shatter": SubResource("Animation_vkcfw"),
+&"shake": SubResource("Animation_i02v4")
 }
 
 [node name="GlassWall" type="Area2D"]

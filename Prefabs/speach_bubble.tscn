@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://u4xr8ki4ki8m"]
 
-[ext_resource type="Script" path="res://Scripts/speach_bubble.gd" id="1_ykbli"]
+[ext_resource type="Script" uid="uid://cm37o06qlv5fk" path="res://Scripts/speach_bubble.gd" id="1_ykbli"]
 [ext_resource type="Texture2D" uid="uid://bup8nljg5dgwl" path="res://Misc/TextBubble.tres" id="2_mgbt0"]
 [ext_resource type="Texture2D" uid="uid://bgccry11we4uv" path="res://Textures/Text_Bubble.png" id="2_r2yf2"]
 [ext_resource type="Texture2D" uid="uid://cx6hcsddjrkef" path="res://Prefabs/Characters/Alex/TextSprites/AlexImage.jpeg" id="2_uj1xc"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="3_ucdj3"]
-[ext_resource type="Script" path="res://Scripts/HoverScript.gd" id="5_62qeu"]
+[ext_resource type="Script" uid="uid://bqd5n8veeaelk" path="res://Scripts/HoverScript.gd" id="5_62qeu"]
 [ext_resource type="Texture2D" uid="uid://5y66tuuphy3g" path="res://Textures/Arrow.png" id="5_nnwa1"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_sgnka"]
@@ -230,10 +230,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snco7"]
 _data = {
-"Appear": SubResource("Animation_8trq8"),
-"Disappear": SubResource("Animation_y3g8x"),
-"RESET": SubResource("Animation_km8vf"),
-"Wait": SubResource("Animation_84xnl")
+&"Appear": SubResource("Animation_8trq8"),
+&"Disappear": SubResource("Animation_y3g8x"),
+&"RESET": SubResource("Animation_km8vf"),
+&"Wait": SubResource("Animation_84xnl")
 }
 
 [node name="SpeachBubble" type="Control"]

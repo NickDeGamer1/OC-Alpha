@@ -1,5 +1,7 @@
 extends Node2D
 
+#Test1, map 1
+
 @onready var Pla = $Party/Player
 var Save_path = "user://"
 var fileName = "OCWorldSave.tres"
@@ -7,7 +9,7 @@ var fileName = "OCWorldSave.tres"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if OptionsSingleton.lastScene.contains("test2"):
+	if OptionsSingleton.lastScene.contains("test2"):#if last on test2
 		get_node("Party/Player").cutscene = true
 		get_node("Party").position = get_node("Area2D").position
 	OptionsSingleton.lastScene = "res://Scenes/Levels/test1.tscn"
@@ -15,7 +17,7 @@ func _ready():
 	GameSingleton.Location = "Test1"
 	var music: String
 	
-	if OptionsSingleton.Hypercam2:
+	if OptionsSingleton.Hypercam2:#If hypercam, play music and turn on setting
 		get_node("Party/Player/MusicPlayer").stream = load("res://Audio/Trinity (Remastered).wav")
 		$Party/CLUI/Hypercam.visible = true
 		music = "Trinity (Remastered)"
@@ -31,9 +33,9 @@ func _ready():
 		await get_tree().create_timer(.5).timeout
 		get_node("Party/Player").cutscene = false
 
-func unused():
+func unused():#This is unused
 	var rng = RandomNumberGenerator.new()
-	var rand = rng.randi_range(1,1000)
+	var rand = rng.randi_range(1,825)
 	if rand == 420:
 		var x = rng.randi_range(-10,10)
 		var y = rng.randi_range(-10,10)

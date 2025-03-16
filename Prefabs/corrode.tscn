@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1f5afm1uun61"]
 
-[ext_resource type="Script" path="res://Scripts/corrode.gd" id="1_qb0tm"]
+[ext_resource type="Script" uid="uid://b5hl44h65834d" path="res://Scripts/corrode.gd" id="1_qb0tm"]
 [ext_resource type="Texture2D" uid="uid://b48o5yfqb3nl6" path="res://Textures/Corroded.png" id="1_rfjpe"]
 [ext_resource type="Texture2D" uid="uid://buwwjq5qqnjb7" path="res://Textures/Sparkle.png" id="2_5jfc1"]
 
@@ -73,7 +73,7 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b8iic"]
 _data = {
-"clean": SubResource("Animation_f1y2y")
+&"clean": SubResource("Animation_f1y2y")
 }
 
 [node name="Corrode" type="Node2D"]

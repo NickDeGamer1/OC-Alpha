@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3j6gas5xlx1w"]
 
-[ext_resource type="Script" path="res://Scripts/Discord_Menu_Manager.gd" id="1_mpiqe"]
+[ext_resource type="Script" uid="uid://dfhijce3c3npv" path="res://Scripts/Discord_Menu_Manager.gd" id="1_mpiqe"]
 
 [node name="DiscordMenuManager" type="Node"]
 script = ExtResource("1_mpiqe")

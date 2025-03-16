@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cguc8nirq7g5g"]
 
-[ext_resource type="Script" path="res://Scripts/MikeMiniUI.gd" id="1_vft1y"]
+[ext_resource type="Script" uid="uid://d2mbj5lfxfl3o" path="res://Scripts/MikeMiniUI.gd" id="1_vft1y"]
 [ext_resource type="Texture2D" uid="uid://bv1go84p4gdao" path="res://Textures/UI_Bubble.png" id="2_re685"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="3_uw4qb"]
 [ext_resource type="Texture2D" uid="uid://d14bdw0o47b2w" path="res://Textures/maze.jpg" id="4_ci6fe"]
@@ -20,6 +20,37 @@ size = Vector2(838.25, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjngd"]
 size = Vector2(46, 59)
+
+[sub_resource type="Animation" id="Animation_f3f0h"]
+resource_name = "Jumpscare"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Maze:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.87,
+"start_offset": 0.0,
+"stream": ExtResource("5_f2mab")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_u6mp6"]
 resource_name = "Start"
@@ -77,42 +108,11 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_f3f0h"]
-resource_name = "Jumpscare"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Maze:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 2.87,
-"start_offset": 0.0,
-"stream": ExtResource("5_f2mab")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bt0js"]
 _data = {
-"Jumpscare": SubResource("Animation_f3f0h"),
-"Start": SubResource("Animation_u6mp6"),
-"end": SubResource("Animation_jenkb")
+&"Jumpscare": SubResource("Animation_f3f0h"),
+&"Start": SubResource("Animation_u6mp6"),
+&"end": SubResource("Animation_jenkb")
 }
 
 [node name="MikeMiniUI" type="Control"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://b5k57tluby2nm"]
 
 [ext_resource type="TileSet" uid="uid://dyooo0wfl0uxl" path="res://Misc/PItestF.tres" id="1_1wog1"]
-[ext_resource type="Script" path="res://Scripts/test2.gd" id="1_5mv5l"]
+[ext_resource type="Script" uid="uid://cyjt28r60iasf" path="res://Scripts/test2.gd" id="1_5mv5l"]
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="2_ojf8e"]
 [ext_resource type="PackedScene" uid="uid://vlcwvxj3avsl" path="res://Prefabs/Party.tscn" id="3_elweu"]
-[ext_resource type="Script" path="res://Scenes/Levels/Ladder.gd" id="3_fmjss"]
+[ext_resource type="Script" uid="uid://d4nx0ivly7ltu" path="res://Scenes/Levels/Ladder.gd" id="3_fmjss"]
 [ext_resource type="PackedScene" uid="uid://42iek8r25l0q" path="res://Prefabs/discord_manager.tscn" id="5_ofx3l"]
 [ext_resource type="PackedScene" uid="uid://c5j6nj3eiqcav" path="res://Prefabs/exit.tscn" id="6_agomc"]
 [ext_resource type="AudioStream" uid="uid://bv1impex14kuc" path="res://Audio/Click.mp3" id="8_8xyuk"]
@@ -69,7 +69,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83sfv"]
 _data = {
-"Fall": SubResource("Animation_gmmkr")
+&"Fall": SubResource("Animation_gmmkr")
 }
 
 [node name="Test2" type="Node2D"]

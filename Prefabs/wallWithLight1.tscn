@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ckdhes2x7ec1o"]
 
-[ext_resource type="Script" path="res://Scripts/wallWithLight.gd" id="1_h16p8"]
+[ext_resource type="Script" uid="uid://dm44f2qeuobc3" path="res://Scripts/wallWithLight.gd" id="1_h16p8"]
 [ext_resource type="Texture2D" uid="uid://bmqa78gctx3ec" path="res://Textures/worldSprites.png" id="2_gy80k"]
 [ext_resource type="AudioStream" uid="uid://bbrose1n8fiu2" path="res://Audio/Light_sound.mp3" id="3_hthrk"]
 
@@ -98,9 +98,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56cfh"]
 _data = {
-"Enter": SubResource("Animation_js57u"),
-"Exit": SubResource("Animation_6ilf8"),
-"RESET": SubResource("Animation_glxu8")
+&"Enter": SubResource("Animation_js57u"),
+&"Exit": SubResource("Animation_6ilf8"),
+&"RESET": SubResource("Animation_glxu8")
 }
 
 [sub_resource type="Animation" id="Animation_mnx27"]
@@ -222,8 +222,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_itxli"]
 _data = {
-"Flicker": SubResource("Animation_mnx27"),
-"RESET": SubResource("Animation_dabck")
+&"Flicker": SubResource("Animation_mnx27"),
+&"RESET": SubResource("Animation_dabck")
 }
 
 [node name="wallWithLight" type="Area2D"]

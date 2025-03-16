@@ -1,5 +1,7 @@
 extends Node
 
+#Saves all options
+
 var lastScene: String = "res://Scenes/Menus/MainMenu.tscn"
 
 var TitleAnim: bool = true
@@ -20,4 +22,4 @@ var ScreenShake:bool = true
 var DispPing:bool = false
 var Banter: bool = true
 var BanterFreq: int = 30
-var ver:String = "Alpha 1"
+var ver:String = "Alpha 1.1"

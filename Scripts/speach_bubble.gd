@@ -1,5 +1,7 @@
 extends Control
 
+#Speach bubble for UI
+
 @onready var Distext = $NinePatchRect/MarginContainer/HBoxContainer/DisText
 @onready var Chatext = $NameRect/MarginContainer/CharText
 @onready var Pic = $NinePatchRect/MarginContainer/HBoxContainer/TextureRect
@@ -13,20 +15,20 @@ var Text2:bool = true
 func _ready():
 	pass
 
-func appear():
+func appear():#Plays appearing animation
 	Distext.text = ""
 	visible = true
 	$AnimationPlayer.play("Appear")
 	await $AnimationPlayer.animation_finished
 
-func disapear():
+func disapear():#Plays disappearing animartion
 	$AnimationPlayer.play("Disappear")
 	await $AnimationPlayer.animation_finished
 	visible = false
 	Distext.text = ""
 	Chatext.text = ""
 
-func updateText(ChInp,emo,inp):
+func updateText(ChInp,emo,inp):#Sets text, sprite and emotion
 	Pic.texture = load("res://Prefabs/Characters/" + ChInp + "/TextSprites/" + ChInp + emo + ".png")
 	if Pic.texture == null:
 		Pic.texture = load("res://Prefabs/Characters/" + ChInp + "/TextSprites/" + ChInp + "Image.jpeg")
@@ -43,14 +45,14 @@ func updateText(ChInp,emo,inp):
 	Chatext.text = ChInp
 	await updateJustText(inp, true)
 
-func updateTextE(ChInp,_emo,inp):
+func updateTextE(ChInp,_emo,inp):#Sets text, sprite and emotion, does not wait to continue
 	Pic.texture = load("res://Prefabs/Characters/" + ChInp + "/TextSprites/" + ChInp + "Image.jpeg")
 	Distext.text = ""
 	$NameRect.visible = true
 	Chatext.text = ChInp
 	await updateJustText(inp, false)
 
-func NPupdateText(File, inp):
+func NPupdateText(File, inp):#sets sprite and text
 	$NameRect.visible = false
 	Distext.text = ""
 	if (File != null):
@@ -59,7 +61,7 @@ func NPupdateText(File, inp):
 		Pic.texture = null
 	await updateJustText(inp, true)
 
-func NPupdateTextE(File, inp):
+func NPupdateTextE(File, inp):#Sets sprite and text, does not wait to continue
 	$NameRect.visible = false
 	Distext.text = ""
 	if (File != null):
@@ -68,7 +70,7 @@ func NPupdateTextE(File, inp):
 		Pic.texture = null
 	await updateJustText(inp, false)
 
-func updateJustText(inp: String, e: bool):
+func updateJustText(inp: String, e: bool):#Loops through text, adds to UI
 	$NinePatchRect/Arrow.visible = false
 	var DispText:String
 	if !visible:
@@ -77,12 +79,12 @@ func updateJustText(inp: String, e: bool):
 	var let = 0
 	scrolling = true
 	while (let < inp.length()):
-		if inp[let] == '[' and Text2:
+		if inp[let] == '[' and Text2:#Skips bbcode
 			Text1 = false
 		elif inp[let] == ']' and Text2:
 			Text1 = true
 		if inp[let] == '|':
-			print(true)
+			#print(true)
 			if Text2:
 				Text2 = false
 			else:
@@ -122,15 +124,14 @@ func updateJustText(inp: String, e: bool):
 		await Signal(self, 'Finished')
 	
 
-func _input(event):
+func _input(event):#Skips dio
 	if event.is_action_pressed("skip"):
 		if scrolling and visible:
 			skipText()
 		elif visible:
 			end()
 
-func startDio(n):
-	
+func startDio(n):#Plays talking anim
 	if get_node_or_null("../../Player") != null and numberinArray >= 0:
 		match n:
 			0:
@@ -140,7 +141,7 @@ func startDio(n):
 				if get_node("../../PartyMember"+ str(numberinArray)).direction != "up":
 					get_node("../../PartyMember"+ str(numberinArray) + "/AnimatedSprite2D/AnimationPlayer").play("Talking_" + get_node("../../PartyMember"+ str(numberinArray)).direction)
 
-func loadCont(But:String):
+func loadCont(But:String):#Displays button icon
 	var outp:String = "res://Textures/ControllerButtons/"
 	match OptionsSingleton.ConType:
 		0:#Xbox
@@ -156,7 +157,7 @@ func loadCont(But:String):
 	
 	return outp + But + ".png"
 
-func endDio(n):
+func endDio(n):#Finishes diologue
 	if get_node_or_null("../../Player/EncloseSPR/AnimatedSprite2D/AnimationPlayer") != null and numberinArray >= 0:
 		match n:
 			0:
@@ -170,7 +171,7 @@ func endDio(n):
 				get_node("../../PartyMember"+ str(numberinArray) + "/AnimatedSprite2D/MouthL").visible = false
 				get_node("../../PartyMember"+ str(numberinArray) + "/AnimatedSprite2D/MouthR").visible = false
 
-func end():
+func end():#Emits end signal
 	Finished.emit()
 
 func skipText():

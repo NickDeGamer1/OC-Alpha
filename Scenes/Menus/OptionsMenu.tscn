@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://6k04fg36m4jw"]
 
-[ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1_4xrll"]
+[ext_resource type="Script" uid="uid://burt3lj6qjo2j" path="res://Scripts/OptionsMenu.gd" id="1_4xrll"]
 [ext_resource type="Theme" uid="uid://1cxfhyrtntpc" path="res://Prefabs/Themes/OC_theme.tres" id="1_k65yt"]
 [ext_resource type="Texture2D" uid="uid://diugma7htyb5a" path="res://Textures/XboxIcon.png" id="3_i1bql"]
 [ext_resource type="Texture2D" uid="uid://cme4mvhs6kq2s" path="res://Textures/PSIcon.png" id="4_5hrr0"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b1y15r3s1bhx2" path="res://Textures/WiiUIcon.png" id="7_rs6qe"]
 [ext_resource type="Texture2D" uid="uid://boubhccyf11yu" path="res://Textures/WiiIcon.png" id="8_ry2om"]
 [ext_resource type="Texture2D" uid="uid://cnwq2bykrhg2r" path="res://Textures/Dreamcast.png" id="9_l7mtv"]
-[ext_resource type="Script" path="res://Scripts/UId.gd" id="9_ustc1"]
+[ext_resource type="Script" uid="uid://dl8p75ahcvvuo" path="res://Scripts/UId.gd" id="9_ustc1"]
 
 [sub_resource type="Animation" id="Animation_511jo"]
 resource_name = "DisplayKBM"
@@ -136,9 +136,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5788"]
 _data = {
-"DisplayKBM": SubResource("Animation_511jo"),
-"FinishDisplay": SubResource("Animation_0ue1y"),
-"SwitchToController": SubResource("Animation_c2w07")
+&"DisplayKBM": SubResource("Animation_511jo"),
+&"FinishDisplay": SubResource("Animation_0ue1y"),
+&"SwitchToController": SubResource("Animation_c2w07")
 }
 
 [node name="Options" type="Control"]
@@ -225,6 +225,7 @@ theme_override_font_sizes/font_size = 15
 selected = 0
 item_count = 1
 popup/item_0/text = "Auto"
+popup/item_0/id = 0
 
 [node name="FullCheckBox" type="CheckBox" parent="ColorRect/MarginContainer/ColorRect/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -246,6 +247,7 @@ theme_override_font_sizes/font_size = 15
 selected = 0
 item_count = 2
 popup/item_0/text = "High Detail"
+popup/item_0/id = 0
 popup/item_1/text = "Low Detail"
 popup/item_1/id = 1
 
@@ -561,7 +563,7 @@ texture = ExtResource("7_1blc1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p5788")
+&"": SubResource("AnimationLibrary_p5788")
 }
 
 [node name="UI" type="Control" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://go6fia2e17wj"]
 
-[ext_resource type="Script" path="res://Scripts/ButtonPromptSpace.gd" id="1_kf8we"]
+[ext_resource type="Script" uid="uid://dqmyolftnr62e" path="res://Scripts/ButtonPromptSpace.gd" id="1_kf8we"]
 
 [node name="ButtonPromptSpace" type="Area2D"]
 collision_layer = 2

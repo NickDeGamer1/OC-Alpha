@@ -3,9 +3,10 @@ extends Area2D
 @export var BlockColor: String
 
 func _ready():
-		$Sprite2D.texture = load("res://Textures/" + BlockColor + "_Block_on.png")
+		$Sprite2D.texture = load("res://Textures/" + BlockColor + "_Block_on.png")#sets sprites to color block
 
 func toggleBlock(Toggle):
+	#Turns on and off blocks
 	if(Toggle):
 		$CollisionShape2D.disabled = false
 		$Sprite2D.texture = load("res://Textures/" + BlockColor + "_Block_on.png")

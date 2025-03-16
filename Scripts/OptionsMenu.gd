@@ -1,10 +1,12 @@
 extends Control
 
+#Options menu
+
 var KBMvis:bool = false
 var CONvis:bool = false
 var setup:bool = true
 @onready var resOpt = $ColorRect/MarginContainer/ColorRect/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Resopt
-
+#Resolutions
 var Resolution: Dictionary = {"3840x2160":Vector2i(3840,2160),
 								"2560x1440":Vector2i(2560,1440),
 								"1920x1080":Vector2i(1920,1080),
@@ -16,7 +18,7 @@ var Resolution: Dictionary = {"3840x2160":Vector2i(3840,2160),
 								"1600x900":Vector2i(1600,900),
 								"1024x600":Vector2i(1024,600),
 								"800x600":Vector2i(800,600)}
-
+#Controller type change
 func changeConDIS():
 	match OptionsSingleton.ConType:
 		0:
@@ -36,7 +38,8 @@ func changeConDIS():
 		7:
 			$ControllerDisplay.texture = load("res://Textures/Controls3D.jpg")
 
-func _ready():
+
+func _ready():#Sets all values to those found in optionsSingleton
 	if MpManager.Multip:
 		MpManager.Multip = false
 		MpManager.peer = null
@@ -70,6 +73,7 @@ func _ready():
 	$ColorRect/MarginContainer/ColorRect/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer4/VBoxContainer/PortEdit.text = str(MpManager.port)
 	setup = false
 
+#Sets all values in OptionsSingleton
 func _on_shadows_drop_down_item_selected(index):
 	OptionsSingleton.Shadows = index
 

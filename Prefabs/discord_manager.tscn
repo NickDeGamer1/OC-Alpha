@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://42iek8r25l0q"]
 
-[ext_resource type="Script" path="res://Scripts/Discord_Manager.gd" id="1_wqk1q"]
+[ext_resource type="Script" uid="uid://cr1b1kwrg4clc" path="res://Scripts/Discord_Manager.gd" id="1_wqk1q"]
 
 [node name="DiscordManager" type="Node"]
 script = ExtResource("1_wqk1q")

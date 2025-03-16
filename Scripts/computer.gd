@@ -1,11 +1,12 @@
 extends Area2D
+#The computer mike can use
 
 @export_enum("Down", "Up", "Left", "Right") var direction = "Down"
 @export var BlockToToggle:Node
 @export var Quick = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	match direction:
+	match direction:#Matches direction of the enum
 		"Down":
 			$Sprite2D.texture = load("res://Textures/Cumpooper_down.png")
 		"Up":
@@ -18,7 +19,7 @@ func _ready():
 		_:
 			$Sprite2D.texture = load("res://Textures/Cumpooper_down.png")
 
-func interact():
+func interact():#plays animation only if mike is interacting, enables Mike's minigame. waits till end.
 	if GameSingleton.CharList[0] == "Mike":
 		get_node("../Party/Player").cutscene = true
 		$AnimationPlayer.play("TurnOn")
@@ -38,7 +39,7 @@ func interact():
 		if !get_node("../Party/Player/AudioStreamPlayer2D").playing:
 			get_node("../Party/Player/AudioStreamPlayer2D").play()
 
-func MPinteract(Chr, _ID):
+func MPinteract(Chr, _ID):#for multiplayer purposes
 	if Chr == "Mike":
 		$AnimationPlayer.play("TurnOn")
 	else:

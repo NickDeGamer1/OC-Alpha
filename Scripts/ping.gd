@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	match OptionsSingleton.zoom:
+	match OptionsSingleton.zoom:#Scales to screen size
 		1:
 			scale = Vector2(.5, .5)
 		2:
@@ -19,13 +19,14 @@ func _ready():
 	print($"../../Party/Player/EncloseSPR/AnimatedSprite2D".Ccolor)
 	$PingSpr.Set_color($"../../Party/Player/EncloseSPR/AnimatedSprite2D".Ccolor)
 
-func _input(event):
+func _input(event):#Pings and boradcasts position
 	if event.is_action_pressed("ping") and !$PingSpr.visible:
 		$PingSpr.position = get_global_mouse_position()
 		get_parent().OWping.rpc(multiplayer.get_unique_id(), $PingSpr.position)
 		$PingSpr/AnimationPlayer.play("appear")
 
-func Ping(pos):
+
+func Ping(pos):#Sets position and appears
 	if !$PingSpr.visible:
 		$PingSpr.position = pos
 		get_parent().OWping.rpc(multiplayer.get_unique_id(), $PingSpr.position)

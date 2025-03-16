@@ -1,5 +1,5 @@
 extends Node
-
+#Similar to discord manager, but for menus
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +17,6 @@ func _ready():
 
 func Update():
 	if(OptionsSingleton.DRP):
-		
 		DiscordSDK.refresh() # Always refresh after changing the values!
 
 func _process(_delta):

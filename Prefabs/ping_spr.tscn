@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3stq0cd5lo83"]
 
 [ext_resource type="AudioStream" uid="uid://7r7mqjy11rwp" path="res://Audio/Ping.wav" id="1_5jorp"]
-[ext_resource type="Script" path="res://Scripts/ping_spr.gd" id="1_hp3sp"]
+[ext_resource type="Script" uid="uid://i4xcgewwll4" path="res://Scripts/ping_spr.gd" id="1_hp3sp"]
 
 [sub_resource type="Gradient" id="Gradient_18uts"]
 offsets = PackedFloat32Array(0.700535, 1)
@@ -57,7 +57,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fuk11"]
 _data = {
-"appear": SubResource("Animation_7h3ad")
+&"appear": SubResource("Animation_7h3ad")
 }
 
 [node name="PingSpr" type="Sprite2D" groups=["PingSprG"]]

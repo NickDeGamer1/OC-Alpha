@@ -1,5 +1,7 @@
 extends Area2D
 
+#Vents that Aurora can use
+
 @onready var Pla = $"../Party/Player"
 @onready var Temp = $"../Party/TempSprite"
 var Vent1
@@ -7,7 +9,7 @@ var Vent1
 @export var ConnectedVent:int = 1
 var Tpos
 
-func _ready():
+func _ready():#Connects vents
 	Vent1 = get_node("../Vent" + str(ConnectedVent))
 
 func interact():
@@ -16,7 +18,7 @@ func interact():
 	else:
 		Exit()
 
-func MPinteract(Chr, ID):
+func MPinteract(Chr, ID):#Moves player in multiplayer
 	if Chr == "Alex" or Chr == "Aurora":
 		var OtherP = get_tree().get_nodes_in_group("OtherP")
 		var activeP
@@ -36,7 +38,7 @@ func MPinteract(Chr, ID):
 			activeP.visible = true
 			Temp.visible = false
 
-func Entrence():
+func Entrence():#If Alex, Make Tempsprite Alex and move player to other side, make player Aurora
 	if (GameSingleton.CharList[0] == "Alex"):
 		Pla.cutscene = true
 		var tween = create_tween()
@@ -62,7 +64,7 @@ func Entrence():
 	else:
 		$"../Party/Player/AudioStreamPlayer2D".play()
 
-func Exit():
+func Exit():#Send player back and return them to Alex
 	Pla.cutscene = true
 	var tween = create_tween()
 	Pla.visible = false

@@ -1,8 +1,10 @@
 extends Node2D
 
+#Vex's stage
+
 @export var num: int = 1
 
-func Play():
+func Play():#Plays song and breaks breakable objects
 	$SpeakerR.play("Play")
 	$SpeakerL.play("Play")
 	var rand = RandomNumberGenerator.new()
